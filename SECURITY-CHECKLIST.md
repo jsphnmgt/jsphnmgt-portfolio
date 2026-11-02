@@ -1,6 +1,6 @@
 # Security checklist
 
-Reviewed on **9 October 2026** for Avys Portfolio, a public static React website deployed through GitHub Pages.
+Reviewed on **9 October 2026** for jsphnmgt Portfolio, a public static React website deployed through GitHub Pages.
 
 Each answer records what was checked. **No** also identifies checks that remain unverified; it does not claim that an unverified setting is disabled.
 

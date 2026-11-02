@@ -1,6 +1,6 @@
-# Avys Portfolio — Design system
+# jsphnmgt Portfolio — Design system
 
-The design system records the colors, typography, spacing, components, and interaction states used by Avys Portfolio, based on the current CSS and collection components.
+The design system records the colors, typography, spacing, components, and interaction states used by jsphnmgt Portfolio, based on the current CSS and collection components.
 
 **[Open the design system in Figma](https://www.figma.com/design/j1jBpmx2Pb1JpV6k6GJIGV/APSI--final-project-?node-id=491-2)**
 

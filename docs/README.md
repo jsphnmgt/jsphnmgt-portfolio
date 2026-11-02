@@ -1,6 +1,6 @@
 # Project documents
 
-Planning, design, progress reports, and supporting documentation for Avys Portfolio.
+Planning, design, progress reports, and supporting documentation for jsphnmgt Portfolio.
 
 | File | Contents | When |
 | --- | --- | --- |

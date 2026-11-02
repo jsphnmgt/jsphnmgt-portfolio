@@ -2,7 +2,7 @@
 
 ## The idea
 
-Avys Portfolio is a website with two connected experiences: a professional portfolio showcasing my projects, experience, education, certificates, and contact information, and an interactive personal room where visitors explore my interests through clickable objects.
+jsphnmgt Portfolio is a website with two connected experiences: a professional portfolio showcasing my projects, experience, education, certificates, and contact information, and an interactive personal room where visitors explore my interests through clickable objects.
 
 ## Why
 

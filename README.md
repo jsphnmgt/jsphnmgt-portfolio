@@ -1,14 +1,14 @@
-# Avys Portfolio
+# jsphnmgt Portfolio
 
 **Interactive Portfolio Website Showcasing Professional Work and Personal Interests**
 
-Avys Portfolio is an interactive website that brings together professional work and personal interests. It has two sides: a professional portfolio featuring projects, experience, education, and certificates, and an illustrated personal room where visitors can explore collections of shows, stories, games, and music.
+jsphnmgt Portfolio is an interactive website that brings together professional work and personal interests. It has two sides: a professional portfolio featuring projects, experience, education, and certificates, and an illustrated personal room where visitors can explore collections of shows, stories, games, and music.
 
-**Live site:** [Visit Avys Portfolio](https://jsphnmgt.github.io/avys-portfolio/)
+**Live site:** [Visit jsphnmgt Portfolio](https://jsphnmgt.github.io/avys-portfolio/)
 
 **Demo video:** [Watch the demo](https://drive.google.com/drive/folders/1B3oj6ORSq4x1khLnwtaZtEFo4iStCV-e)
 
-![Avys Portfolio main screen](client/src/assets/screenshots/main-screen.png)
+![jsphnmgt Portfolio main screen](client/src/assets/screenshots/main-screen.png)
 
 ## What it does
 
@@ -128,7 +128,7 @@ Watchlist, reading, game, and music collections are maintained in the JSON files
 
 ## Architecture
 
-Avys Portfolio is a static React application hosted on GitHub Pages. The URL hash switches between the professional portfolio and the personal room, while React state controls folders, overlays, and music tabs. Personal collection content is stored in local JSON files, while professional section content stays with its components. Shared hooks manage collection peeks and portfolio motion; CSS controls presentation and animation. Spotify players load from Spotify when selected. There is no separate application server or database.
+jsphnmgt Portfolio is a static React application hosted on GitHub Pages. The URL hash switches between the professional portfolio and the personal room, while React state controls folders, overlays, and music tabs. Personal collection content is stored in local JSON files, while professional section content stays with its components. Shared hooks manage collection peeks and portfolio motion; CSS controls presentation and animation. Spotify players load from Spotify when selected. There is no separate application server or database.
 
 ## What I would do next
 
