@@ -37,7 +37,7 @@ export default function Projects({ onCardClick }) {
       <h2 id="projects-title">Projects</h2><span className="ornament" aria-hidden="true" />
     </div>
     <div className="projects-grid">{projects.map(project => <button key={project.title} className="project-card" onClick={() => onCardClick({ ...project, image: assets[project.asset] })} aria-label={`View ${project.title} project`}>
-      <div className={`project-image ${project.crop}`}><img src={assets[project.asset]} alt={project.title + " screenshot"} /></div>
+      <div className={`project-image ${project.crop}`}><img src={assets[project.asset]} alt={project.title + " screenshot"} loading="lazy" decoding="async" /></div>
       <div className="project-copy">
         <h3>{project.title}</h3>
         <p>{project.description}</p>

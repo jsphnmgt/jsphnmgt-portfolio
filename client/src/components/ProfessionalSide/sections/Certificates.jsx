@@ -79,7 +79,7 @@ export default function Certificates({ onCardClick }) {
     <div className="certificates-grid">{certificates.map(certificate => <article className="certificate-card" key={certificate.title}>
       <h3>{certificate.title}</h3>
       <div className="certificate-footer">
-        <button onClick={() => onCardClick({ ...certificate, type: "certificate" })}><img src={assets["view-certificate.png"]} alt="" />View Certificate</button>
+        <button aria-label={`View ${certificate.title} certificate`} aria-haspopup="dialog" onClick={() => onCardClick({ ...certificate, type: "certificate" })}><img src={assets["view-certificate.png"]} alt="" />View Certificate</button>
         <span>{certificate.year}</span>
       </div>
     </article>)}</div>

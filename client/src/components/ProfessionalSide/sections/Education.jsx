@@ -10,7 +10,7 @@ export default function Education() {
       <span className="ornament" aria-hidden="true" />
     </div>
     <div className="education-layout">
-      <img className="education-photo" src={assets["education-cafe.png"]} alt="A leafy green café with a warmly lit entrance" />
+      <img className="education-photo" src={assets["education-cafe.png"]} alt="A leafy green café with a warmly lit entrance" loading="lazy" decoding="async" />
       <div className="education-list">{education.map(item => <article className="education-card" key={item.school}>
         <h3>{item.degree}</h3>
         <p>{item.school}</p>

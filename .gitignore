@@ -7,6 +7,7 @@
 node_modules/
 dist/
 build/
+test-results/
 
 # Database dumps: a full plain-text copy of your data
 *.dump

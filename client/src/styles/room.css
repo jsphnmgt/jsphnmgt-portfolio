@@ -161,7 +161,8 @@
 }
 
 .room-back-button {
-  z-index: 2;
+  z-index: 4;
+  min-height: 44px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -212,15 +213,6 @@
     will-change: transform, opacity;
   }
 
-  .personal-room.room-entered .room-back-button,
-  .personal-room.room-entered .room-navigation-toggle {
-    animation: room-controls-enter var(--motion-room-controls-duration) ease-out both;
-  }
-
-  .personal-room .room-back-button:focus-visible,
-  .personal-room .room-navigation-toggle:focus-visible {
-    animation: none;
-  }
 }
 
 @keyframes room-step-in {
@@ -516,7 +508,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-3);
-  min-height: var(--space-room-button-height);
+  min-height: max(44px, var(--space-room-button-height));
   padding: var(--space-1) var(--space-4);
   border: var(--border-room-button);
   border-radius: var(--radius-full);

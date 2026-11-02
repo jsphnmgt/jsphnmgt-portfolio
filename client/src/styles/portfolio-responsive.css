@@ -351,15 +351,16 @@
 @media (prefers-reduced-motion: no-preference) {
   .scroll-motion-ready [data-scroll-reveal] {
     opacity: 0;
-    translate: 0 2rem;
-    transition: opacity .8s cubic-bezier(.22, 1, .36, 1), translate 1s cubic-bezier(.22, 1, .36, 1);
+    translate: 0 .75rem;
+    transition: opacity .5s ease-out, translate .6s var(--motion-card-ease);
     transition-delay: var(--reveal-delay, 0ms);
   }
 
-  .scroll-motion-ready .project-card[data-scroll-reveal] {
+  .scroll-motion-ready .project-card[data-scroll-reveal],
+  .scroll-motion-ready .certificate-card[data-scroll-reveal] {
     transition:
-      opacity .8s var(--motion-card-ease) var(--reveal-delay, 0ms),
-      translate 1s var(--motion-card-ease) var(--reveal-delay, 0ms),
+      opacity .5s ease-out,
+      translate .6s var(--motion-card-ease),
       transform var(--motion-card-duration) var(--motion-card-ease) 0ms,
       box-shadow var(--motion-card-duration) ease 0ms,
       border-color var(--motion-card-duration) ease 0ms;
@@ -373,7 +374,7 @@
 
   .scroll-motion-ready .section-heading,
   .scroll-motion-ready section>.display-heading {
-    translate: 0 1.25rem;
+    translate: 0 .75rem;
   }
 
   .scroll-motion-ready .section-heading.is-revealed,
@@ -387,19 +388,12 @@
     overflow: clip;
   }
 
-  .scroll-motion-ready .opening::after,
-  .scroll-motion-ready .green-world::before,
-  .scroll-motion-ready .closing::after {
-    inset-block: -64px;
-    translate: 0 var(--scene-shift, 0px);
-    will-change: translate;
-  }
 }
 
 @media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
   .scroll-motion-ready [data-scroll-reveal] {
     translate: 0 1rem;
-    transition-duration: .55s;
+    transition-duration: .5s;
     transition-delay: 0ms;
   }
 
@@ -425,5 +419,59 @@
   .nav-links a,
   .nav-links a::after {
     transition: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .navbar {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-lavender);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--color-cream);
+  }
+
+  .navbar .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: var(--space-3) var(--space-4);
+    gap: var(--space-2);
+    background: var(--color-navy);
+    box-shadow: var(--shadow-button);
+  }
+
+  .navbar.is-open .nav-links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .navbar .nav-links a {
+    justify-content: center;
+    font-size: var(--font-size-sm);
+  }
+
+  .navbar .explore-room-btn {
+    font-size: var(--font-size-sm);
+    gap: var(--space-2);
+    padding-inline: var(--space-3);
+  }
+
+  .explore-room-btn img {
+    width: 2rem;
   }
 }

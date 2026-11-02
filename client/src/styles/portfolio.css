@@ -24,13 +24,13 @@
 }
 
 .opening::before {
-  background: url("../assets/backgrounds/paper-texture.png") center / 100% 100%;
+  background: url("../assets/optimized/paper-texture.png.webp") center / 100% 100%;
   mix-blend-mode: multiply;
   opacity: 1;
 }
 
 .opening::after {
-  background: url("../assets/backgrounds/stars-1.png") left top / 64% auto repeat-x, url("../assets/backgrounds/stars-1.png") right 30.4vw / 64% auto repeat-x;
+  background: url("../assets/optimized/stars-1.png.webp") left top / 64% auto repeat-x, url("../assets/optimized/stars-1.png.webp") right 30.4vw / 64% auto repeat-x;
   mix-blend-mode: lighten;
 }
 
@@ -50,7 +50,7 @@
 
 .nav-links {
   display: flex;
-  gap: var(--space-12);
+  gap: clamp(.75rem, 2vw, 2rem);
   align-items: center;
 }
 
@@ -64,6 +64,9 @@
 }
 
 .nav-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   position: relative;
   font-weight: 600;
   transition: color .2s ease;
@@ -71,7 +74,7 @@
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
-  color: var(--color-navy);
+  color: var(--color-lavender);
 }
 
 .nav-links a::after {
@@ -94,6 +97,7 @@
 }
 
 .explore-room-btn {
+  min-height: 44px;
   display: flex;
   align-items: center;
   gap: var(--space-4);
@@ -102,6 +106,34 @@
   padding: 0 var(--space-4);
   background: transparent;
   box-shadow: 0 1px 4px color-mix(in srgb, var(--color-navy) 35%, transparent);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.navbar :focus-visible {
+  outline-color: var(--color-cream);
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-4);
+  z-index: 300;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-cream);
+  color: var(--color-navy);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+#portfolio-content:focus {
+  outline: none;
 }
 
 .explore-room-btn img {
@@ -381,7 +413,7 @@
 }
 
 .green-world::before {
-  background: url("../assets/backgrounds/green-overlay.png") center top / 100% 149.16%;
+  background: url("../assets/optimized/green-overlay.png.webp") center top / 100% 149.16%;
   mix-blend-mode: screen;
   opacity: 1;
 }
@@ -550,7 +582,7 @@
 }
 
 .closing::after {
-  background: url("../assets/backgrounds/stars-2.png") center var(--space-24) / 100% auto repeat-y;
+  background: url("../assets/optimized/stars-2.png.webp") center var(--space-24) / 100% auto repeat-y;
   mix-blend-mode: lighten;
 }
 
@@ -580,6 +612,7 @@
 }
 
 .certificate-card {
+  position: relative;
   min-height: 12.33vw;
   display: flex;
   flex-direction: column;
@@ -589,6 +622,26 @@
   border-radius: var(--radius-xl);
   padding: 1.9vw 1.9vw 1.2vw;
   box-shadow: 0 var(--space-2) var(--space-1) color-mix(in srgb, var(--color-Outline-PersonalSideCard) 60%, transparent);
+  transition: transform var(--motion-card-duration) var(--motion-card-ease), box-shadow var(--motion-card-duration) ease, border-color var(--motion-card-duration) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .certificate-card:hover {
+    border-color: var(--color-periwinkle);
+    box-shadow: 0 var(--space-3) var(--space-6) color-mix(in srgb, var(--color-navy) 24%, transparent);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .certificate-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .certificate-card:has(button:focus-visible) {
+    transform: translateY(-5px);
+  }
 }
 
 .certificate-card h3 {
@@ -619,8 +672,26 @@
   font-size: clamp(var(--font-size-sm), 1.563vw, calc(var(--font-size-2xl) * 1.25));
 }
 
-.certificate-footer button:hover {
+.certificate-footer button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+}
+
+.certificate-card:hover .certificate-footer button,
+.certificate-footer button:focus-visible {
   text-decoration: underline;
+}
+
+.certificate-footer button:focus-visible {
+  outline: none;
+}
+
+.certificate-card:has(button:focus-visible) {
+  outline: 3px solid var(--color-DarkText-Shadow);
+  outline-offset: var(--space-1);
 }
 
 .certificate-footer img {

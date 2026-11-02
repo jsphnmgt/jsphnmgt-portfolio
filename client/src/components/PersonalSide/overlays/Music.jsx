@@ -117,6 +117,7 @@ export default function Music({ isOpen = false, onClose }) {
                 </button>
                 <button className="music-close music-player-close" ref={peekHeadingRef} onClick={closePeek} aria-label="Close Spotify player"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19" /></svg></button>
               </div>
+              <a className="music-external-link" href={selected.url} target="_blank" rel="noopener noreferrer">Open in Spotify <span className="sr-only">(opens in a new tab)</span><span aria-hidden="true">↗</span></a>
               <div className={`music-embed-unfold${selected.url.includes("/track/") ? " music-song-embed" : ""}`}><iframe key={selectedId} className="music-spotify-embed" title={`Spotify player: ${selected.title}`} src={`https://open.spotify.com/embed${new URL(selected.url).pathname}?utm_source=generator${selected.title === "inner kogane" ? "&theme=0" : ""}`} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowFullScreen loading="lazy" /></div>
             </div>}
           </div>

@@ -3,8 +3,11 @@ import Overlay from "../../ProfessionalSide/Overlay";
 import { assets } from "../../../assets";
 import watchlist from "../../../data/watchlistData.json";
 import readingList from "../../../data/readingListData.json";
-import { favorites as favoriteGames, playing, collection } from "./GameShelf";
-import { songs } from "./Music";
+import gameData from "../../../data/gameData.json";
+import musicData from "../../../data/musicData.json";
+
+const { favorites: favoriteGames, playing, collection } = gameData;
+const { songs } = musicData;
 
 const gameByTitle = title => collection.find(game => game.title.replace(/:/g, "") === title.replace(/:/g, ""));
 const summaries = {
@@ -71,7 +74,7 @@ export default function PersonalComputer({ isOpen = false, onClose, onOpenCollec
 
   const iconFolder = (folder, className = "") => <span className={`pc-folder-icon ${className}`} aria-hidden="true"><img src={assets[`pc-${folder.icon}.svg`]} alt="" />{folder.detail && <img className={`pc-folder-detail${folder.detail === "group11" ? " pc-folder-detail-person" : ""}`} src={assets[`pc-${folder.detail}.svg`]} alt="" />}</span>;
 
-  return <Overlay className="pc-overlay" isOpen={isOpen && imagesReady} onClose={onClose}>
+  return <Overlay className="pc-overlay" isOpen={isOpen} onClose={onClose}>
     <h2 id="detail-title" className="pc-accessible-title">Personal Computer</h2>
     <div className="pc-desktop" ref={desktopRef}>
       <img className="pc-wallpaper" src={assets["pc-rectangle49.png"]} alt="" />

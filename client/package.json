@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "optimize:assets": "node scripts/optimize-assets.mjs",
+    "test:browser": "node scripts/test-browser.mjs",
     "dev": "vite",
     "build": "vite build && node -e \"require('fs').copyFileSync('dist/index.html','dist/404.html')\"",
     "preview": "vite preview"
@@ -14,6 +16,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "playwright": "^1.64.1",
+    "sharp": "^0.35.5",
     "vite": "^6.0.7"
   }
 }

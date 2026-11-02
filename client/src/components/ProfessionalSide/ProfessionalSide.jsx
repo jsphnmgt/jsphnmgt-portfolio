@@ -11,9 +11,10 @@ import Certificates from "./sections/Certificates";
 import Contact from "./sections/Contact";
 import { assets } from "../../assets";
 
-export default function ProfessionalSide() {
+export default function ProfessionalSide({ savedPosition = null }) {
   const [activeItem, setActiveItem] = useState(null);
   const [activeSection, setActiveSection] = useState("home");
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const navbarRef = useRef(null);
   usePortfolioMotion(navbarRef);
 
@@ -24,14 +25,40 @@ export default function ProfessionalSide() {
       app.style.setProperty("--navbar-height", navbar.getBoundingClientRect().height + "px");
     });
     observer.observe(navbar);
+    app.style.setProperty("--navbar-height", navbar.getBoundingClientRect().height + "px");
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const target = document.getElementById(window.location.hash.slice(1));
+    const frame = requestAnimationFrame(() => {
+      if (savedPosition) {
+        const anchor = savedPosition.anchorId ? document.getElementById(savedPosition.anchorId) : null;
+        const top = anchor && Number.isFinite(savedPosition.anchorOffset)
+          ? window.scrollY + anchor.getBoundingClientRect().top - savedPosition.anchorOffset
+          : savedPosition.top;
+        window.scrollTo({ top, behavior: "instant" });
+        document.querySelector(".explore-room-btn")?.focus({ preventScroll: true });
+      } else target?.scrollIntoView({ behavior: "instant" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [savedPosition]);
+
+  useEffect(() => {
+    if (!isNavOpen) return;
+    const dismiss = event => {
+      if (!navbarRef.current?.contains(event.target)) setIsNavOpen(false);
+    };
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
+  }, [isNavOpen]);
 
   useEffect(() => {
     const sections = [...navbarRef.current.closest(".app").querySelectorAll("section[id]")];
     let frame = 0;
     const update = () => {
       frame = 0;
+      if (!navbarRef.current) return;
       const readingLine = navbarRef.current.getBoundingClientRect().bottom + window.innerHeight * .2;
       let current = sections[0]?.id;
       for (const section of sections) {
@@ -54,12 +81,19 @@ export default function ProfessionalSide() {
   }, []);
 
   return <>
+    <a className="skip-link" href="#portfolio-content">Skip to content</a>
     <PortfolioScrollbar />
-    <nav ref={navbarRef} className="navbar" aria-label="Main navigation">
-      <div className="nav-links">{["Home", "Projects", "Experience", "Education", "Contact"].map(label => <a key={label} href={`#${label.toLowerCase()}`} aria-current={activeSection === label.toLowerCase() ? "location" : undefined}>{label}</a>)}</div>
+    <nav ref={navbarRef} className={`navbar${isNavOpen ? " is-open" : ""}`} aria-label="Main navigation" onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setIsNavOpen(false); }} onKeyDown={event => {
+      if (event.key === "Escape" && isNavOpen) {
+        setIsNavOpen(false);
+        event.currentTarget.querySelector(".nav-toggle").focus();
+      }
+    }}>
+      <button className="nav-toggle" aria-expanded={isNavOpen} aria-controls="portfolio-nav-links" onClick={() => setIsNavOpen(open => !open)}>Menu <span aria-hidden="true">{isNavOpen ? "−" : "+"}</span></button>
+      <div id="portfolio-nav-links" className="nav-links">{["Home", "Projects", "Experience", "Education", "Certificates", "Contact"].map(label => <a key={label} href={`#${label.toLowerCase()}`} onClick={() => { setIsNavOpen(false); document.getElementById("portfolio-content")?.focus({ preventScroll: true }); }} aria-current={activeSection === label.toLowerCase() ? "location" : undefined}>{label}</a>)}</div>
       <button className="explore-room-btn" onClick={() => { window.location.hash = "room"; }}>Explore my room <img src={assets["room-arrow.svg"]} alt="" /></button>
     </nav>
-    <div id="portfolio-content">
+    <div id="portfolio-content" tabIndex={-1}>
       <div className="blue-sky opening">
         <div><Hero /><Projects onCardClick={setActiveItem} /></div>
       </div>
@@ -77,7 +111,7 @@ export default function ProfessionalSide() {
               <p>{activeItem.description}</p>
             </div>
             <div className="project-detail-actions">
-              {activeItem.githubUrl ? <a className="project-code-button" href={activeItem.githubUrl} target="_blank" rel="noreferrer"><img src={assets["github-logo.png"]} alt="" />GitHub Code</a> : <button className="project-code-button" disabled title="Code link unavailable"><img src={assets["github-logo.png"]} alt="" />GitHub Code</button>}
+              {activeItem.githubUrl ? <a className="project-code-button" href={activeItem.githubUrl} target="_blank" rel="noreferrer"><img src={assets["github-logo.png"]} alt="" />GitHub Code <span className="sr-only">(opens in a new tab)</span></a> : <span className="project-code-unavailable">{activeItem.codeStatus || "Code link unavailable"}</span>}
             </div>
             <div className="project-detail-technologies"><h3>Built with</h3><div className="tags">{activeItem.techStack.map(tag => <span key={tag}>{tag}</span>)}</div></div>
           </div>
@@ -101,7 +135,8 @@ export default function ProfessionalSide() {
               <div><dt>Date earned</dt><dd>{activeItem.dateEarned}</dd></div>
             </dl>
             <div className="project-detail-actions">
-              {activeItem.credentialUrl ? <a className="project-code-button" href={activeItem.credentialUrl} target="_blank" rel="noreferrer">View Credential</a> : <button className="project-code-button" disabled title="Credential link coming soon">View Credential</button>}
+              {activeItem.credentialUrl ? <a className="project-code-button" href={activeItem.credentialUrl} target="_blank" rel="noreferrer">View Credential <span className="sr-only">(opens in a new tab)</span></a> : <button className="project-code-button" disabled title="Credential link coming soon">View Credential</button>}
+              <a className="certificate-image-link" href={activeItem.image} target="_blank" rel="noreferrer">Open full-size certificate <span className="sr-only">(opens in a new tab)</span></a>
             </div>
           </div>
         </div>

@@ -1,11 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { assets } from "../../../assets";
+import Overlay from "../../ProfessionalSide/Overlay";
+import LoadBoundary from "../../LoadBoundary";
+import "../../../styles/room.css";
+import "../../../styles/personal-overlays.css";
 
-import PersonalComputer from "../overlays/PersonalComputer";
-import Watchlist from "../overlays/Watchlist";
-import ReadingList from "../overlays/ReadingList";
-import GameShelf from "../overlays/GameShelf";
-import Music from "../overlays/Music";
+const PersonalComputer = lazy(() => import("../overlays/PersonalComputer"));
+const Watchlist = lazy(() => import("../overlays/Watchlist"));
+const ReadingList = lazy(() => import("../overlays/ReadingList"));
+const GameShelf = lazy(() => import("../overlays/GameShelf"));
+const Music = lazy(() => import("../overlays/Music"));
 
 const roomObjects = [
   {
@@ -29,14 +33,22 @@ const roomObjects = [
   { id: "music", label: "Music Corner", image: "room-music.png", component: Music },
 ];
 
-export default function Room() {
+export default function Room({ returnHref = "#home" }) {
   const [imageReady, setImageReady] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
   const [hasEntered, setHasEntered] = useState(false);
   const [activeObject, setActiveObject] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const returnFocusRef = useRef(null);
   const ActiveOverlay = activeObject?.component;
+
+  // Keep entry usable even if an animation is interrupted or disabled by CSS.
+  useEffect(() => {
+    if (!imageReady || hasEntered) return;
+    const timer = window.setTimeout(() => setHasEntered(true), 1900);
+    return () => window.clearTimeout(timer);
+  }, [imageReady, hasEntered]);
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -74,7 +86,7 @@ export default function Room() {
 
   return <section className={`personal-room${imageReady ? " room-ready" : ""}${hasEntered ? " room-entered" : ""}`} id="room" aria-label="Personal room">
     <div className="room-scene">
-      <img className="personal-room-image" src={assets["room.jpg"]} alt="An illustrated bedroom overlooking a purple city skyline at night" fetchPriority="high" onLoad={() => setImageReady(true)} onError={() => setImageReady(true)} />
+      <img className="personal-room-image" src={assets["room.jpg"]} alt="An illustrated bedroom overlooking a purple city skyline at night" fetchPriority="high" onLoad={() => setImageReady(true)} onError={() => { setImageFailed(true); setImageReady(true); setHasEntered(true); }} />
       <div className="room-objects" inert={!hasEntered ? "" : undefined}>
         {roomObjects.map(object => <button key={object.id} className={`room-object room-object-${object.id}`} aria-label={`Open ${object.label}`} aria-haspopup="dialog" onClick={event => openObject(object, event.currentTarget)}>
           <img src={assets[object.image]} alt="" draggable={false} />
@@ -93,12 +105,11 @@ export default function Room() {
         </div>
       </div>)}
     </div>}
-    {hasEntered && <>
-      <a className="room-back-button" href="#home">
+      <a className="room-back-button" href={returnHref}>
         <img src={assets["room-back-arrow.svg"]} alt="" />
         <span>Back to portfolio</span>
       </a>
-      <div className={`room-navigation${isMenuOpen ? " is-open" : ""}`} ref={menuRef} onKeyDown={event => {
+      <div className={`room-navigation${isMenuOpen ? " is-open" : ""}`} ref={menuRef} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setIsMenuOpen(false); }} onKeyDown={event => {
         if (event.key === "Escape") {
           setIsMenuOpen(false);
           event.currentTarget.querySelector(".room-navigation-toggle").focus();
@@ -119,11 +130,10 @@ export default function Room() {
           </div>
         </div>
       </div>
-      <p className="room-explore-hint">Explore my room—click the glowing objects or use explore room to discover more.</p>
-    </>}
-    {ActiveOverlay && <ActiveOverlay isOpen onClose={() => setActiveObject(null)} onOpenCollection={id => {
+      {hasEntered && <p className="room-explore-hint" role={imageFailed ? "status" : undefined}>{imageFailed ? "The room artwork couldn't load. Use Explore Room to open any collection." : "Select a glowing object or choose a collection from Explore Room."}</p>}
+    {ActiveOverlay && <LoadBoundary key={activeObject.id} onDismiss={() => setActiveObject(null)}><Suspense fallback={<Overlay isOpen onClose={() => setActiveObject(null)}><h2 id="detail-title">{activeObject.label}</h2><p role="status">Opening collection…</p><button onClick={() => setActiveObject(null)}>Cancel</button></Overlay>}><ActiveOverlay key={activeObject.id} isOpen onClose={() => setActiveObject(null)} onOpenCollection={id => {
       const object = roomObjects.find(item => item.id === id);
       if (object) setActiveObject(object);
-    }} />}
+    }} /></Suspense></LoadBoundary>}
   </section>;
 }

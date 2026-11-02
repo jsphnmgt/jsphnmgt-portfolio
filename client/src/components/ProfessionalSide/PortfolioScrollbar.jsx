@@ -10,6 +10,7 @@ export default function PortfolioScrollbar() {
     let frame = 0;
     const update = () => {
       frame = 0;
+      if (!trackRef.current) return;
       const page = document.scrollingElement;
       const trackHeight = trackRef.current.getBoundingClientRect().height;
       const max = Math.max(0, page.scrollHeight - page.clientHeight);

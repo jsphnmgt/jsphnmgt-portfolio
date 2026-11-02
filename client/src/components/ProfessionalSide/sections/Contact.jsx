@@ -4,17 +4,19 @@ export default function Contact() {
     <div className="ornament contact-divider" aria-hidden="true" />
     <h2 id="contact-title" className="display-heading">Contact me</h2>
     <div className="contact-card">
-      <a href="mailto:jsphnmgt@gmail.com"><img src={assets["gmail-logo.png"]} alt="" />
-        <h3>Gmail</h3>
-        <p>jsphnmgt@gmail.com</p>
+      <a href="mailto:jsphnmagat@gmail.com"><img src={assets["gmail-logo.png"]} alt="" />
+        <h3>Email</h3>
+        <p>jsphnmagat@gmail.com</p>
       </a>
       <a href="https://github.com/jsphnmgt" target="_blank" rel="noreferrer"><img src={assets["github-logo.png"]} alt="" />
-        <h3>Github</h3>
+        <h3>GitHub</h3>
         <p>jsphnmgt</p>
+        <span className="sr-only">Opens in a new tab</span>
       </a>
       <a href="https://www.linkedin.com/in/josephine-magat-615076325/" target="_blank" rel="noreferrer"><img src={assets["linkedin-logo.png"]} alt="" />
         <h3>LinkedIn</h3>
         <p>Maria Josephine Magat</p>
+        <span className="sr-only">Opens in a new tab</span>
       </a>
     </div>
   </section>;

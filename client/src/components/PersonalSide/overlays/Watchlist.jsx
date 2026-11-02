@@ -3,6 +3,7 @@ import CollectionIcon from "./CollectionIcon";
 import { assets } from "../../../assets";
 import watchlist from "../../../data/watchlistData.json";
 import useCollectionPeek from "../../../hooks/useCollectionPeek";
+import CollectionSearch, { useCollectionFilter } from "./CollectionSearch";
 
 const sections = [
   { id: "favorites", title: "Favorites", icon: "heart" },
@@ -12,19 +13,21 @@ const sections = [
 
 
 export default function Watchlist({ isOpen = false, onClose }) {
-  const { selectedId, isPeekVisible, peekHeadingRef, openPeek, closePeek, onPeekKeyDown, onPeekTransitionEnd } = useCollectionPeek();
+  const { query, setQuery, matches } = useCollectionFilter();
+  const { selectedId, isPeekVisible, peekHeadingRef, openPeek, closePeek, resetPeek, onPeekKeyDown, onPeekTransitionEnd } = useCollectionPeek();
   const selected = selectedId ? watchlist.catalog[selectedId] : null;
   const statuses = selectedId ? sections.filter(section => watchlist[section.id].includes(selectedId)) : [];
   return <Overlay className="watchlist-overlay" isOpen={isOpen} onClose={onClose}>
     <header className="watchlist-header">
       <h2 id="detail-title"><CollectionIcon name="clapperboard" />Watchlist</h2>
     </header>
+    <CollectionSearch label="Search watchlist" query={query} setQuery={value => { resetPeek(); setQuery(value); }} count={Object.values(watchlist.catalog).filter(matches).length} />
     <div className={`reading-list-layout${selected ? " has-peek" : ""}`} onKeyDown={onPeekKeyDown}>
       <div className="watchlist-scroll reading-list-collections" role="region" aria-label="Watchlist collections" tabIndex={0}>
-        {sections.map(section => <section className="watchlist-section" key={section.id} aria-labelledby={`watchlist-${section.id}`}>
-          <h3 id={`watchlist-${section.id}`}><CollectionIcon name={section.icon} />{section.title}<span className="collection-count">{watchlist[section.id].length}</span></h3>
+        {sections.filter(section => !query.trim() || watchlist[section.id].some(id => matches(watchlist.catalog[id]))).map(section => <section className="watchlist-section" key={section.id} aria-labelledby={`watchlist-${section.id}`}>
+          <h3 id={`watchlist-${section.id}`}><CollectionIcon name={section.icon} />{section.title}<span className="collection-count">{watchlist[section.id].filter(id => matches(watchlist.catalog[id])).length}</span></h3>
           <ul className="watchlist-cards" aria-label={section.title}>
-            {[...watchlist[section.id]].sort((a, b) => watchlist.catalog[a].title.localeCompare(watchlist.catalog[b].title, "en", { numeric: true, sensitivity: "base" })).map(id => {
+            {watchlist[section.id].filter(id => matches(watchlist.catalog[id])).sort((a, b) => watchlist.catalog[a].title.localeCompare(watchlist.catalog[b].title, "en", { numeric: true, sensitivity: "base" })).map(id => {
               const item = watchlist.catalog[id];
               return <li key={id} className="watchlist-card">
                 <button className="reading-list-card-button watchlist-card-button" aria-label={`View details for ${item.title}`} aria-expanded={selectedId === id} aria-controls="watchlist-peek" onClick={event => openPeek(id, event.currentTarget)}>

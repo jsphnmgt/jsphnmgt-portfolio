@@ -7,5 +7,7 @@ import react from '@vitejs/plugin-react'
 // correct, so the default is "/".
 export default defineConfig({
   plugins: [react()],
+  // Keep the shared asset lookup small; images and SVGs cache independently.
+  build: { assetsInlineLimit: 0 },
   base: process.env.VITE_BASE_PATH || '/',
 })

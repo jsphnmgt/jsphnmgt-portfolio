@@ -32,6 +32,16 @@
   border: 0;
   background: transparent;
   font-size: var(--font-size-3xl);
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  z-index: 2;
+}
+
+.overlay-close svg {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .detail-image {
@@ -226,8 +236,19 @@
 }
 
 .project-detail-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
   align-self: flex-start;
   text-align: left;
+}
+
+.certificate-image-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-underline-offset: .2em;
 }
 
 .project-code-button {
@@ -268,11 +289,17 @@
   box-shadow: none;
 }
 
+.project-code-unavailable {
+  display: block;
+  color: var(--color-steel);
+  font-size: var(--font-size-lg);
+}
+
 .project-overlay .overlay-close {
   display: grid;
   place-items: center;
   top: var(--space-2);
-  right: calc(var(--space-watchlist-inset) + (var(--size-watchlist-scrollbar) - var(--space-8)) / 2);
+  right: var(--space-3);
   width: var(--space-8);
   height: var(--space-8);
   padding: 0;

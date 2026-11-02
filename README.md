@@ -64,6 +64,12 @@ npm run dev
 
 Open the URL printed by Vite, usually `http://localhost:5173`.
 
+The site serves optimized WebP copies from `client/src/assets/optimized`; original artwork stays in its existing folders. After replacing or adding source images, run `npm run optimize:assets` from `client` and include the generated files with your changes. Room code, room styles, and collection dialogs load when opened. Scrolling uses the browser's native behavior, and animations respect reduced-motion preferences.
+
+Run `npm run build` followed by `npm run test:browser` to check desktop, mobile, and reduced-motion navigation and dialogs. Browser checks use installed Chrome by default; set `BROWSER_CHANNEL=msedge` to use Edge. Screenshots are saved to the ignored `client/test-results` folder.
+
+The responsive menu links to every portfolio section. Returning from the room restores your previous reading position. Watchlist, Reading List, and Game Collection include search, result counts, and empty states; certificate details include a full-size image link. Browser checks also cover tablet and landscape layouts, focus restoration, touch targets, and recovery from failed room artwork or view downloads. Set `TEST_VIEWPORTS` to a comma-separated subset (`desktop,mobile,narrow-mobile,tablet,landscape,reduced-motion`) for a focused check.
+
 To build and preview the production version from the same folder:
 
 ```sh
