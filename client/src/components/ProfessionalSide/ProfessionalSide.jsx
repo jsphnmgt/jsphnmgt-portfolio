@@ -9,6 +9,8 @@ import Experience from "./sections/Experience";
 import Education from "./sections/Education";
 import Certificates from "./sections/Certificates";
 import Contact from "./sections/Contact";
+import RoomInvitation from "./RoomInvitation";
+import SparkleField from "./SparkleField";
 import { assets } from "../../assets";
 
 export default function ProfessionalSide({ savedPosition = null }) {
@@ -91,14 +93,15 @@ export default function ProfessionalSide({ savedPosition = null }) {
     }}>
       <button className="nav-toggle" aria-expanded={isNavOpen} aria-controls="portfolio-nav-links" onClick={() => setIsNavOpen(open => !open)}>Menu <span aria-hidden="true">{isNavOpen ? "−" : "+"}</span></button>
       <div id="portfolio-nav-links" className="nav-links">{["Home", "Projects", "Experience", "Education", "Certificates", "Contact"].map(label => <a key={label} href={`#${label.toLowerCase()}`} onClick={() => { setIsNavOpen(false); document.getElementById("portfolio-content")?.focus({ preventScroll: true }); }} aria-current={activeSection === label.toLowerCase() ? "location" : undefined}>{label}</a>)}</div>
-      <button className="explore-room-btn" onClick={() => { window.location.hash = "room"; }}>Explore my room <img src={assets["room-arrow.svg"]} alt="" /></button>
+      <button className="explore-room-btn" onClick={() => { window.location.hash = "room"; }}><span>Explore my room</span><img src={assets["room-arrow.svg"]} alt="" /></button>
     </nav>
     <div id="portfolio-content" tabIndex={-1}>
       <div className="blue-sky opening">
+        <SparkleField />
         <div><Hero /><Projects onCardClick={setActiveItem} /></div>
       </div>
       <div className="green-world"><Experience /><Education /></div>
-      <div className="blue-sky closing"><Certificates onCardClick={setActiveItem} /><Contact /></div>
+      <div className="blue-sky closing"><SparkleField variant="closing" /><Certificates onCardClick={setActiveItem} /><RoomInvitation /><Contact /></div>
     </div>
     <Overlay className={activeItem?.techStack ? "project-overlay" : activeItem?.type === "certificate" ? "project-overlay certificate-overlay" : ""} isOpen={!!activeItem} onClose={() => setActiveItem(null)}>{activeItem && (activeItem.techStack ? <div className="project-detail-scroll" tabIndex={0} aria-label="Project details">
       <div className="project-detail-layout">

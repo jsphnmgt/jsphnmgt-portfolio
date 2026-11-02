@@ -2,7 +2,9 @@ import { assets } from "../../../assets";
 export default function Contact() {
   return <section id="contact" aria-labelledby="contact-title">
     <div className="ornament contact-divider" aria-hidden="true" />
-    <h2 id="contact-title" className="display-heading">Contact me</h2>
+    <p className="chapter-label"><span>05 /</span> The next chapter</p>
+    <h2 id="contact-title" className="display-heading">Let's make<br /><em>something good.</em></h2>
+    <p className="contact-intro">An internship, an idea, or just a hello — I'd love to hear from you.</p>
     <div className="contact-card">
       <a href="mailto:jsphnmagat@gmail.com"><img src={assets["gmail-logo.png"]} alt="" />
         <h3>Email</h3>
@@ -19,5 +21,6 @@ export default function Contact() {
         <span className="sr-only">Opens in a new tab</span>
       </a>
     </div>
+    <footer className="portfolio-footer"><span>✦ jsphnmgt Portfolio</span><span>Made with curiosity & a little stardust.</span><a href="#home">Back to the stars ↑</a></footer>
   </section>;
 }

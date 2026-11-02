@@ -36,6 +36,20 @@ try {
     });
     await page.goto(origin, { waitUntil: 'domcontentloaded' });
     await page.getByRole('heading', { level: 1 }).waitFor();
+    assert(await page.locator('.hero-card-stack').evaluate(card => {
+      const bounds = card.getBoundingClientRect();
+      return bounds.top >= document.querySelector('.navbar').getBoundingClientRect().bottom - 1 && bounds.bottom + 20 <= innerHeight;
+    }), 'The full introduction card does not fit the first screen');
+    assert.equal(await page.locator('.hero-text details').count(), 0, 'Biography is hidden in a toggle');
+    assert.deepEqual(await page.locator('.hero-skills .skill-tag').allTextContents(), ['JavaScript', 'HTML', 'CSS', 'React', 'Flutter', 'Figma', 'UI/UX Design']);
+    if (configuration.name === 'desktop') {
+      const downloadEvent = page.waitForEvent('download');
+      await page.getByRole('link', { name: 'Download CV', exact: true }).click();
+      const download = await downloadEvent;
+      assert.equal(download.suggestedFilename(), 'Josephine-Magat-CV-placeholder.txt');
+      const file = await page.request.get(download.url());
+      assert(file.ok() && (await file.text()).includes('placeholder, not my CV'));
+    }
     assert(!requests.some(url => /PersonalSide-|Watchlist-|Music-|GameShelf-/.test(url)), 'Room code loaded before visiting room');
     assert(await page.evaluate(() => {
       const event = new WheelEvent('wheel', { deltaY: 100, cancelable: true, bubbles: true });

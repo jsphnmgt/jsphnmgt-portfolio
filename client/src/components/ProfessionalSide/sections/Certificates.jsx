@@ -74,10 +74,13 @@ const certificates = [
 ];
 export default function Certificates({ onCardClick }) {
   return <section id="certificates" aria-labelledby="certificates-title">
+    <p className="chapter-label"><span>04 /</span> Little milestones, real growth</p>
     <h2 id="certificates-title" className="display-heading">Certificates</h2>
     <p className="section-subtitle">Professional achievements and certificates</p>
     <div className="certificates-grid">{certificates.map(certificate => <article className="certificate-card" key={certificate.title}>
+      <span className="certificate-seal" aria-hidden="true">✦</span>
       <h3>{certificate.title}</h3>
+      <p className="certificate-issuer">{certificate.issuer}</p>
       <div className="certificate-footer">
         <button aria-label={`View ${certificate.title} certificate`} aria-haspopup="dialog" onClick={() => onCardClick({ ...certificate, type: "certificate" })}><img src={assets["view-certificate.png"]} alt="" />View Certificate</button>
         <span>{certificate.year}</span>

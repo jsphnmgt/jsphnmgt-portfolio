@@ -50,10 +50,6 @@
     font-size: var(--font-size-sm);
   }
 
-  .opening::after {
-    background-size: 110% auto, 110% auto;
-  }
-
   #home {
     padding: var(--space-8) var(--space-6) var(--space-16);
   }
@@ -402,9 +398,7 @@
     translate: 0 0;
   }
 
-  .scroll-motion-ready .opening::after,
-  .scroll-motion-ready .green-world::before,
-  .scroll-motion-ready .closing::after {
+  .scroll-motion-ready .green-world::before {
     translate: none;
     will-change: auto;
   }
@@ -466,12 +460,21 @@
   }
 
   .navbar .explore-room-btn {
+    min-height: 44px;
+    min-width: clamp(11.75rem, 27vw, 14rem);
     font-size: var(--font-size-sm);
-    gap: var(--space-2);
-    padding-inline: var(--space-3);
+    gap: .4rem;
+    padding-inline: .85rem;
   }
 
   .explore-room-btn img {
-    width: 2rem;
+    width: 1.4rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar .explore-room-btn {
+    min-width: 11.25rem;
+    padding-inline: .65rem;
   }
 }

@@ -5,6 +5,7 @@ const experience = [
 ];
 export default function Experience() {
   return <section id="experience" aria-labelledby="experience-title">
+    <p className="chapter-label"><span>02 /</span> Along the way</p>
     <h2 id="experience-title" className="display-heading">Experience</h2>
     <div className="experience-layout">
       <div className="experience-list">{experience.map(item => <article className="experience-entry" key={item.role}>

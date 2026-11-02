@@ -1,23 +1,37 @@
 import { assets } from "../../../assets";
-const skillRows = [["HTML/CSS", "JAVASCRIPT", "REACT"], ["UI DESIGN", "FLUTTER", "FIGMA"]];
+const skillRows = [["JavaScript", "HTML", "CSS", "React"], ["Flutter", "Figma", "UI/UX Design"]];
 export default function Hero() {
   return <section id="home" aria-labelledby="hero-title">
+    <svg className="hero-constellation" viewBox="0 0 320 240" fill="none" aria-hidden="true" focusable="false">
+      <path d="m24 174 61-86 72 35 54-85 80 50-66 96-68-61-53 86-80-35" stroke="currentColor" strokeOpacity=".55" strokeDasharray="4 7" />
+      <g fill="currentColor">{[[24, 174], [85, 88], [157, 123], [211, 38], [291, 88], [225, 184], [104, 209]].map(([x, y]) => <circle key={`${x}-${y}`} cx={x} cy={y} r="3" />)}</g>
+      <path d="m85 70 3 14 15 4-15 3-3 15-4-15-14-3 14-4 4-14Zm140 101 3 10 10 3-10 2-3 11-2-11-11-2 11-3 2-10Z" fill="currentColor" />
+    </svg>
+    <div className="hero-margin-note" aria-hidden="true">jsphnmgt / a work in progress, always</div>
     <div className="hero-card-stack">
       <div className="hero-text">
+        <p className="hero-eyebrow"><span aria-hidden="true">✦</span> Frontend developer & creative thinker</p>
         <div className="hero-heading">
-          <h1 id="hero-title">Hi, I'm Josephine Magat</h1>
-          <span aria-hidden="true" /></div>
-        <p className="tagline">Frontend developer, still figuring out the backend</p>
-        <p className="blurb">I'm a Computer Science student focused on front-end development, interface design, interaction, and details that make a product feel intuitive rather than functional. I care about where design and code meet, and I enjoy turning messy ideas into something clean, usable, and ready for people. I’m especially interested in how small design choices can make everyday interactions feel smoother. I'm seeking an internship where I can bring that mindset to a team, learn from experienced people, and contribute to work that ships.</p>
+          <h1 id="hero-title"><span className="hero-greeting">Hi, I'm</span> Josephine <em>Magat.</em></h1>
+        </div>
+        <p className="tagline">A little code. A little curiosity. A lot of care.</p>
+        <div className="hero-bio"><p>I'm a Computer Science student focused on frontend development, interface design, and the details that make products intuitive. I enjoy turning messy ideas into clean, usable experiences where design and code meet.</p><p>I'm seeking an internship where I can learn from experienced people, contribute to a team, and help ship thoughtful work.</p></div>
+        <div className="hero-actions"><a className="creative-button hero-cv-button" href={`${import.meta.env.BASE_URL}Josephine-Magat-CV-placeholder.txt`} download="Josephine-Magat-CV-placeholder.txt">Download CV <span aria-hidden="true">↓</span></a><a className="hero-contact-link" href="#contact">Let's connect <span aria-hidden="true">↗</span></a></div>
       </div>
       <div className="hero-media">
+        <div className="portrait-caption"><span>Somewhere between code & daydreams</span><span aria-hidden="true">✦</span></div>
         <img src={assets["profile-photo.jpg"]} alt="An illustrated character enjoying a drink among plants" fetchPriority="high" />
-        <div className="skills-list">{skillRows.map((row, index) => (
+        <span className="portrait-sticker" aria-hidden="true"><span>build. learn.</span><em>repeat.</em></span>
+      </div>
+      <div className="hero-skills">
+        <div className="skills-list" aria-label="Skills">{skillRows.map((row, index) => (
           <div className="skills-row" key={index}>
             {row.map(skill => <span key={skill} className="skill-tag">{skill}</span>)}
           </div>
         ))}</div>
+        <p className="portrait-footnote">my ever-growing creative toolkit</p>
       </div>
     </div>
+    <div className="hero-bottom-note"><a href="#projects">Keep exploring <span aria-hidden="true">↓</span></a></div>
   </section>;
 }
