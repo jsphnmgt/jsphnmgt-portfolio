@@ -97,6 +97,7 @@
 .hero-actions .hero-cv-button,
 .project-overlay .project-code-button.hero-cv-button { border-radius: 999px; position: relative; isolation: isolate; overflow: hidden; min-height: 44px; padding: .4rem .9rem; gap: .65rem; border-color: color-mix(in srgb, var(--color-steel) 65%, var(--color-cream)); background: color-mix(in srgb, var(--color-lavender) 38%, var(--color-cream)); color: var(--color-navy); font-size: .95rem; font-weight: 600; box-shadow: 0 2px 0 color-mix(in srgb, var(--color-steel) 22%, transparent); transition: transform .3s var(--motion-card-ease), box-shadow .3s ease, background .3s ease, border-color .3s ease; }
 .hero-actions .hero-cv-button:hover,
+.room-invitation .creative-button.hero-cv-button:hover,
 .project-overlay .project-code-button.hero-cv-button:hover { border-color: var(--color-steel); background: color-mix(in srgb, var(--color-lavender) 58%, var(--color-cream)); box-shadow: 0 2px 0 color-mix(in srgb, var(--color-steel) 30%, transparent); }
 .hero-contact-link { position: relative; display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; text-decoration: none; transition: color .3s ease; }
 .hero-contact-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: .35rem; height: 1px; background: currentColor; transform: scaleX(.78); transform-origin: left; transition: transform .35s var(--motion-card-ease); }
@@ -320,13 +321,18 @@
 #certificates { scroll-margin-top: var(--navbar-height, 5rem); }
 .section-subtitle { text-align: left; font-size: 1.2rem; margin: 1rem 0 2.5rem; }
 .certificates-grid { gap: 1.5rem; }
-.certificate-card { min-height: 17rem; gap: .75rem; padding: 1.5rem; border: 1px solid var(--color-navy); border-radius: 1rem; box-shadow: .35rem .35rem 0 var(--color-lavender); }
+.certificate-card { min-height: 0; justify-content: flex-start; gap: .6rem; padding: 1.25rem; border: 1px solid var(--color-navy); border-radius: 1rem; box-shadow: .35rem .35rem 0 var(--color-lavender); }
 .certificate-seal { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border: 1px solid var(--color-cobalt); border-radius: 50%; color: var(--color-cobalt); font-size: 1.6rem; }
+.certificate-seal svg { display: block; width: 1.35rem; height: 1.35rem; }
+.certificate-card-heading { display: grid; grid-template-columns: minmax(0, 1fr) 2.25rem; align-items: start; gap: .75rem; }
+.certificate-card-heading .certificate-seal { grid-column: 2; grid-row: 1; }
+.certificate-card-heading h3 { grid-column: 1; grid-row: 1; min-width: 0; overflow-wrap: anywhere; }
 .certificate-card h3,
 .certificate-card:nth-child(3) h3 { font-family: var(--font-display); font-size: 1.4rem; line-height: 1.3; }
-.certificate-issuer { margin-bottom: auto; font-size: .95rem; color: var(--color-steel); }
-.certificate-footer { gap: .5rem; margin-top: .75rem; padding-top: .75rem; border-top: 1px dashed var(--color-sage); }
+.certificate-issuer { margin-bottom: .25rem; font-size: .95rem; color: var(--color-steel); }
+.certificate-footer { gap: .5rem; margin-top: auto; padding-top: .65rem; border-top: 1px dashed var(--color-sage); }
 .certificate-footer button { font-size: 1rem; }
+.certificate-footer img { width: 1rem; min-width: 0; height: auto; flex-shrink: 0; opacity: .6; }
 .certificate-footer > span { font-size: 1.1rem; font-style: italic; }
 
 .room-invitation { position: relative; min-height: 30rem; margin: 2rem max(1.25rem, 7vw); border: 1px solid var(--color-lavender); border-radius: 2rem; overflow: hidden; isolation: isolate; background: var(--color-navy); color: var(--color-cream); }
@@ -336,7 +342,7 @@
 .room-invitation h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 4.5vw, 4.5rem); font-weight: 400; line-height: 1.08; letter-spacing: -.04em; }
 .room-invitation h2 em { color: var(--color-lavender); }
 .room-invitation-copy > p:not(.chapter-label) { max-width: 33ch; margin: 1.25rem 0 1.5rem; font-size: 1.15rem; line-height: 1.5; }
-.room-invitation .creative-button { border-color: var(--color-cream); background: var(--color-cream); color: var(--color-navy); }
+.room-invitation .creative-button { position: relative; isolation: isolate; overflow: hidden; border-color: var(--color-cream); background: var(--color-cream); color: var(--color-navy); transition: transform .3s var(--motion-card-ease), box-shadow .3s ease, background .3s ease, border-color .3s ease; }
 .room-invitation-caption { position: absolute; right: 2rem; bottom: 1.5rem; font-size: 1rem; font-style: italic; }
 .room-invitation :focus-visible { outline-color: var(--color-cream); }
 
@@ -406,7 +412,7 @@
   .education-card { padding: 1.4rem; }
   .education-card h3, .education-card:nth-child(2) h3 { font-size: 1.35rem; }
   .certificates-grid { grid-template-columns: 1fr; }
-  .certificate-card { min-height: 15rem; }
+  .certificate-card { min-height: 0; }
   .room-invitation { min-height: auto; border-radius: 1.25rem; }
   .room-invitation::before { background: linear-gradient(90deg, rgb(20 23 45 / .94), rgb(20 23 45 / .65)); }
   .room-invitation-copy { padding: 2rem 1.5rem; }
@@ -492,6 +498,7 @@
   }
 
   .hero-actions .hero-cv-button:is(:hover, :focus-visible),
+  .room-invitation .creative-button.hero-cv-button:is(:hover, :focus-visible),
   .project-overlay .project-code-button.hero-cv-button:is(:hover, :focus-visible) {
     transform: translateY(-2px);
     box-shadow: 0 4px 0 color-mix(in srgb, var(--color-cobalt) 25%, transparent);
@@ -507,6 +514,7 @@
   }
 
   .hero-actions .hero-cv-button:active,
+  .room-invitation .creative-button.hero-cv-button:active,
   .project-overlay .project-code-button.hero-cv-button:active {
     transform: translateY(0);
     box-shadow: 0 1px 0 color-mix(in srgb, var(--color-steel) 22%, transparent);

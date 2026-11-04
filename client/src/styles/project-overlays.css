@@ -261,6 +261,13 @@
   font-family: var(--font-display);
   line-height: 1.5;
   text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color .2s ease;
+}
+
+.certificate-image-link:hover .certificate-image-label,
+.certificate-image-link:focus-visible .certificate-image-label {
+  text-decoration-color: currentColor;
 }
 
 .project-code-button {
@@ -527,8 +534,14 @@
 
 .detail-window-kind { display: flex; align-items: center; gap: .8rem; }
 .detail-window-signature { font-family: var(--font-body); font-size: .8rem; font-style: italic; }
-.project-overlay .overlay-close { top: .35rem; right: .5rem; border: 1px solid color-mix(in srgb, var(--color-navy) 30%, transparent); background: var(--color-cream); }
-.project-overlay .overlay-close:hover { background: var(--color-mint); }
+.project-overlay .overlay-close { top: .35rem; right: .5rem; border: 0; background: transparent; transition: color .2s ease; }
+.project-overlay .overlay-close:hover,
+.project-overlay .overlay-close:focus-visible { background: transparent; color: var(--color-cobalt); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-overlay .overlay-close svg { transition: transform .25s var(--motion-card-ease); }
+  .project-overlay .overlay-close:hover svg,
+  .project-overlay .overlay-close:focus-visible svg { transform: rotate(90deg) scale(1.12); }
+}
 .project-overlay .project-detail-scroll { flex: 1; height: auto; min-height: 0; margin: 0; scrollbar-width: thin; }
 .project-overlay .project-detail-layout { height: auto; min-height: 100%; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); grid-template-rows: auto; }
 
@@ -570,6 +583,7 @@
 .project-overlay .certificate-detail-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; padding-top: 1.25rem; border-top: 1px dashed var(--color-sage); font-size: 1rem; }
 .certificate-detail-meta dt { font-size: .8rem; font-weight: 400; text-transform: uppercase; letter-spacing: .06em; }
 .certificate-detail-meta dd { overflow-wrap: anywhere; }
+.certificate-issuer-line { display: block; }
 
 /* Project and certificate previews share a clean showcase treatment. */
 .overlay-content.project-overlay {

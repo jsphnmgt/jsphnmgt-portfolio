@@ -21,6 +21,6 @@ export default function Contact() {
         <span className="sr-only">Opens in a new tab</span>
       </a>
     </div>
-    <footer className="portfolio-footer"><span>✦ jsphnmgt Portfolio</span><span>Made with curiosity & a little stardust.</span><a href="#home">Back to the stars ↑</a></footer>
+    <footer className="portfolio-footer"><span>✦ jsphnmgt Portfolio</span><a href="#home">Back to the stars ↑</a></footer>
   </section>;
 }

@@ -138,7 +138,7 @@ export default function ProfessionalSide({ savedPosition = null }) {
               <p>{activeItem.description}</p>
             </div>
             <dl className="certificate-detail-meta">
-              <div><dt>Issued by</dt><dd>{activeItem.issuer}</dd></div>
+              <div><dt>Issued by</dt><dd>{activeItem.issuer.split(" / ").map((issuer, index) => <span className="certificate-issuer-line" key={issuer}>{index > 0 && " / "}{issuer}</span>)}</dd></div>
               <div><dt>Date earned</dt><dd>{activeItem.dateEarned}</dd></div>
             </dl>
             <div className="project-detail-actions">

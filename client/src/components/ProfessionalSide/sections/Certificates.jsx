@@ -78,8 +78,10 @@ export default function Certificates({ onCardClick }) {
     <h2 id="certificates-title" className="display-heading">Certificates</h2>
     <p className="section-subtitle">Professional achievements and certificates</p>
     <div className="certificates-grid">{certificates.map(certificate => <article className="certificate-card" key={certificate.title}>
-      <span className="certificate-seal" aria-hidden="true">✦</span>
-      <h3>{certificate.title}</h3>
+      <div className="certificate-card-heading">
+        <span className="certificate-seal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" focusable="false"><path d="M13 18H4V4h16v9M7 8h10M7 11h5" /><circle cx="17" cy="16" r="3" /><path d="m15 18.3-1 4 3-1.5 3 1.5-1-4" /></svg></span>
+        <h3>{certificate.title}</h3>
+      </div>
       <p className="certificate-issuer">{certificate.issuer}</p>
       <div className="certificate-footer">
         <button aria-label={`View ${certificate.title} certificate`} aria-haspopup="dialog" onClick={() => onCardClick({ ...certificate, type: "certificate" })}><img src={assets["view-certificate.png"]} alt="" />View Certificate</button>
