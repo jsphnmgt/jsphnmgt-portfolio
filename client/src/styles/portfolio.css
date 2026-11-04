@@ -134,7 +134,7 @@
 }
 
 .explore-room-btn {
-  min-height: 38px;
+  min-height: var(--navigation-button-height);
   min-width: clamp(13.25rem, 16.5vw, 16.5rem);
   display: flex;
   align-items: center;

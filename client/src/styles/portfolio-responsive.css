@@ -461,7 +461,7 @@
   }
 
   .navbar .explore-room-btn {
-    min-height: 44px;
+    min-height: var(--navigation-button-height);
     min-width: clamp(11.75rem, 27vw, 14rem);
     font-size: var(--font-size-sm);
     gap: .4rem;
