@@ -46,7 +46,7 @@ export default function Room({ returnHref = "#home" }) {
   // Keep entry usable even if an animation is interrupted or disabled by CSS.
   useEffect(() => {
     if (!imageReady || hasEntered) return;
-    const timer = window.setTimeout(() => setHasEntered(true), 1900);
+    const timer = window.setTimeout(() => setHasEntered(true), 2300);
     return () => window.clearTimeout(timer);
   }, [imageReady, hasEntered]);
 
@@ -88,9 +88,9 @@ export default function Room({ returnHref = "#home" }) {
     <div className="room-scene">
       <img className="personal-room-image" src={assets["room.jpg"]} alt="An illustrated bedroom overlooking a purple city skyline at night" fetchPriority="high" onLoad={() => setImageReady(true)} onError={() => { setImageFailed(true); setImageReady(true); setHasEntered(true); }} />
       <div className="room-objects" inert={!hasEntered ? "" : undefined}>
-        {roomObjects.map(object => <button key={object.id} className={`room-object room-object-${object.id}`} aria-label={`Open ${object.label}`} aria-haspopup="dialog" onClick={event => openObject(object, event.currentTarget)}>
+        {roomObjects.map((object, index) => <button key={object.id} className={`room-object room-object-${object.id}`} aria-label={`Open ${object.label}`} aria-haspopup="dialog" onClick={event => openObject(object, event.currentTarget)}>
           <img src={assets[object.image]} alt="" draggable={false} />
-          <span className="room-object-label" aria-hidden="true">{object.label}</span>
+          <span className="room-object-label" aria-hidden="true"><span className="room-object-number">{String(index + 1).padStart(2, "0")}</span>{object.label}</span>
         </button>)}
       </div>
     </div>
@@ -99,7 +99,14 @@ export default function Room({ returnHref = "#home" }) {
     }}>
       {["left", "right"].map(side => <div key={side} className={`room-entrance-door room-entrance-door-${side}`}>
         <div className="room-door-face">
-          <span className="room-entrance-panel" />
+          <span className="room-entrance-panel room-entrance-panel-upper">
+            <svg className="room-door-emblem" viewBox="0 0 100 100" fill="none" focusable="false">
+              <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="1" />
+              {side === "left" ? <path d="M61 25a26 26 0 1 0 14 42A29 29 0 0 1 61 25Z" fill="currentColor" fillOpacity=".8" /> : <><ellipse cx="50" cy="50" rx="44" ry="14" transform="rotate(-30 50 50)" stroke="currentColor" /><circle cx="50" cy="50" r="19" fill="currentColor" fillOpacity=".65" /></>}
+              <path d="m79 12 2 7 7 2-7 2-2 7-2-7-7-2 7-2Z" fill="currentColor" />
+            </svg>
+            <span className="room-door-inscription">{side === "left" ? "Off the clock" : "Into my world"}</span>
+          </span>
           <span className="room-entrance-panel" />
           <span className="room-entrance-handle" />
         </div>
