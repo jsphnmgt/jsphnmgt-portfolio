@@ -11,6 +11,7 @@ import Certificates from "./sections/Certificates";
 import Contact from "./sections/Contact";
 import RoomInvitation from "./RoomInvitation";
 import SparkleField from "./SparkleField";
+import GreenBackdrop from "./GreenBackdrop";
 import { assets } from "../../assets";
 
 export default function ProfessionalSide({ savedPosition = null }) {
@@ -100,7 +101,7 @@ export default function ProfessionalSide({ savedPosition = null }) {
         <SparkleField />
         <div><Hero /><Projects onCardClick={setActiveItem} /></div>
       </div>
-      <div className="green-world"><Experience /><Education /></div>
+      <div className="green-world"><GreenBackdrop /><Experience /><Education /></div>
       <div className="blue-sky closing"><SparkleField variant="closing" /><Certificates onCardClick={setActiveItem} /><RoomInvitation /><Contact /></div>
     </div>
     <Overlay className={activeItem?.techStack ? "project-overlay" : activeItem?.type === "certificate" ? "project-overlay certificate-overlay" : ""} isOpen={!!activeItem} onClose={() => setActiveItem(null)}>

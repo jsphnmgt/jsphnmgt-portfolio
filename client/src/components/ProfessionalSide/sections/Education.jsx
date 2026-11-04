@@ -15,8 +15,10 @@ export default function Education() {
       <ol className="education-list education-path">{education.map(item => <li className={`education-step${item.current ? " is-current" : ""}`} key={`${item.school}-${item.degree}`}>
         <div className="education-milestone"><span className="education-path-date">{item.date}</span><span className="education-path-label">{item.current ? "Learning continues" : item.label}</span></div>
         <article className="education-card">
-          {item.current && <span className="education-current">Currently studying</span>}
-          <h3>{item.degree}</h3>
+          <div className="education-card-heading">
+            <h3>{item.degree}</h3>
+            {item.current && <span className="education-current">Currently studying</span>}
+          </div>
           <p>{item.school}</p>
         </article>
       </li>)}
