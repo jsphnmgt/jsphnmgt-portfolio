@@ -126,10 +126,9 @@ export default function ProfessionalSide({ savedPosition = null }) {
       </div>
     </div> : activeItem.type === "certificate" ? <div className="project-detail-scroll" tabIndex={0} aria-label="Certificate details">
       <div className="project-detail-layout certificate-detail-layout">
-        <div className="certificate-detail-preview">
-          <div className="project-preview-frame"><img className="certificate-detail-image" src={activeItem.image} alt={`${activeItem.title} certificate`} /></div>
+        <ProjectPreview key={activeItem.image} image={activeItem.image} title={activeItem.title} certificate>
           <a className="certificate-image-link" href={activeItem.image} target="_blank" rel="noreferrer"><span className="certificate-image-label">Open full-size certificate</span><span className="sr-only"> (opens in a new tab)</span></a>
-        </div>
+        </ProjectPreview>
         <div className="project-detail-copy">
           <div className="project-detail-body">
             <div className="project-detail-summary">

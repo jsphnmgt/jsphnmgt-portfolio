@@ -1,9 +1,9 @@
 import useCollectionPeek from "../../../hooks/useCollectionPeek";
 import Overlay from "../../ProfessionalSide/Overlay";
 import CollectionIcon from "./CollectionIcon";
+import CollectionHeader from "./CollectionHeader";
 import { assets } from "../../../assets";
 import readingList from "../../../data/readingListData.json";
-import CollectionSearch, { useCollectionFilter } from "./CollectionSearch";
 
 const sections = [
   { id: "favorites", title: "Favorites", icon: "heart" },
@@ -12,22 +12,18 @@ const sections = [
 ];
 
 export default function ReadingList({ isOpen = false, onClose }) {
-  const { query, setQuery, matches } = useCollectionFilter();
-  const { selectedId, isPeekVisible, peekHeadingRef, openPeek, closePeek, resetPeek, onPeekKeyDown, onPeekTransitionEnd } = useCollectionPeek();
+  const { selectedId, isPeekVisible, peekHeadingRef, openPeek, closePeek, onPeekKeyDown, onPeekTransitionEnd } = useCollectionPeek();
   const selected = selectedId ? readingList.catalog[selectedId] : null;
   const statuses = selectedId ? sections.filter(section => readingList[section.id].includes(selectedId)) : [];
   return <Overlay className="watchlist-overlay reading-list-overlay" isOpen={isOpen} onClose={onClose}>
-    <header className="watchlist-header">
-      <h2 id="detail-title"><CollectionIcon name="book" viewBox="2 2 20 20" />Reading List</h2>
-    </header>
-    <CollectionSearch label="Search reading list" hint="Search by title, author, or genre." query={query} setQuery={value => { resetPeek(); setQuery(value); }} count={Object.values(readingList.catalog).filter(matches).length} />
+    <CollectionHeader title="Reading List" icon="book" />
     <div className={`reading-list-layout${selected ? " has-peek" : ""}`} onKeyDown={onPeekKeyDown}>
       <div className="watchlist-scroll reading-list-collections" role="region" aria-label="Reading List collections" tabIndex={0}>
-        {sections.filter(section => !query.trim() || readingList[section.id].some(id => matches(readingList.catalog[id]))).map(section => <section className="watchlist-section" key={section.id} aria-labelledby={`reading-list-${section.id}`}>
+        {sections.map(section => <section className="watchlist-section" key={section.id} aria-labelledby={`reading-list-${section.id}`}>
           <h3 id={`reading-list-${section.id}`}><CollectionIcon name={section.icon} />{section.title}
-            <span className="collection-count">{readingList[section.id].filter(id => matches(readingList.catalog[id])).length}</span></h3>
+            <span className="collection-count">{readingList[section.id].length}</span></h3>
           <ul className="watchlist-cards" aria-label={section.title}>
-            {readingList[section.id].filter(id => matches(readingList.catalog[id])).sort((a, b) => readingList.catalog[a].title.localeCompare(readingList.catalog[b].title, "en", { numeric: true, sensitivity: "base" })).map(id => {
+            {[...readingList[section.id]].sort((a, b) => readingList.catalog[a].title.localeCompare(readingList.catalog[b].title, "en", { numeric: true, sensitivity: "base" })).map(id => {
               const item = readingList.catalog[id];
               return <li className="reading-list-card" key={id}>
                 <button className="reading-list-card-button" aria-label={`View details for ${item.title}`} aria-expanded={selectedId === id} aria-controls="reading-list-peek" onClick={event => openPeek(id, event.currentTarget)}>

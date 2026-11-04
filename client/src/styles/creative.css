@@ -162,7 +162,7 @@
   }
   .hero-skills .skill-tag:hover,
   .project-overlay .project-detail-technologies .tags span:hover {
-    background: var(--color-mint);
+    background: color-mix(in srgb, var(--color-lavender) 70%, var(--color-cream));
     border-color: var(--color-cobalt);
     box-shadow: 0 3px 0 color-mix(in srgb, var(--color-cobalt) 20%, transparent);
   }
@@ -283,7 +283,7 @@
 }
 .education-list { gap: 1.5rem; padding: 0; }
 .education-card { min-height: auto; padding: 1.75rem; border: 1px solid var(--color-moss); border-radius: 1rem; box-shadow: .3rem .3rem 0 color-mix(in srgb, var(--color-moss) 28%, transparent); }
-.education-step.is-current .education-card { background: linear-gradient(120deg, color-mix(in srgb, var(--color-mint) 32%, var(--color-cream)), var(--color-cream) 65%); border-left-width: 3px; }
+.education-step.is-current .education-card { background: linear-gradient(120deg, color-mix(in srgb, var(--color-mint) 32%, var(--color-cream)), var(--color-cream) 65%); }
 @media (max-width: 650px) {
   .green-orbits { right: -13rem; opacity: .3; }
   .green-contours { left: -19rem; opacity: .18; }
@@ -301,10 +301,10 @@
   .education-current { transition: background .35s ease, box-shadow .35s ease; }
   .education-step::before { transition: background .35s ease, box-shadow .35s ease; }
   .experience-entry:hover .experience-card,
-  .education-step:hover .education-card { box-shadow: .6rem .6rem 0 color-mix(in srgb, var(--color-moss) 40%, transparent); }
+  .education-step:hover .education-card { box-shadow: inset 2px 0 0 var(--color-moss), .6rem .6rem 0 color-mix(in srgb, var(--color-moss) 40%, transparent); }
   .experience-entry:hover .experience-date { box-shadow: 0 3px 0 color-mix(in srgb, var(--color-moss) 35%, transparent); }
   .education-step:hover::before { background: var(--color-moss); box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-cream) 50%, transparent); }
-  .education-step:hover .education-current { background: var(--color-lavender); }
+  .education-step:hover .education-current { background: var(--color-mint); }
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {

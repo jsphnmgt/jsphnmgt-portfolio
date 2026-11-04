@@ -1,3 +1,5 @@
+import ComputerIntro from "./ComputerIntro";
+import recycleBinIcon from "../../../assets/personal-computer/pc-recycle-bin.png";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Overlay from "../../ProfessionalSide/Overlay";
 import { assets } from "../../../assets";
@@ -38,7 +40,6 @@ const folders = [
 export default function PersonalComputer({ isOpen = false, onClose, onOpenCollection }) {
   const [currentFolder, setCurrentFolder] = useState("Welcome");
   const [hasChangedFolder, setHasChangedFolder] = useState(false);
-  const [now, setNow] = useState(() => new Date());
   const [imagesReady, setImagesReady] = useState(false);
   const desktopRef = useRef(null);
   const sidebarRef = useRef(null);
@@ -66,11 +67,6 @@ export default function PersonalComputer({ isOpen = false, onClose, onOpenCollec
     return () => observer.disconnect();
   }, [currentFolder, isOpen, imagesReady]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    const timer = window.setInterval(() => setNow(new Date()), 60000);
-    return () => window.clearInterval(timer);
-  }, [isOpen]);
 
   const iconFolder = (folder, className = "") => <span className={`pc-folder-icon ${className}`} aria-hidden="true"><img src={assets[`pc-${folder.icon}.svg`]} alt="" />{folder.detail && <img className={`pc-folder-detail${folder.detail === "group11" ? " pc-folder-detail-person" : ""}`} src={assets[`pc-${folder.detail}.svg`]} alt="" />}</span>;
 
@@ -78,27 +74,31 @@ export default function PersonalComputer({ isOpen = false, onClose, onOpenCollec
     <h2 id="detail-title" className="pc-accessible-title">Personal Computer</h2>
     <div className="pc-desktop" ref={desktopRef}>
       <img className="pc-wallpaper" src={assets["pc-rectangle49.png"]} alt="" />
-      <div className="pc-desktop-folders" aria-label="Desktop folders">
-        {["HAU", "avys", "APSI"].map(name => <div className="pc-desktop-folder" key={name}><img src={assets["pc-image41.png"]} alt="" /><span>{name}</span></div>)}
+      <div className="pc-desktop-folders" aria-label="Desktop icons">
+        <div className="pc-desktop-folder">
+          <img src={recycleBinIcon} alt="" />
+          <span>Recycle Bin</span>
+        </div>
+        <div className="pc-desktop-folder"><img src={assets["pc-image41.png"]} alt="" /><span>avys</span></div>
+        <div className="pc-desktop-folder">
+          <svg className="pc-desktop-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#153951" /><path d="m2 21 8 3 5-2 8-10-4-4-9 11-4-1-4-2" fill="#f1f5f7" /><circle cx="22" cy="10" r="6" fill="#153951" stroke="#f1f5f7" strokeWidth="2" /><circle cx="22" cy="10" r="3.5" stroke="#f1f5f7" strokeWidth="1.2" /><circle cx="11" cy="22" r="4.3" fill="#153951" stroke="#f1f5f7" strokeWidth="1.5" /><path d="m6 20 5 2" stroke="#f1f5f7" strokeWidth="2.5" strokeLinecap="round" /></svg>
+          <span>Steam</span>
+        </div>
       </div>
       <div className="pc-explorer" aria-label="File Explorer">
         <header className="pc-window-titlebar">
-          <div className="pc-window-tab"><Icon name="group18" className="pc-icon-computer" /><span>This PC</span><span aria-hidden="true"><Icon name="system-add-remove" /></span></div>
-          <span className="pc-new-tab" aria-hidden="true"><Icon name="system-add-remove1" /></span>
+          <div className="pc-window-tab"><Icon name="group18" className="pc-icon-computer" /><span>{currentFolder}</span></div>
           <div className="pc-window-controls">
-            <span aria-hidden="true"><Icon name="minimise" /></span>
-            <span aria-hidden="true"><span className="pc-maximize-icon" /></span>
-            <button aria-label="Close computer" onClick={onClose}><Icon name="close" /></button>
+            <span aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M5 10h10" /></svg></span>
+            <span aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="5" y="5" width="10" height="10" rx="1" /></svg></span>
+            <button aria-label="Close computer" onClick={onClose}><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" /></svg></button>
           </div>
         </header>
         <div className="pc-navigation-bar" aria-hidden="true">
           <div className="pc-history-controls">
             <Icon name="interface-direction" /><Icon name="interface-direction1" /><Icon name="interface-direction2" /><Icon name="interface-reload" />
           </div>
-          <div className="pc-search"><span>Search</span><Icon name="interface-search" /></div>
-        </div>
-        <div className="pc-folder-tools" aria-hidden="true">
-          <span><span className="pc-view-icon"><i /><i /><i /><i /></span>View</span><span><Icon name="spreadsheet-sorting" />Sorting</span><span><Icon name="group29" />Share</span><span><Icon name="system-properties" />Properties</span>
+          <div className="pc-search"><span>This PC <span className="pc-path-separator">/</span> {currentFolder}</span></div>
         </div>
         <div className="pc-explorer-body">
           <nav className="pc-sidebar" aria-label="Computer folders">
@@ -114,11 +114,7 @@ export default function PersonalComputer({ isOpen = false, onClose, onOpenCollec
           </nav>
           <div className="pc-folder-content" aria-live="polite">
             <div key={currentFolder} className="pc-folder-view" data-animate={hasChangedFolder ? "" : undefined}>
-              {currentFolder === "Welcome" ? <div className="pc-welcome-copy"><p>Hi, welcome to my room!</p><p>I wanted a little space here for the things I enjoy outside of work—what I’m reading, the games I play, the shows I watch, and the music I keep coming back to.</p><p>Feel free to look around. You can click the objects in the room or use Explore Room to find a collection. If you’d like to get to know me a little better, start with About Me here on the computer.</p></div> : currentFolder === "About Me" ? <div className="pc-welcome-copy">
-                <p>Hi! I’m Josie, a Computer Science student who enjoys building digital experiences and exploring different corners of tech. I like turning half-formed ideas into something real, one small piece at a time.</p>
-                <p>Outside of coding, I spend my time drawing, watching movies and series, reading novels and stories, playing games, and listening to my favorite songs on repeat.</p>
-                <p>I’m always curious about something new, whether it’s tech or a hobby. This room brings those interests together—feel free to look around and get to know the person behind the code.</p>
-              </div> : <div className="pc-collection-summary">
+              {currentFolder === "Welcome" || currentFolder === "About Me" ? <ComputerIntro about={currentFolder === "About Me"} onAbout={() => { setHasChangedFolder(true); setCurrentFolder("About Me"); }} onOpenCollection={onOpenCollection} /> : <div className="pc-collection-summary">
                 <h3>{currentFolder}</h3>
                 <ul className="pc-summary-list">{summaries[currentFolder].map(group => <li key={group.id}>
                   <button className="pc-summary-link" onClick={() => onOpenCollection?.(group.id)} aria-label={`Open ${group.label} collection`}>
@@ -140,7 +136,7 @@ export default function PersonalComputer({ isOpen = false, onClose, onOpenCollec
           <span aria-label="Spotify"><img src={assets["pc-spotify51.png"]} alt="" /></span>
           <span className="pc-discord" aria-label="Discord"><img className="pc-discord-circle" src={assets["pc-ellipse38.svg"]} alt="" /><img src={assets["pc-discord1.png"]} alt="" /></span>
         </div>
-        <time dateTime={now.toISOString()}><span>{now.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "Asia/Singapore" })}</span><span>{now.toLocaleDateString("en-US", { timeZone: "Asia/Singapore" })}</span></time>
+        <time dateTime="2019-03-04T17:53:00+08:00"><span>5:53pm</span><span>3/4/2019</span></time>
       </footer>
     </div>
   </Overlay>;

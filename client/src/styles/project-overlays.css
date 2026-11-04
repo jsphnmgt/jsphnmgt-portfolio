@@ -557,7 +557,7 @@
   background-size: 16px 16px;
 }
 
-.project-overlay .certificate-detail-preview { background-color: var(--color-mint); }
+.project-overlay .certificate-detail-preview { background-color: var(--preview-background, var(--color-sage)); }
 .project-preview-frame { position: relative; display: flex; align-items: center; justify-content: center; min-height: 0; max-width: 100%; rotate: -1.5deg; }
 .project-preview-frame::before { content: ""; position: absolute; top: -.65rem; left: 50%; width: 4.5rem; height: 1.25rem; z-index: 1; transform: translateX(-50%) rotate(-7deg); border: 1px solid rgb(255 255 255 / .5); background: color-mix(in srgb, var(--color-cream) 70%, transparent); pointer-events: none; }
 .project-overlay .project-preview-frame img { max-height: calc(100cqh - 8rem); border: .5rem solid var(--color-cream); border-bottom-width: 1.5rem; border-radius: .2rem; box-shadow: .3rem .3rem 0 color-mix(in srgb, var(--color-navy) 24%, transparent); }
@@ -573,7 +573,7 @@
 .project-overlay .project-detail-technologies { padding-top: 1.25rem; border-top: 1px dashed var(--color-sage); }
 .project-overlay .project-detail-technologies h3 { font-size: .9rem; font-weight: 400; }
 .project-overlay .project-detail-technologies .tags { gap: .4rem; }
-.project-overlay .project-detail-technologies .tags span { padding: .25rem .65rem; border: 1px solid color-mix(in srgb, var(--color-navy) 35%, transparent); background: var(--color-lavender); font-size: .9rem; }
+.project-overlay .project-detail-technologies .tags span { padding: .2rem .55rem; border: 1px solid color-mix(in srgb, var(--color-steel) 40%, transparent); background: color-mix(in srgb, var(--color-lavender) 45%, var(--color-cream)); color: var(--color-navy); font-size: .85rem; font-weight: 400; }
 .project-overlay .project-code-button { min-height: 44px; padding: .6rem 1rem; border: 1px solid var(--color-navy); border-radius: .65rem; background: var(--color-lavender); color: var(--color-navy); font-size: 1rem; box-shadow: 2px 2px 0 var(--color-sage); transition: background .3s ease, box-shadow .3s ease; }
 .project-overlay .project-code-button:not(:disabled):hover { background: var(--color-mint); box-shadow: 3px 3px 0 var(--color-sage); }
 .project-overlay .certificate-image-link { font-size: .95rem; }

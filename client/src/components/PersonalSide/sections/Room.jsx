@@ -4,6 +4,7 @@ import Overlay from "../../ProfessionalSide/Overlay";
 import LoadBoundary from "../../LoadBoundary";
 import "../../../styles/room.css";
 import "../../../styles/personal-overlays.css";
+import "../../../styles/personal-creative.css";
 
 const PersonalComputer = lazy(() => import("../overlays/PersonalComputer"));
 const Watchlist = lazy(() => import("../overlays/Watchlist"));

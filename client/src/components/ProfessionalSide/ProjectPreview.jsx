@@ -3,7 +3,7 @@ import { selectPreviewColor } from "../../utilities/previewColor";
 
 const paletteTokens = ["--color-mint", "--color-sage", "--color-lavender", "--color-periwinkle"];
 
-export default function ProjectPreview({ image, title }) {
+export default function ProjectPreview({ image, title, certificate = false, children }) {
   const [background, setBackground] = useState("--color-sage");
   const chooseBackground = event => {
     try {
@@ -26,7 +26,8 @@ export default function ProjectPreview({ image, title }) {
       setBackground("--color-sage");
     }
   };
-  return <div className="project-detail-preview" style={{ "--preview-background": `var(${background})` }}>
-    <div className="project-preview-frame"><img src={image} alt={title + " preview"} onLoad={chooseBackground} /></div>
+  return <div className={certificate ? "certificate-detail-preview" : "project-detail-preview"} style={{ "--preview-background": `var(${background})` }}>
+    <div className="project-preview-frame"><img className={certificate ? "certificate-detail-image" : undefined} src={image} alt={title + (certificate ? " certificate" : " preview")} onLoad={chooseBackground} /></div>
+    {children}
   </div>;
 }

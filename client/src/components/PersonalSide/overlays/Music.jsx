@@ -75,7 +75,7 @@ export default function Music({ isOpen = false, onClose }) {
 
   return <Overlay className="watchlist-overlay music-overlay" isOpen={isOpen} onClose={onClose} showCloseButton={false}>
     <header className="watchlist-header music-header">
-      <h2 id="detail-title"><CollectionIcon name="music" />Music Corner</h2>
+      <h2 id="detail-title"><CollectionIcon name="music" />Music Corner<span className="music-equalizer" aria-hidden="true"><i /><i /><i /><i /><i /></span></h2>
       <div className="music-navigation">
         <div className="music-tabs" role="tablist" aria-label="Music collections">
           {tabs.map((tab, index) => <button key={tab.id} role="tab" id={`music-tab-${tab.id}`} aria-selected={activeTab === tab.id} aria-controls="music-panel" tabIndex={activeTab === tab.id ? 0 : -1} ref={element => { tabRefs.current[index] = element; }} onClick={() => selectTab(tab.id)} onKeyDown={event => navigateTabs(event, index)}><span className="music-tab-label">{tab.label}</span></button>)}

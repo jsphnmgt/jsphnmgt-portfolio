@@ -115,20 +115,8 @@ try {
       }), `${label}: close button is too small`);
       await page.screenshot({ path: `test-results/${configuration.name}-${label.replaceAll(' ', '-')}.png` });
       if (['Watchlist', 'Reading List', 'Game Shelf'].includes(label)) {
-        const search = page.getByRole('searchbox');
-        await search.fill('zzzz-no-such-title');
-        await page.getByText('No titles found. Try another search.', { exact: true }).waitFor();
-        await page.getByRole('button', { name: 'Clear search', exact: true }).click();
-        assert.equal(await search.inputValue(), '');
-        await search.fill('a');
-        await search.press('Escape');
-        assert.equal(await search.inputValue(), '');
-        assert.equal(await page.locator('dialog[open]').count(), 1, 'Clearing search closed the dialog');
-        if (label === 'Game Shelf') {
-          await search.fill('Rhythm');
-          assert(await page.locator('.game-cartridge-button').count() > 0, 'Game genre search found no matches');
-          await page.getByRole('button', { name: 'Clear search', exact: true }).click();
-        }
+        assert.equal(await page.getByRole('searchbox').count(), 0, 'Collections should be browsable without search');
+        assert.equal(await page.locator('.collection-eyebrow').count(), 0, 'Collection captions should be removed');
         await page.locator('dialog[open] .reading-list-card-button').first().click();
         await page.locator('.reading-list-peek.is-visible').waitFor();
         await page.keyboard.press('Escape');
@@ -150,7 +138,7 @@ try {
     await page.goto(`${origin}/#room`, { waitUntil: 'domcontentloaded' });
     await page.locator('.room-entered').waitFor();
     assert.deepEqual(errors, [], `${configuration.name}: browser errors`);
-    console.log(`PASS ${configuration.name}: navigation, native scroll, whole-card clicks, keyboard focus, touch targets, search/empty states, detail panels, all dialogs, room return position, direct entry, no runtime errors`);
+    console.log(`PASS ${configuration.name}: navigation, native scroll, whole-card clicks, keyboard focus, touch targets, detail panels, all dialogs, room return position, direct entry, no runtime errors`);
     await context.close();
   }
 

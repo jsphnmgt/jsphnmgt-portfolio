@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import Overlay from "../../ProfessionalSide/Overlay";
 import { assets } from "../../../assets";
 import CollectionIcon from "./CollectionIcon";
+import CollectionHeader from "./CollectionHeader";
 import useCollectionPeek from "../../../hooks/useCollectionPeek";
 import gameData from "../../../data/gameData.json";
-import CollectionSearch, { useCollectionFilter } from "./CollectionSearch";
 
 export { favorites, playing, collection };
 
@@ -12,9 +12,8 @@ const { favorites, playing, details: gameDetails } = gameData;
 const collection = gameData.collection.map(game => ({ ...game, genres: gameDetails[game.title]?.genres || [] })).sort((a, b) => a.title.localeCompare(b.title));
 
 export default function GameShelf({ isOpen = false, onClose }) {
-  const { query, setQuery, matches } = useCollectionFilter();
   const [selected, setSelected] = useState(1);
-  const { selectedId, isPeekVisible, peekHeadingRef, openPeek, closePeek, resetPeek, onPeekKeyDown, onPeekTransitionEnd } = useCollectionPeek();
+  const { selectedId, isPeekVisible, peekHeadingRef, openPeek, closePeek, onPeekKeyDown, onPeekTransitionEnd } = useCollectionPeek();
   const peekGame = collection.find(game => game.image === selectedId);
   const details = peekGame ? gameDetails[peekGame.title] : null;
   const normalizeTitle = title => title.replace(/:/g, "").toLowerCase();
@@ -50,9 +49,7 @@ export default function GameShelf({ isOpen = false, onClose }) {
   };
 
   return <Overlay className="watchlist-overlay game-shelf-overlay" isOpen={isOpen} onClose={onClose}>
-    <header className="watchlist-header">
-      <h2 id="detail-title"><img className="watchlist-icon" src={assets["game-heading.png"]} alt="" />Game Shelf</h2>
-    </header>
+    <CollectionHeader title="Game Shelf" icon="game" />
     <div className={`reading-list-layout${peekGame ? " has-peek" : ""}`} onKeyDown={onPeekKeyDown}>
       <div className="watchlist-scroll reading-list-collections" role="region" aria-label="Game Shelf" tabIndex={0}>
         <div className="game-console-stage" ref={stageRef}>
@@ -97,9 +94,8 @@ export default function GameShelf({ isOpen = false, onClose }) {
           </div>
         </div>
         <section className="watchlist-section game-collection" ref={collectionRef} aria-labelledby="game-collection-title">
-          <h3 id="game-collection-title">Game Collection <span className="collection-count">{collection.filter(matches).length}</span></h3>
-          <CollectionSearch label="Search game collection" query={query} setQuery={value => { resetPeek(); setQuery(value); }} count={collection.filter(matches).length} />
-          <ul className="game-cartridges">{collection.filter(matches).map(game => <li key={game.title} className="game-cartridge">
+          <h3 id="game-collection-title">Game Collection <span className="collection-count">{collection.length}</span></h3>
+          <ul className="game-cartridges">{collection.map(game => <li key={game.title} className="game-cartridge">
             <button className="reading-list-card-button game-cartridge-button" aria-label={`View details for ${game.title}`} aria-expanded={selectedId === game.image} aria-controls="game-shelf-peek" onClick={event => openPeek(game.image, event.currentTarget)}>
               <span className="game-cartridge-art" aria-hidden="true">
                 <img className="game-cartridge-shell" src={assets["game-cartridge.png"]} alt="" />
