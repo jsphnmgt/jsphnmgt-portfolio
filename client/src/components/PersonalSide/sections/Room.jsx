@@ -5,6 +5,7 @@ import LoadBoundary from "../../LoadBoundary";
 import "../../../styles/room.css";
 import "../../../styles/personal-overlays.css";
 import "../../../styles/personal-creative.css";
+import "../../../styles/collection-scenes.css";
 
 const PersonalComputer = lazy(() => import("../overlays/PersonalComputer"));
 const Watchlist = lazy(() => import("../overlays/Watchlist"));

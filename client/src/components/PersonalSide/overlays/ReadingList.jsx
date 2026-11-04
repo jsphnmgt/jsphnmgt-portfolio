@@ -44,8 +44,9 @@ export default function ReadingList({ isOpen = false, onClose }) {
         </section>)}
       </div>
       {selected && <aside className={`reading-list-peek${isPeekVisible ? " is-visible" : ""}`} id="reading-list-peek" aria-labelledby="reading-peek-title" onTransitionEnd={onPeekTransitionEnd}>
-        <div className="reading-list-peek-toolbar"><span>Book details</span><button className="reading-list-peek-close" onClick={closePeek} aria-label="Close book details"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m6.7 5.3 5.3 5.3 5.3-5.3 1.4 1.4-5.3 5.3 5.3 5.3-1.4 1.4-5.3-5.3-5.3 5.3-1.4-1.4 5.3-5.3-5.3-5.3z" /></svg></button></div>
+        <button className="reading-list-peek-close" onClick={closePeek} aria-label="Close book details"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m6.7 5.3 5.3 5.3 5.3-5.3 1.4 1.4-5.3 5.3 5.3 5.3-1.4 1.4-5.3-5.3-5.3 5.3-1.4-1.4 5.3-5.3-5.3-5.3z" /></svg></button>
         <div className="reading-list-peek-scroll watchlist-scroll" key={selectedId}>
+
           <div className="reading-list-peek-summary">
             <img className="reading-list-peek-cover" src={assets[selected.image]} alt="" />
             <div><h3 id="reading-peek-title" ref={peekHeadingRef} tabIndex={-1}>{selected.title}</h3><p className="reading-list-peek-author">{selected.author}</p></div>
@@ -55,8 +56,10 @@ export default function ReadingList({ isOpen = false, onClose }) {
             <div><dt>Reading status</dt><dd>{statuses.map(status => <span key={status.id}><CollectionIcon name={status.icon} />{status.title}</span>)}</dd></div>
             {selected.rating !== null && <div><dt>My rating</dt><dd><span className="reading-list-rating" role="img" aria-label={`${selected.rating} out of 5 stars`}>{Array.from({ length: 5 }, (_, star) => <span className={star < selected.rating ? "is-rated" : undefined} key={star}><CollectionIcon name="star" /></span>)}</span></dd></div>}
           </dl>
+
           <section className="reading-list-peek-section"><h4>Synopsis</h4><p>{selected.synopsis}</p></section>
           <section className="reading-list-peek-section"><h4>{readingList.reading.includes(selectedId) ? "What caught my interest" : "My thoughts"}</h4><p className={selected.thoughts ? undefined : "reading-list-peek-placeholder"}>{selected.thoughts || "I’ll add my thoughts here soon."}</p></section>
+
         </div>
       </aside>}
     </div>

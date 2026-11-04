@@ -1,0 +1,200 @@
+/* Small, distinct worlds for the four personal collections. */
+.personal-room .cinema-overlay { --cinema-header: var(--color-navy); --cinema-header-ink: var(--color-cream); --cinema-ticket: var(--color-room-button); --cinema-ink: var(--color-cream); --cinema-accent: var(--color-cobalt); --cinema-scroll: color-mix(in srgb, var(--color-steel) 55%, transparent); width: min(92vw, 76rem); background: var(--cinema-header); }
+.personal-room .cinema-overlay .collection-header { margin-bottom: 0; padding-inline: 1.5rem 3.5rem; background: var(--cinema-header); color: var(--cinema-header-ink); }
+.personal-room .cinema-overlay .collection-header h2 { justify-content: flex-start; text-align: left; }
+.cinema-overlay .collection-header .watchlist-icon { color: var(--color-cream); }
+.cinema-overlay .watchlist-section h3 > .watchlist-icon,
+.personal-room .cinema-overlay .collection-count { color: var(--cinema-ticket); }
+.personal-room .cinema-overlay > .overlay-close { color: var(--cinema-header-ink); }
+.personal-room .cinema-overlay > .overlay-close:hover { color: var(--color-lavender); }
+.personal-room .cinema-overlay .reading-list-layout { position: relative; display: block; padding-top: .75rem; background: var(--color-cream); transition: none; }
+.personal-room .cinema-overlay .reading-list-collections { display: block; height: 100%; scrollbar-gutter: stable; }
+.personal-room :is(.cinema-overlay, .reading-list-overlay) .watchlist-scroll { --cinema-scroll-track: color-mix(in srgb, var(--color-navy) 25%, var(--color-cream)); scrollbar-width: thin; scrollbar-color: var(--color-navy) var(--cinema-scroll-track); }
+.personal-room :is(.cinema-overlay, .reading-list-overlay) .watchlist-scroll::-webkit-scrollbar { display: block; width: 12px; background: transparent; }
+.personal-room :is(.cinema-overlay, .reading-list-overlay) .watchlist-scroll::-webkit-scrollbar-track { margin-block: .5rem .75rem; background: var(--cinema-scroll-track); border-radius: 999px; }
+.personal-room :is(.cinema-overlay, .reading-list-overlay) .watchlist-scroll::-webkit-scrollbar-thumb { min-height: 3.25rem; background: var(--color-navy); border: 0; border-radius: 999px; }
+.personal-room :is(.cinema-overlay, .reading-list-overlay) .watchlist-scroll::-webkit-scrollbar-thumb:hover { background: var(--color-room-button); }
+.personal-room :is(.cinema-overlay, .reading-list-overlay) .watchlist-scroll::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+@supports selector(::-webkit-scrollbar) {
+  .personal-room :is(.cinema-overlay, .reading-list-overlay) .watchlist-scroll { scrollbar-width: auto; scrollbar-color: auto; }
+}
+.personal-room .cinema-overlay .has-peek .reading-list-collections,
+.personal-room .cinema-overlay .reading-list-peek-scroll { scrollbar-width: none; }
+.personal-room .cinema-overlay .has-peek .reading-list-collections::-webkit-scrollbar,
+.personal-room .cinema-overlay .reading-list-peek-scroll::-webkit-scrollbar { display: none; width: 0; height: 0; }
+.personal-room .cinema-overlay .watchlist-cards { grid-template-columns: repeat(6, minmax(0, 1fr)); align-items: stretch; grid-auto-rows: auto; }
+.personal-room .cinema-overlay .watchlist-card { max-width: none; border: 0; outline: none; border-radius: 0; background: transparent; box-shadow: none; }
+.personal-room .cinema-overlay .watchlist-card:has(.watchlist-card-button:focus-visible) { outline: 2px solid var(--cinema-accent); outline-offset: 3px; }
+.cinema-overlay .watchlist-card-button:focus-visible { outline: none; }
+.personal-room .cinema-overlay .watchlist-card:hover { transform: none; box-shadow: none; }
+.personal-room .cinema-overlay .watchlist-card-button { display: flex; flex-direction: column; height: 100%; padding: .9rem .6rem 1rem; border: 0; border-radius: 0; overflow: hidden; background: var(--cinema-ticket); color: var(--cinema-ink); mask: radial-gradient(circle at 50% 0, transparent 5px, #000 5.5px) top / 21px 51% repeat-x, radial-gradient(circle at 50% 100%, transparent 5px, #000 5.5px) bottom / 21px 51% repeat-x; }
+.cinema-overlay .watchlist-ticket-number { display: flex; justify-content: space-between; align-items: center; gap: .25rem; padding: 0 .15rem .4rem; color: var(--cinema-ink); font-size: .6rem; line-height: 1.2; letter-spacing: .05em; }
+.cinema-overlay .watchlist-ticket-number > :first-child { font-size: .5rem; }
+.cinema-overlay .watchlist-poster { width: 100%; flex-shrink: 0; aspect-ratio: 2 / 3; border: 1px solid color-mix(in srgb, var(--color-navy) 45%, transparent); border-radius: 0; }
+.personal-room .cinema-overlay .watchlist-card-button:hover .watchlist-card-caption { background: transparent; }
+.personal-room .cinema-overlay .watchlist-card-caption { position: relative; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; flex: 1; min-height: 0; margin: .6rem -.6rem 0; padding: .65rem .7rem .1rem; gap: .25rem; border-top: 2px dashed var(--color-cream); }
+.cinema-overlay .watchlist-card-title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: .95rem; line-height: 1.25; }
+.cinema-overlay .watchlist-card-type { margin-top: 0; color: color-mix(in srgb, var(--cinema-ink) 85%, transparent); font-size: .75rem; line-height: 1.25; }
+.cinema-overlay .watchlist-ticket-stub::before,
+.cinema-overlay .watchlist-ticket-stub::after { content: ""; position: absolute; top: calc(-.4rem - 1px); width: .8rem; height: .8rem; border-radius: 50%; background: var(--color-cream); pointer-events: none; }
+.cinema-overlay .watchlist-ticket-stub::before { left: -.4rem; }
+.cinema-overlay .watchlist-ticket-stub::after { right: -.4rem; }
+@media (hover: hover) and (pointer: fine) {
+  .personal-room .cinema-overlay .watchlist-card:hover { filter: drop-shadow(0 7px 9px rgb(37 41 50 / .18)); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .personal-room .cinema-overlay .watchlist-card { transition: transform .25s var(--motion-card-ease), filter .25s ease; }
+  .personal-room .cinema-overlay .watchlist-card:hover { transform: translateY(-4px); }
+}
+.watchlist-peek-scrim { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: rgb(37 41 50 / .14); opacity: 0; }
+.watchlist-peek-scrim.is-visible { opacity: 1; }
+.personal-room .cinema-overlay .reading-list-peek { position: absolute; z-index: 3; inset: .75rem .75rem .75rem auto; width: min(28rem, calc(100% - 1.5rem)); margin: 0; padding: 0; border: 1px solid color-mix(in srgb, var(--color-steel) 30%, transparent); border-radius: .85rem; background: var(--color-cream); color: var(--color-navy); box-shadow: -10px 0 30px rgb(30 35 53 / .18); }
+.personal-room .cinema-overlay .reading-list-peek-toolbar { justify-content: space-between; padding: .25rem .85rem; border-bottom: 1px solid color-mix(in srgb, var(--color-cream) 15%, transparent); border-radius: .85rem .85rem 0 0; background: var(--color-navy); color: var(--color-cream); }
+.watchlist-detail-label { font-family: var(--font-body); font-size: .9rem; font-weight: 400; }
+.personal-room .cinema-overlay .reading-list-peek-close { color: var(--color-cream); }
+.personal-room .cinema-overlay .reading-list-peek-close:hover { color: var(--color-lavender); }
+.personal-room .cinema-overlay .reading-list-peek-toolbar :focus-visible { outline-color: var(--color-cream); }
+.personal-room .cinema-overlay .reading-list-peek-scroll { margin: 0; padding: 0 1.25rem 1.5rem; }
+.cinema-overlay .watchlist-peek-hero { position: relative; isolation: isolate; align-items: center; min-height: 13rem; margin: 0 -1.25rem; padding: 1.5rem 1.25rem; gap: 1rem; overflow: hidden; background: var(--color-navy); color: var(--color-cream); }
+.watchlist-peek-hero > .watchlist-peek-backdrop { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(18px) brightness(.55); transform: scale(1.15); pointer-events: none; }
+.watchlist-peek-hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at 25% 0, rgb(188 195 227 / .16), transparent 65%), linear-gradient(0deg, rgb(25 29 42 / .95), rgb(25 29 42 / .25)); pointer-events: none; }
+.personal-room .cinema-overlay .reading-list-peek-cover { width: 6rem; max-height: 9rem; object-fit: cover; border: 1px solid rgb(250 244 233 / .35); border-radius: .15rem; box-shadow: 0 8px 20px rgb(0 0 0 / .4); }
+.personal-room .cinema-overlay .watchlist-peek-hero h3 { font-size: 1.4rem; font-weight: 400; line-height: 1.2; }
+.personal-room .cinema-overlay .watchlist-peek-hero .reading-list-peek-author { color: rgb(250 244 233 / .8); }
+.personal-room .cinema-overlay .reading-list-peek-genres { gap: .35rem; }
+.personal-room .cinema-overlay .reading-list-peek-genres > span { padding: .2rem .55rem; border: 1px solid color-mix(in srgb, var(--color-steel) 25%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--color-lavender) 25%, var(--color-cream)); color: var(--color-navy); font-size: .8rem; letter-spacing: normal; text-transform: none; }
+.personal-room .cinema-overlay .reading-list-peek-meta { grid-template-columns: minmax(0, 1fr); gap: 1rem; margin-top: 1.25rem; padding: 0; background: transparent; color: var(--color-navy); }
+.personal-room .cinema-overlay .reading-list-peek-meta dt { color: var(--color-steel); font-size: .75rem; letter-spacing: .04em; }
+.personal-room .cinema-overlay .reading-list-peek-meta .reading-list-peek-placeholder { color: var(--color-steel); }
+.personal-room .cinema-overlay .reading-list-peek-placeholder { color: var(--color-steel); }
+.personal-room .cinema-overlay .reading-list-peek-section { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed color-mix(in srgb, var(--color-steel) 45%, transparent); }
+.personal-room .cinema-overlay .reading-list-peek-section h4 { font-weight: 400; }
+.personal-room .cinema-overlay .reading-list-rating .is-rated { color: var(--color-cobalt); }
+.personal-room .cinema-overlay .reading-list-peek :focus-visible { outline-color: var(--color-navy); }
+.personal-room .cinema-overlay .watchlist-peek-hero h3:focus-visible { outline-color: var(--color-cream); }
+@media (min-width: 768px) {
+  .personal-room .cinema-overlay .reading-list-layout.has-peek { padding-right: calc(min(26rem, 40%) + .75rem); }
+  .personal-room .cinema-overlay .reading-list-peek { width: min(26rem, 40%); }
+  .personal-room .cinema-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cinema-overlay .watchlist-peek-scrim { display: none; }
+}
+@media (min-width: 768px) and (max-width: 1000px) {
+  .personal-room .cinema-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1200px) {
+  .personal-room .cinema-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .watchlist-peek-scrim { transition: opacity .22s ease; }
+  .personal-room .cinema-overlay .reading-list-peek { opacity: 0; transform: translateX(1rem); transition: transform .35s ease, opacity .35s ease; pointer-events: none; }
+  .personal-room .cinema-overlay .reading-list-peek.is-visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+}
+@media (max-width: 1000px) {
+  .personal-room .cinema-overlay .watchlist-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .personal-room .cinema-overlay .watchlist-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .personal-room .cinema-overlay .reading-list-peek { inset-inline: .35rem; width: auto; }
+  .personal-room .cinema-overlay .reading-list-peek-meta { grid-template-columns: minmax(0, 1fr); }
+}
+
+.personal-room .reading-list-overlay { --collection-accent: var(--color-room-button); --shelf-wood: var(--color-steel); --shelf-edge: var(--color-lavender); background: var(--color-cream); }
+.personal-room .reading-list-overlay .collection-header { position: relative; background: var(--collection-accent); color: var(--color-cream); }
+.personal-room .reading-list-overlay .collection-header h2 > .watchlist-icon { transform: translateY(.08em); }
+.personal-room .reading-list-overlay > .overlay-close { color: var(--color-cream); }
+.personal-room .reading-list-overlay > .overlay-close:hover { color: var(--shelf-edge); }
+.reading-list-overlay .collection-header::after { content: ""; position: absolute; right: 4.5rem; top: 0; width: 1rem; height: 2.4rem; background: var(--shelf-edge); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%); pointer-events: none; }
+.personal-room .reading-list-overlay .reading-list-collections { background: transparent; }
+.personal-room .reading-list-overlay .watchlist-cards { column-gap: 1.5rem; row-gap: 2rem; }
+.personal-room .reading-list-overlay .reading-list-card { max-width: none; }
+.personal-room .reading-list-overlay .reading-list-cover-frame { position: relative; aspect-ratio: 2 / 3; padding: .25rem .6rem .7rem .15rem; border: 0; background: transparent; border-radius: 0; }
+.reading-list-overlay .reading-list-cover-frame::after { content: ""; position: absolute; z-index: 1; inset: auto -.75rem 0; height: .6rem; border-top: 2px solid color-mix(in srgb, var(--shelf-edge) 65%, var(--color-cream)); background: linear-gradient(var(--shelf-wood), var(--color-room-button)); box-shadow: 0 5px 8px rgb(37 41 50 / .16); pointer-events: none; }
+.personal-room .reading-list-overlay .reading-list-card-button:is(:hover, [aria-expanded="true"]) .reading-list-cover-frame { background: transparent; }
+.personal-room .reading-list-overlay .reading-list-cover { border: 1px solid var(--color-navy); border-radius: 2px 5px 5px 2px; box-shadow: 3px 2px 0 #eee8d9, 5px 3px 0 var(--color-steel), 8px 7px 10px rgb(30 35 53 / .16); }
+.reading-list-overlay .reading-list-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(0 0 0 / .4), transparent 6%, rgb(255 255 255 / .2) 7%, rgb(0 0 0 / .12) 9%, transparent 15%, transparent 93%, rgb(255 255 255 / .2)); pointer-events: none; }
+.personal-room .reading-list-overlay .reading-list-caption { align-items: flex-start; padding: .85rem 0 0 .65rem; text-align: left; }
+.personal-room .reading-list-overlay .reading-list-caption .reading-list-rating { margin-left: 0; justify-content: flex-start; }
+.personal-room .reading-list-overlay .reading-list-card-title { font-family: var(--font-display); font-size: 1rem; }
+.personal-room .reading-list-overlay .reading-list-card-author { color: var(--color-steel); }
+.personal-room .reading-list-overlay .reading-list-rating .is-rated { color: var(--collection-accent); }
+.personal-room .reading-list-overlay { --color-reading-peek-text: var(--color-navy); --color-reading-peek-muted: var(--color-steel); --border-reading-peek-divider: 1px solid color-mix(in srgb, var(--color-steel) 30%, transparent); }
+.personal-room .reading-list-overlay .reading-list-layout { position: relative; display: block; transition: none; }
+.personal-room .reading-list-overlay .reading-list-collections { display: block; height: 100%; }
+.personal-room .reading-list-overlay .reading-list-peek { position: absolute; z-index: 2; inset: 0 .75rem .75rem auto; width: calc(100% - 1.5rem); margin: 0; padding: 0; border: 1px solid var(--color-steel); border-radius: .2rem .5rem .5rem .2rem; overflow: hidden; background: var(--color-cream); color: var(--color-navy); box-shadow: -5px 5px 18px rgb(37 41 50 / .15); container-type: inline-size; }
+
+.personal-room .reading-list-overlay .reading-list-peek-close { position: absolute; z-index: 3; top: .4rem; right: .5rem; color: var(--color-navy); }
+
+.personal-room .reading-list-overlay .reading-list-peek-scroll { margin: 0; padding: 2.75rem 1.4rem 1.5rem 1.65rem; border-radius: inherit; background: linear-gradient(90deg, color-mix(in srgb, var(--color-steel) 18%, var(--color-cream)), var(--color-cream) .75rem); }
+.personal-room .reading-list-overlay .reading-list-peek-summary { flex-direction: row; align-items: center; text-align: left; gap: 1rem; }
+.personal-room .reading-list-overlay .reading-list-peek-cover { width: 6.5rem; max-height: 10rem; object-fit: cover; border: 1px solid var(--color-steel); border-radius: 1px 3px 3px 1px; box-shadow: 3px 2px 0 #e8e1d4, 4px 3px 0 var(--color-steel); }
+.personal-room .reading-list-overlay .reading-list-peek h3 { color: var(--color-navy); font-size: 1.2rem; font-weight: 400; }
+.personal-room .reading-list-overlay .reading-list-peek :focus-visible { outline-color: var(--color-navy); }
+
+.personal-room .reading-list-overlay .reading-list-peek-meta { grid-template-columns: minmax(0, 1fr); gap: .85rem; }
+.personal-room .reading-list-overlay .reading-list-peek-meta > div { text-align: left; }
+.personal-room .reading-list-overlay .reading-list-peek-meta dd { justify-content: flex-start; gap: .4rem .75rem; }
+.personal-room .reading-list-overlay .reading-list-peek-meta .reading-list-rating { margin-left: 0; }
+.personal-room .reading-list-overlay .reading-list-peek-section h4 { font-weight: 400; }
+.personal-room .reading-list-overlay .reading-list-peek-section p { font-weight: 400; line-height: 1.65; }
+.personal-room .reading-list-overlay .reading-list-peek-genres { justify-content: flex-start; }
+.personal-room .reading-list-overlay .reading-list-peek-genres > span { border: 1px solid color-mix(in srgb, var(--color-steel) 25%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--color-lavender) 25%, var(--color-cream)); color: var(--color-navy); }
+.personal-room .reading-list-overlay .has-peek .reading-list-collections,
+.personal-room .reading-list-overlay .reading-list-peek-scroll { scrollbar-width: none; }
+.personal-room .reading-list-overlay .has-peek .reading-list-collections::-webkit-scrollbar,
+.personal-room .reading-list-overlay .reading-list-peek-scroll::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+@media (min-width: 768px) {
+  .personal-room .reading-list-overlay .reading-list-layout.has-peek { padding-right: calc(min(28rem, 43%) + .75rem); }
+  .personal-room .reading-list-overlay .reading-list-peek { width: min(28rem, 43%); }
+  .personal-room .reading-list-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(3, minmax(0, 9rem)); }
+}
+@media (min-width: 768px) and (max-width: 1100px) {
+  .personal-room .reading-list-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(2, minmax(0, 9rem)); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .personal-room .reading-list-overlay .reading-list-card-button:hover .reading-list-cover-frame { transform: none; }
+  .personal-room .reading-list-overlay .reading-list-cover { transition: transform .3s var(--motion-card-ease), box-shadow .3s ease; transform-origin: bottom left; }
+  .personal-room .reading-list-overlay .reading-list-card-button:hover .reading-list-cover { transform: translateY(-5px) rotate(-1deg); box-shadow: 3px 2px 0 #eee8d9, 5px 3px 0 var(--color-steel), 8px 10px 14px rgb(30 35 53 / .2); }
+}
+
+.game-shelf-overlay .collection-header { position: relative; }
+.personal-room .game-shelf-overlay { --color-game-screen: #b4bfca; --color-game-chat: #f5f4eb; --color-game-rail: #dce4e7; --color-game-carousel: #e8edf0; --color-game-tag: var(--color-lavender); }
+.game-shelf-overlay .collection-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: repeating-linear-gradient(90deg, rgb(37 41 50 / .18) 0 4px, transparent 4px 12px); pointer-events: none; }
+.personal-room .game-shelf-overlay .game-console-stage { isolation: isolate; width: min(100%, 28rem, 58svh); }
+.game-shelf-overlay .game-console-stage::before { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: 2rem; background: radial-gradient(ellipse at center, color-mix(in srgb, var(--color-periwinkle) 25%, transparent), transparent 70%); pointer-events: none; }
+.personal-room .game-shelf-overlay .game-cartridge { padding: .6rem; border: 1px solid color-mix(in srgb, var(--color-steel) 20%, transparent); border-radius: .75rem; background: linear-gradient(145deg, color-mix(in srgb, var(--color-lavender) 20%, var(--color-cream)), var(--color-cream)); }
+.personal-room .game-shelf-overlay .game-cartridge-title { padding: .45rem .25rem; border: 0; border-top: 1px solid color-mix(in srgb, var(--color-steel) 22%, transparent); border-radius: 0; background: transparent; }
+.game-shelf-overlay .game-cartridge-art { filter: drop-shadow(0 4px 3px rgb(30 35 53 / .15)); }
+
+.personal-room .music-record-stage { display: grid; place-items: center; container-type: size; }
+.music-turntable { position: relative; width: min(94cqw, 100cqh); aspect-ratio: 1.1; border: 1px solid var(--color-steel); border-radius: 1.15rem; background: linear-gradient(140deg, #deddd2, #b8c5c1); box-shadow: inset 0 0 0 5px rgb(255 255 255 / .18), 5px 7px 0 color-mix(in srgb, var(--color-sage) 50%, transparent), 0 16px 30px rgb(30 35 53 / .12); }
+.music-turntable-platter { position: absolute; left: 3%; top: 4%; width: 85%; height: 86%; }
+.music-turntable-arm { position: absolute; right: 2%; top: 7%; width: 28%; height: 73%; pointer-events: none; }
+.music-turntable-light { position: absolute; left: 7%; bottom: 7%; width: 6px; height: 6px; border-radius: 50%; background: #799e91; box-shadow: 0 0 0 3px rgb(82 111 99 / .15); }
+.music-turntable-speed { position: absolute; left: 12%; bottom: 5.5%; color: #52626a; font-size: .65rem; letter-spacing: .08em; }
+.music-turntable-dial { position: absolute; right: 8%; bottom: 7%; width: 7%; aspect-ratio: 1; border: 1px solid #69777d; border-radius: 50%; background: linear-gradient(120deg, #e1e2d7, #9faeac); box-shadow: 1px 2px 2px rgb(30 35 53 / .2); }
+.personal-room .music-song-list { counter-reset: music-item; }
+.personal-room .music-song-list > li { counter-increment: music-item; }
+.personal-room .music-song-list li:nth-child(n) { margin-inline: 0; }
+.music-song-list:not(.music-genre-list) > li > .music-song-card::before { content: counter(music-item, decimal-leading-zero); flex-shrink: 0; color: var(--color-steel); font-size: .8rem; }
+.personal-room .music-song-card { background: color-mix(in srgb, var(--color-lavender) 24%, var(--color-cream)); border-left-width: 2px; }
+.personal-room .music-song-card > img { border-radius: .35rem; box-shadow: 0 2px 4px rgb(30 35 53 / .18); }
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+
+  .game-shelf-overlay .game-cartridge-art { transition: filter .3s ease; }
+  .game-shelf-overlay .game-cartridge-button:hover .game-cartridge-art { filter: drop-shadow(0 7px 5px rgb(30 35 53 / .25)); }
+  .personal-room .music-turntable:hover .music-record img { animation: collection-record-turn 3s ease-in-out 1; }
+}
+@keyframes collection-record-turn { to { transform: rotate(360deg); } }
+@media (max-width: 700px) {
+  .music-turntable { width: min(15rem, 94cqw, 100cqh); }
+  .music-turntable-speed { font-size: .5rem; }
+  .music-song-list:not(.music-genre-list) > li > .music-song-card::before { display: none; }
+}
+@media (max-width: 600px) {
+  .personal-room .game-shelf-overlay .game-cartridge { padding: .4rem; }
+}
+@media (max-height: 600px), (max-width: 600px) and (max-height: 700px) {
+  .personal-room .music-record-stage { display: none; }
+}

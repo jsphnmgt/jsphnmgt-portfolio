@@ -86,7 +86,11 @@ export default function Music({ isOpen = false, onClose }) {
     <div className="watchlist-scroll music-scroll" role="region" aria-label="Music Corner content" tabIndex={0} onKeyDown={onPeekKeyDown}>
       <div className={`music-layout${selected ? " has-player" : ""}`} style={{ "--music-card-count": activeTab === "genres" ? genres.length : 4 }}>
         <div className="music-record-stage">
-          <div className={`music-record${isCardSpin ? " music-record-card-spin" : ""}`} aria-hidden="true"><img key={`${activeTab}-${recordSpin}`} src={assets["music-vinyl.png"]} alt="" /></div>
+          <div className="music-turntable" aria-hidden="true">
+            <div className="music-turntable-platter"><div className={`music-record${isCardSpin ? " music-record-card-spin" : ""}`}><img key={`${activeTab}-${recordSpin}`} src={assets["music-vinyl.png"]} alt="" /></div></div>
+            <svg className="music-turntable-arm" viewBox="0 0 100 250" fill="none" focusable="false"><circle cx="68" cy="27" r="18" fill="#717b81" stroke="#343b47" strokeWidth="2" /><circle cx="68" cy="27" r="9" fill="#b8c2c2" /><path d="M68 27v108l-37 62" stroke="#343b47" strokeWidth="10" strokeLinecap="round" /><path d="M66 27v108l-37 62" stroke="#d9ded6" strokeWidth="5" strokeLinecap="round" /><path d="m24 183 18 10-13 24-18-10Z" fill="#343b47" stroke="#d9ded6" strokeWidth="1.5" /></svg>
+            <span className="music-turntable-light" /><span className="music-turntable-speed">33 / 45</span><span className="music-turntable-dial" />
+          </div>
         </div>
         <section key={activeTab} className="music-panel" id="music-panel" role="tabpanel" aria-labelledby={`music-tab-${activeTab}`} tabIndex={0}>
           <h3>{current.heading}</h3>
