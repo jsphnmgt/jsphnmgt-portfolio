@@ -103,18 +103,20 @@ export default function ProfessionalSide({ savedPosition = null }) {
       <div className="green-world"><Experience /><Education /></div>
       <div className="blue-sky closing"><SparkleField variant="closing" /><Certificates onCardClick={setActiveItem} /><RoomInvitation /><Contact /></div>
     </div>
-    <Overlay className={activeItem?.techStack ? "project-overlay" : activeItem?.type === "certificate" ? "project-overlay certificate-overlay" : ""} isOpen={!!activeItem} onClose={() => setActiveItem(null)}>{activeItem && (activeItem.techStack ? <div className="project-detail-scroll" tabIndex={0} aria-label="Project details">
+    <Overlay className={activeItem?.techStack ? "project-overlay" : activeItem?.type === "certificate" ? "project-overlay certificate-overlay" : ""} isOpen={!!activeItem} onClose={() => setActiveItem(null)}>
+      {activeItem && (activeItem.techStack || activeItem.type === "certificate") && <div className="detail-windowbar" aria-hidden="true"><span className="detail-window-kind"><span className="window-dots"><i /><i /><i /></span>{activeItem.type === "certificate" ? "Certificate archive" : "Project overview"}</span><span className="detail-window-signature">jsphnmgt / portfolio</span></div>}
+      {activeItem && (activeItem.techStack ? <div className="project-detail-scroll" tabIndex={0} aria-label="Project details">
       <div className="project-detail-layout">
         <ProjectPreview key={activeItem.image} image={activeItem.image} title={activeItem.title} />
         <div className="project-detail-copy">
           <div className="project-detail-body">
             <div className="project-detail-summary">
-              <span className="project-detail-label">{activeItem.projectType || "Selected project"}</span>
+              <span className="project-detail-label"><span className="detail-label-mark" aria-hidden="true">✦</span>{activeItem.projectType || "Selected project"}</span>
               <h2 id="detail-title">{activeItem.title}</h2>
               <p>{activeItem.description}</p>
             </div>
             <div className="project-detail-actions">
-              {activeItem.githubUrl ? <a className="project-code-button" href={activeItem.githubUrl} target="_blank" rel="noreferrer"><img src={assets["github-logo.png"]} alt="" />GitHub Code <span className="sr-only">(opens in a new tab)</span></a> : <span className="project-code-unavailable">{activeItem.codeStatus || "Code link unavailable"}</span>}
+              {activeItem.githubUrl ? <a className="project-code-button creative-button hero-cv-button" href={activeItem.githubUrl} target="_blank" rel="noreferrer"><img src={assets["github-logo.png"]} alt="" />GitHub Code <span className="sr-only">(opens in a new tab)</span></a> : <span className="project-code-unavailable">{activeItem.codeStatus || "Code link unavailable"}</span>}
             </div>
             <div className="project-detail-technologies"><h3>Built with</h3><div className="tags">{activeItem.techStack.map(tag => <span key={tag}>{tag}</span>)}</div></div>
           </div>
@@ -124,12 +126,13 @@ export default function ProfessionalSide({ savedPosition = null }) {
     </div> : activeItem.type === "certificate" ? <div className="project-detail-scroll" tabIndex={0} aria-label="Certificate details">
       <div className="project-detail-layout certificate-detail-layout">
         <div className="certificate-detail-preview">
-          <img className="certificate-detail-image" src={activeItem.image} alt={`${activeItem.title} certificate`} />
+          <div className="project-preview-frame"><img className="certificate-detail-image" src={activeItem.image} alt={`${activeItem.title} certificate`} /></div>
+          <a className="certificate-image-link" href={activeItem.image} target="_blank" rel="noreferrer"><span className="certificate-image-label">Open full-size certificate</span><span className="sr-only"> (opens in a new tab)</span></a>
         </div>
         <div className="project-detail-copy">
           <div className="project-detail-body">
             <div className="project-detail-summary">
-              <span className="project-detail-label">Certificate</span>
+              <span className="project-detail-label"><span className="detail-label-mark" aria-hidden="true">✦</span>Certificate</span>
               <h2 id="detail-title">{activeItem.title}</h2>
               <p>{activeItem.description}</p>
             </div>
@@ -138,8 +141,7 @@ export default function ProfessionalSide({ savedPosition = null }) {
               <div><dt>Date earned</dt><dd>{activeItem.dateEarned}</dd></div>
             </dl>
             <div className="project-detail-actions">
-              {activeItem.credentialUrl ? <a className="project-code-button" href={activeItem.credentialUrl} target="_blank" rel="noreferrer">View Credential <span className="sr-only">(opens in a new tab)</span></a> : <button className="project-code-button" disabled title="Credential link coming soon">View Credential</button>}
-              <a className="certificate-image-link" href={activeItem.image} target="_blank" rel="noreferrer">Open full-size certificate <span className="sr-only">(opens in a new tab)</span></a>
+              {activeItem.credentialUrl ? <a className="project-code-button creative-button hero-cv-button" href={activeItem.credentialUrl} target="_blank" rel="noreferrer"><span className="credential-button-label">View Credential</span><span className="sr-only">(opens in a new tab)</span></a> : <button className="project-code-button" disabled title="Credential link coming soon"><span className="credential-button-label">View Credential</span></button>}
             </div>
           </div>
         </div>

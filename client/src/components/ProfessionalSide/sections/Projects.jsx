@@ -4,13 +4,13 @@ const projects = [
     title: "CapsiCAM",
     githubUrl: "https://github.com/hrspnd/CapsiCAM",
     projectType: "Group project",
-    description: "A mobile application for real-time chili pepper leaf disease classification using deep learning", techStack: ["Flutter", "Supabase", "TensorFlow"], asset: "capsicam-cover.png", crop: "capsicam"
+    description: "A mobile application for real-time chili pepper leaf disease classification using deep learning", techStack: ["Flutter", "Dart", "Python", "TensorFlow Lite", "Supabase"], asset: "capsicam-cover.png", crop: "capsicam"
   },
   {
     title: "Course Companion",
     projectType: "Solo project",
     codeStatus: "Private repository",
-    description: "A course companion website helping students organize lessons, track progress, and access learning resources", techStack: ["React", "CSS"], asset: "course-companion-cover.png", crop: "course"
+    description: "A course companion website helping students organize lessons, track progress, and access learning resources", techStack: ["React", "HTML", "CSS"], asset: "course-companion-cover.png", crop: "course"
   },
   {
     title: "HAUlam",
@@ -28,7 +28,7 @@ const projects = [
     title: "Portfolio",
     projectType: "Solo project",
     codeStatus: "Repository link coming soon",
-    description: "A CV website showcasing professional experience, education, skills, and achievements", techStack: ["React", "CSS"], asset: "portfolio-cover.png", crop: "portfolio"
+    description: "A CV website showcasing professional experience, education, skills, and achievements", techStack: ["React", "HTML", "CSS"], asset: "portfolio-cover.png", crop: "portfolio"
   },
 ];
 export default function Projects({ onCardClick }) {

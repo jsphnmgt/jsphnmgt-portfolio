@@ -27,6 +27,6 @@ export default function ProjectPreview({ image, title }) {
     }
   };
   return <div className="project-detail-preview" style={{ "--preview-background": `var(${background})` }}>
-    <img src={image} alt={title + " preview"} onLoad={chooseBackground} />
+    <div className="project-preview-frame"><img src={image} alt={title + " preview"} onLoad={chooseBackground} /></div>
   </div>;
 }

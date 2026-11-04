@@ -411,6 +411,7 @@
 
   .project-card,
   .nav-links a,
+  .nav-links a::before,
   .nav-links a::after {
     transition: none;
   }
