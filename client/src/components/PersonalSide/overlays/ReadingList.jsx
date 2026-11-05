@@ -1,10 +1,13 @@
+import ReadingShelves from "./ReadingShelves";
 import useCollectionPeek from "../../../hooks/useCollectionPeek";
 import Overlay from "../../ProfessionalSide/Overlay";
 import CollectionIcon from "./CollectionIcon";
 import CollectionHeader from "./CollectionHeader";
+import ReadingPegboard from "./ReadingPegboard";
 import { assets } from "../../../assets";
 import readingList from "../../../data/readingListData.json";
 import "../../../styles/reading-journal.css";
+import "../../../styles/reading-corner.css";
 
 const sections = [
   { id: "favorites", title: "Favorites", icon: "heart", caption: "The ones that stay with me." },
@@ -16,36 +19,29 @@ export default function ReadingList({ isOpen = false, onClose }) {
   const { selectedId, isPeekVisible, peekHeadingRef, openPeek, closePeek, onPeekKeyDown, onPeekTransitionEnd } = useCollectionPeek();
   const selected = selectedId ? readingList.catalog[selectedId] : null;
   const statuses = selectedId ? sections.filter(section => readingList[section.id].includes(selectedId)) : [];
+  const pinnedId = readingList.favorites[0];
+  const chooseShelf = id => {
+    const heading = document.getElementById(`reading-list-${id}`);
+    heading?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    heading?.focus({ preventScroll: true });
+  };
   return <Overlay className="watchlist-overlay reading-list-overlay" isOpen={isOpen} onClose={onClose}>
     <CollectionHeader title="Reading List" icon="book" />
     <div className={`reading-list-layout${selected ? " has-peek" : ""}`} onKeyDown={onPeekKeyDown}>
       <div className="watchlist-scroll reading-list-collections" role="region" aria-label="Reading List collections" tabIndex={0}>
-        <div className="reading-journal-intro"><span>My little bookshelf</span><p>Stories worth getting lost in.</p><CollectionIcon name="book" /></div>
+        <ReadingPegboard favorite={readingList.catalog[pinnedId]} onOpenBook={trigger => openPeek(pinnedId, trigger)} onChooseShelf={chooseShelf} sections={sections} counts={Object.fromEntries(sections.map(section => [section.id, readingList[section.id].length]))} />
         {sections.map(section => <section className="watchlist-section" key={section.id} aria-labelledby={`reading-list-${section.id}`}>
-          <h3 id={`reading-list-${section.id}`}><CollectionIcon name={section.icon} />{section.title}
+          <h3 id={`reading-list-${section.id}`} tabIndex={-1}><CollectionIcon name={section.icon} />{section.title}
             <span className="collection-count">{readingList[section.id].length}</span></h3>
           <p className="reading-shelf-caption">{section.caption}</p>
-          <ul className="watchlist-cards" aria-label={section.title}>
-            {[...readingList[section.id]].sort((a, b) => readingList.catalog[a].title.localeCompare(readingList.catalog[b].title, "en", { numeric: true, sensitivity: "base" })).map(id => {
-              const item = readingList.catalog[id];
-              return <li className="reading-list-card" key={id}>
-                <button className="reading-list-card-button" aria-label={`View details for ${item.title}`} aria-expanded={selectedId === id} aria-controls="reading-list-peek" onClick={event => openPeek(id, event.currentTarget)}>
-                  <span className="reading-list-cover-frame" aria-hidden="true">
-                    <span className="reading-list-cover"><img src={assets[item.image]} alt="" loading="lazy" />
-                      {readingList.favorites.includes(id) && <span className="reading-favorite-marker"><CollectionIcon name="heart" /></span>}
-                    </span>
-                  </span>
-                  <span className="reading-list-caption">
-                    <span className="reading-list-card-title">{item.title}</span>
-                    <span className="reading-list-card-author">{item.author}</span>
-                    {item.rating !== null && <span className="reading-list-rating" role="img" aria-label={`${item.rating} out of 5 stars`}>
-                      {Array.from({ length: 5 }, (_, star) => <span className={star < item.rating ? "is-rated" : undefined} key={star}><CollectionIcon name="star" /></span>)}
-                    </span>}
-                  </span>
-                </button>
-              </li>;
-            })}
-          </ul>
+          <ReadingShelves
+            label={section.title}
+            ids={[...readingList[section.id]].sort((a, b) => readingList.catalog[a].title.localeCompare(readingList.catalog[b].title, "en", { numeric: true, sensitivity: "base" }))}
+            catalog={readingList.catalog}
+            favorites={readingList.favorites}
+            selectedId={selectedId}
+            onOpenBook={openPeek}
+          />
         </section>)}
       </div>
       {selected && <aside className={`reading-list-peek${isPeekVisible ? " is-visible" : ""}`} id="reading-list-peek" aria-labelledby="reading-peek-title" onTransitionEnd={onPeekTransitionEnd}>
