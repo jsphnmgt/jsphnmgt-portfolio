@@ -124,10 +124,20 @@ try {
         assert(await page.locator('dialog[open]').count(), 'Closing details closed the collection');
       }
       if (label === 'Music Corner') {
-        await page.getByRole('button', { name: /^Listen to/ }).first().click();
-        await page.locator('.music-card-player.is-visible').waitFor();
-        await page.getByRole('button', { name: 'Close Spotify player', exact: true }).click();
-        await page.locator('.music-card-player').waitFor({ state: 'detached' });
+        for (const tab of ['Songs', 'Playlists']) {
+          await page.getByRole('tab', { name: tab, exact: true }).click();
+          const cards = page.locator('.music-song-list button');
+          assert.equal(await cards.count(), 4);
+          for (const card of await cards.all()) {
+            await card.click();
+            assert.equal(await card.getAttribute('aria-pressed'), 'true');
+            assert.equal(await page.locator('.music-pick-card h3').textContent(), await card.locator('.music-song-title').textContent());
+          }
+          const link = page.getByRole('link', { name: /Open in Spotify/ });
+          assert.match(await link.getAttribute('href'), /^https:\/\/open\.spotify\.com\//);
+          assert.equal(await link.getAttribute('target'), '_blank');
+        }
+        assert.equal(await page.locator('.music-overlay iframe').count(), 0, 'Music embeds should be removed');
       }
       await page.keyboard.press('Escape');
       await page.locator('dialog[open]').waitFor({ state: 'hidden' });
