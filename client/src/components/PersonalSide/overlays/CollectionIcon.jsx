@@ -1,5 +1,7 @@
 export default function CollectionIcon({ name, viewBox = "0 0 24 24" }) {
   return <svg className="watchlist-icon" viewBox={viewBox} fill="currentColor" aria-hidden="true">
+    {name === "cartridge" && <path fillRule="evenodd" d="M5 2h13l3 3v15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm2 3v7h10V5H7Zm1 12v3h2v-3H8Zm3 0v3h2v-3h-2Zm3 0v3h2v-3h-2Z" />}
+    {name === "player" && <><circle cx="12" cy="7" r="5" /><path d="M3 22v-3a9 9 0 0 1 18 0v3H3Z" /></>}
     {name === "game" && <path fillRule="evenodd" clipRule="evenodd" d="M7 6h10c3 0 5 3 5 7v4c0 3-3 4-5 2l-3-3h-4l-3 3c-2 2-5 1-5-2v-4c0-4 2-7 5-7ZM6 9h2v2h2v2H8v2H6v-2H4v-2h2V9Zm11.1 1a1.1 1.1 0 1 0-2.2 0 1.1 1.1 0 0 0 2.2 0Zm2 3a1.1 1.1 0 1 0-2.2 0 1.1 1.1 0 0 0 2.2 0Z" />}
     {name === "music" && <path d="M9 4v12.2A4 4 0 1 0 11 20V8l8-2v8.2A4 4 0 1 0 21 18V1L9 4Z" />}
     {name === "book" && <path d="M11 5C8 2.8 4.8 2.3 2 3v16c3-.7 6-.2 9 2V5ZM13 5c3-2.2 6.2-2.7 9-2v16c-3-.7-6-.2-9 2V5Z" />}

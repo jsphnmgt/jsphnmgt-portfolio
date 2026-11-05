@@ -180,3 +180,13 @@
   .personal-room .watchlist-overlay > .overlay-close { top: .35rem; }
   .personal-room .music-header { min-height: 3.5rem; }
 }
+
+/* One consistent blue for the personal collection header icons. */
+.personal-room .overlay-content :is(.collection-header, .music-header) h2 > svg.watchlist-icon { color: color-mix(in srgb, var(--color-navy) 65%, var(--color-cobalt)); }
+
+/* Match collection title typography and icon proportions across overlays. */
+.personal-room .overlay-content :is(.collection-header, .music-header) h2 { display: flex; align-items: center; justify-content: flex-start; gap: .65rem; margin: 0; font-family: var(--font-display); font-size: 1.7rem; font-weight: 400; line-height: 1.2; text-align: left; }
+.personal-room .overlay-content :is(.collection-header, .music-header) h2 > svg.watchlist-icon { display: block; flex-shrink: 0; width: 1.2rem; height: 1.2rem; margin: 0; padding: 0; transform: none; }
+@media (max-width: 600px) {
+ .personal-room .overlay-content :is(.collection-header, .music-header) h2 { font-size: 1.4rem; }
+}
