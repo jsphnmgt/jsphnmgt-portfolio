@@ -1,10 +1,12 @@
 import { assets } from "../../../assets";
+import { projectShowcases } from "../../../data/projectShowcases";
 const projects = [
   {
     title: "CapsiCAM",
+    image: projectShowcases.CapsiCAM.views[0].image,
     githubUrl: "https://github.com/hrspnd/CapsiCAM",
     projectType: "Group project",
-    description: "A mobile application for real-time chili pepper leaf disease classification using deep learning", techStack: ["Flutter", "Dart", "Python", "TensorFlow Lite", "Supabase"], asset: "capsicam-cover.png", crop: "capsicam"
+    description: "An Android application developed for an undergraduate thesis that classifies chili pepper leaf images using deep learning and displays visual explanations of its predictions.", techStack: ["Flutter", "Dart", "Python", "TensorFlow Lite", "Supabase"], asset: "capsicam_homescreen.jpg", crop: "capsicam"
   },
   {
     title: "Course Companion",
@@ -16,19 +18,13 @@ const projects = [
     title: "HAUlam",
     githubUrl: "https://github.com/hrspnd/HAUlam",
     projectType: "Group project",
-    description: "Haulam helps users discover, browse, bookmark, and interact with food stalls at Holy Angel University", techStack: ["Flutter", "Dart", "Supabase"], asset: "haulam-cover.png", crop: "haulam"
+    description: "A mobile application for discovering food stalls at Holy Angel University, finding dishes, and saving favorite stalls for easy access.", techStack: ["Flutter", "Dart", "Supabase"], asset: "haulam-cover.png", crop: "haulam"
   },
   {
     title: "MYSTICA",
     githubUrl: "https://github.com/jsphnmgt/Mystica",
     projectType: "Solo project",
     description: "Mystica is a Studio Ghibli-inspired website featuring movies, characters, and its magical world", techStack: ["HTML", "CSS", "JavaScript"], asset: "mystica-cover.png", crop: "mystica"
-  },
-  {
-    title: "Portfolio",
-    projectType: "Solo project",
-    codeStatus: "Repository link coming soon",
-    description: "A CV website showcasing professional experience, education, skills, and achievements", techStack: ["React", "HTML", "CSS"], asset: "portfolio-cover.png", crop: "portfolio"
   },
 ];
 export default function Projects({ onCardClick }) {
@@ -38,9 +34,9 @@ export default function Projects({ onCardClick }) {
       <h2 id="projects-title">Selected <em>projects.</em></h2><span className="ornament" aria-hidden="true" />
     </div>
     <p className="section-intro">A collection of things I've built, explored, and learned along the way.</p>
-    <div className="projects-grid">{projects.map((project, index) => <button key={project.title} className="project-card" onClick={() => onCardClick({ ...project, image: assets[project.asset] })} aria-label={`View ${project.title} project`}>
-      <div className="project-windowbar" aria-hidden="true"><span className="window-dots"><i /><i /><i /></span><span>{project.projectType}</span><span>{String(index + 1).padStart(2, "0")} / 05</span></div>
-      <div className={`project-image ${project.crop}`}><img src={assets[project.asset]} alt={project.title + " screenshot"} loading="lazy" decoding="async" /></div>
+    <div className="projects-grid">{projects.map((project, index) => <button key={project.title} className="project-card" onClick={() => onCardClick({ ...project, showcase: projectShowcases[project.title], image: project.image || assets[project.asset] })} aria-label={`View ${project.title} project`}>
+      <div className="project-windowbar" aria-hidden="true"><span className="window-dots"><i /><i /><i /></span><span>{project.projectType}</span><span>{String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span></div>
+      <div className={`project-image ${project.crop}`}><img src={project.image || assets[project.asset]} alt={project.title + " screenshot"} loading="lazy" decoding="async" /></div>
       <div className="project-copy">
         <h3>{project.title}</h3>
         <p>{project.description}</p>

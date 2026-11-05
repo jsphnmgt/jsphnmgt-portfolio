@@ -8,6 +8,7 @@ const hue = (red, green, blue) => {
 };
 
 export function selectPreviewColor(pixels, palette) {
+  const fallback = palette[0]?.token || "--color-mint";
   const buckets = Array(36).fill(0);
   for (let index = 0; index < pixels.length; index += 4) {
     const [red, green, blue, alpha] = pixels.slice(index, index + 4);
@@ -17,10 +18,10 @@ export function selectPreviewColor(pixels, palette) {
     buckets[Math.floor(hue(red, green, blue) / 10)] += max - min;
   }
   const strongest = Math.max(...buckets);
-  if (!strongest) return "--color-sage";
+  if (!strongest) return fallback;
   const dominant = buckets.indexOf(strongest) * 10 + 5;
   const complement = (dominant + 180) % 360;
-  let choice = "--color-sage";
+  let choice = fallback;
   let bestDistance = Infinity;
   palette.forEach(({ token, rgb }) => {
     const candidate = hue(...rgb);

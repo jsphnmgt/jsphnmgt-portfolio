@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Overlay from "./Overlay";
 import ProjectPreview from "./ProjectPreview";
+import TechnologyStack from "./TechnologyStack";
 import PortfolioScrollbar from "./PortfolioScrollbar";
 import usePortfolioMotion from "../../hooks/usePortfolioMotion";
 import Hero from "./sections/Hero";
@@ -104,22 +105,29 @@ export default function ProfessionalSide({ savedPosition = null }) {
       <div className="green-world"><GreenBackdrop /><Experience /><Education /></div>
       <div className="blue-sky closing"><SparkleField variant="closing" /><Certificates onCardClick={setActiveItem} /><RoomInvitation /><Contact /></div>
     </div>
-    <Overlay className={activeItem?.techStack ? "project-overlay" : activeItem?.type === "certificate" ? "project-overlay certificate-overlay" : ""} isOpen={!!activeItem} onClose={() => setActiveItem(null)}>
+    <Overlay className={activeItem?.techStack ? "project-overlay project-showcase" : activeItem?.type === "certificate" ? "project-overlay certificate-overlay" : ""} isOpen={!!activeItem} onClose={() => setActiveItem(null)}>
       {activeItem && (activeItem.techStack || activeItem.type === "certificate") && <div className="detail-windowbar" aria-hidden="true"><span className="detail-window-kind"><span className="window-dots"><i /><i /><i /></span>{activeItem.type === "certificate" ? "Certificate archive" : "Project overview"}</span><span className="detail-window-signature">jsphnmgt / portfolio</span></div>}
       {activeItem && (activeItem.techStack ? <div className="project-detail-scroll" tabIndex={0} aria-label="Project details">
       <div className="project-detail-layout">
-        <ProjectPreview key={activeItem.image} image={activeItem.image} title={activeItem.title} />
+        <ProjectPreview key={activeItem.image} image={activeItem.image} title={activeItem.title} gallery={activeItem.showcase?.views} />
         <div className="project-detail-copy">
           <div className="project-detail-body">
             <div className="project-detail-summary">
-              <span className="project-detail-label"><span className="detail-label-mark" aria-hidden="true">✦</span>{activeItem.projectType || "Selected project"}</span>
+              <span className="project-detail-label">{activeItem.projectType || "Selected project"}</span>
               <h2 id="detail-title">{activeItem.title}</h2>
               <p>{activeItem.description}</p>
             </div>
+            {activeItem.showcase && <div className="project-story">
+              <div className="project-facts">
+                <section className="project-story-section project-fact project-role-section"><h3>My role</h3><div><p className="project-role-title">{activeItem.showcase.role}</p><p className="project-role-description">{activeItem.showcase.roleDescription}</p></div></section>
+                <div className="project-detail-technologies project-fact"><h3>Built with</h3><TechnologyStack technologies={activeItem.techStack} /></div>
+              </div>
+              <section className="project-story-section project-feature-section"><h3>{activeItem.projectType === "Group project" ? "What we built" : "What I built"}</h3><p>{activeItem.showcase.built}</p></section>
+            </div>}
+            {!activeItem.showcase && <div className="project-detail-technologies"><h3>Built with</h3><TechnologyStack technologies={activeItem.techStack} /></div>}
             <div className="project-detail-actions">
               {activeItem.githubUrl ? <a className="project-code-button creative-button hero-cv-button" href={activeItem.githubUrl} target="_blank" rel="noreferrer"><img src={assets["github-logo.png"]} alt="" />GitHub Code <span className="sr-only">(opens in a new tab)</span></a> : <span className="project-code-unavailable">{activeItem.codeStatus || "Code link unavailable"}</span>}
             </div>
-            <div className="project-detail-technologies"><h3>Built with</h3><div className="tags">{activeItem.techStack.map(tag => <span key={tag}>{tag}</span>)}</div></div>
           </div>
 
         </div>
