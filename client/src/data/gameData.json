@@ -39,12 +39,8 @@
       "image": "game-cover-a-dance-of-fire-and-ice.webp"
     },
     {
-      "title": "Adorable Home",
-      "image": "game-cover-adorable-home.webp"
-    },
-    {
-      "title": "Among Us",
-      "image": "game-cover-among-us.png"
+      "title": "A Way Out",
+      "image": "game-cover-a-way-out.jpg"
     },
     {
       "title": "Arknights: Endfield",
@@ -59,28 +55,12 @@
       "image": "game-cover-celeste.jpg"
     },
     {
-      "title": "Daddy Long Legs",
-      "image": "game-cover-daddy-long-legs.avif"
-    },
-    {
       "title": "Dark Deception",
       "image": "game-cover-dark-deception.jpg"
     },
     {
-      "title": "Dumb Ways to Die",
-      "image": "game-cover-dumb-ways-to-die.webp"
-    },
-    {
-      "title": "Dumb Ways to Die 2: The Games",
-      "image": "game-cover-dumb-ways-to-die-2.png"
-    },
-    {
       "title": "Farlight 84",
       "image": "game-cover-farlight-84.webp"
-    },
-    {
-      "title": "Good Pizza, Great Pizza",
-      "image": "game-cover-good-pizza-great-pizza.webp"
     },
     {
       "title": "Harvest Moon: Friends of Mineral Town",
@@ -115,32 +95,8 @@
       "image": "game-cover-peak.jpg"
     },
     {
-      "title": "Penguin Diner",
-      "image": "game-cover-penguin-diner.webp"
-    },
-    {
-      "title": "Penguin Diner 2",
-      "image": "game-cover-penguin-diner-2.png"
-    },
-    {
-      "title": "Plants vs. Zombies",
-      "image": "game-cover-plants-vs-zombies.webp"
-    },
-    {
-      "title": "Rhythm Hive",
-      "image": "game-cover-rhythm-hive.png"
-    },
-    {
       "title": "Roblox",
       "image": "game-cover-roblox.webp"
-    },
-    {
-      "title": "Smash Hit",
-      "image": "game-cover-smash-hit.jpg"
-    },
-    {
-      "title": "Soul Knight",
-      "image": "game-cover-soul-knight.png"
     },
     {
       "title": "Split Fiction",
@@ -152,44 +108,12 @@
       "imagePosition": "top"
     },
     {
-      "title": "Subway Surfers",
-      "image": "game-cover-subway-surfers.jpg"
-    },
-    {
       "title": "Super Mecha Champions",
       "image": "game-cover-super-mecha-champions.webp"
     },
     {
-      "title": "Temple Run",
-      "image": "game-cover-temple-run.jpg"
-    },
-    {
-      "title": "Temple Run 2",
-      "image": "game-cover-temple-run-2.webp"
-    },
-    {
-      "title": "Toilet Time",
-      "image": "game-cover-toilet-time.webp"
-    },
-    {
-      "title": "Tomb of the Mask",
-      "image": "game-cover-tomb-of-the-mask.webp"
-    },
-    {
       "title": "Tower of Fantasy",
       "image": "game-cover-tower-of-fantasy.webp"
-    },
-    {
-      "title": "Tsuki’s Odyssey",
-      "image": "game-cover-tsukis-odyssey.png"
-    },
-    {
-      "title": "Virtual Villagers Origins 2",
-      "image": "game-cover-virtual-villagers-origins-2.webp"
-    },
-    {
-      "title": "Virtual Villagers: A New Home",
-      "image": "game-cover-virtual-villagers-a-new-home.png"
     },
     {
       "title": "Wuthering Waves",
@@ -204,20 +128,13 @@
       "description": "Guide two orbiting planets along winding paths by keeping time with the music.",
       "thoughts": null
     },
-    "Adorable Home": {
+    "A Way Out": {
       "genres": [
-        "Simulation",
-        "Casual"
+        "Co-op",
+        "Action",
+        "Adventure"
       ],
-      "description": "Decorate a cozy home, care for cats, and share everyday moments with your partner.",
-      "thoughts": null
-    },
-    "Among Us": {
-      "genres": [
-        "Social Deduction",
-        "Multiplayer"
-      ],
-      "description": "Complete tasks with your crewmates while trying to discover the impostors hiding among you.",
+      "description": "Work with a partner as Leo and Vincent, two prisoners who must cooperate to escape prison and gain their freedom.",
       "thoughts": null
     },
     "Arknights: Endfield": {
@@ -243,14 +160,6 @@
       "description": "Help Madeline climb Celeste Mountain through challenging platforming stages and a story about facing your own doubts.",
       "thoughts": null
     },
-    "Daddy Long Legs": {
-      "genres": [
-        "Arcade",
-        "Casual"
-      ],
-      "description": "Try to walk as far as possible on impossibly long legs, timing each step to avoid falling over.",
-      "thoughts": null
-    },
     "Dark Deception": {
       "genres": [
         "Horror",
@@ -259,36 +168,12 @@
       "description": "Collect shards in nightmarish mazes while avoiding the creatures that hunt you.",
       "thoughts": null
     },
-    "Dumb Ways to Die": {
-      "genres": [
-        "Mini-games",
-        "Casual"
-      ],
-      "description": "Keep a cast of accident-prone characters safe through a collection of quick, increasingly tricky mini-games.",
-      "thoughts": null
-    },
-    "Dumb Ways to Die 2: The Games": {
-      "genres": [
-        "Mini-games",
-        "Casual"
-      ],
-      "description": "Take on a new collection of absurd sporting challenges and try to keep the characters out of danger.",
-      "thoughts": null
-    },
     "Farlight 84": {
       "genres": [
         "Battle Royale",
         "Shooter"
       ],
       "description": "Team up in a hero-based battle royale and combine shooting with character abilities to survive each match.",
-      "thoughts": null
-    },
-    "Good Pizza, Great Pizza": {
-      "genres": [
-        "Simulation",
-        "Time Management"
-      ],
-      "description": "Run a pizza shop, interpret customers’ orders, and prepare pizzas while managing your ingredients and earnings.",
       "thoughts": null
     },
     "Harvest Moon: Friends of Mineral Town": {
@@ -355,59 +240,12 @@
       "description": "Climb a dangerous mountain alone or with friends, managing your stamina and helping one another reach the summit.",
       "thoughts": null
     },
-    "Penguin Diner": {
-      "genres": [
-        "Time Management",
-        "Casual"
-      ],
-      "description": "Help Penny seat customers, serve meals, and keep a busy penguin restaurant running smoothly.",
-      "thoughts": null
-    },
-    "Penguin Diner 2": {
-      "genres": [
-        "Time Management",
-        "Casual"
-      ],
-      "description": "Join Penny for another restaurant adventure, serving penguins and upgrading the diner as business grows.",
-      "thoughts": null
-    },
-    "Plants vs. Zombies": {
-      "genres": [
-        "Tower Defense",
-        "Strategy"
-      ],
-      "description": "Build a defense of plants with different abilities to protect your home from waves of zombies.",
-      "thoughts": null
-    },
-    "Rhythm Hive": {
-      "genres": [
-        "Rhythm"
-      ],
-      "description": "Tap along to songs by HYBE artists and collect artist cards as you play.",
-      "thoughts": null
-    },
     "Roblox": {
       "genres": [
         "Social",
         "User-Created Experiences"
       ],
       "description": "Explore a wide variety of experiences created by the community, from obstacle courses to role-playing worlds.",
-      "thoughts": null
-    },
-    "Smash Hit": {
-      "genres": [
-        "Arcade",
-        "Action"
-      ],
-      "description": "Throw metal balls to shatter glass obstacles as you move through surreal, music-driven environments.",
-      "thoughts": null
-    },
-    "Soul Knight": {
-      "genres": [
-        "Roguelike",
-        "Dungeon Crawler"
-      ],
-      "description": "Explore randomized dungeons, discover weapons, and dodge enemy attacks as you fight through each run.",
       "thoughts": null
     },
     "Split Fiction": {
@@ -427,14 +265,6 @@
       "description": "Turn an inherited farm into a new home, grow crops, explore the mines, and get to know the people of Pelican Town.",
       "thoughts": null
     },
-    "Subway Surfers": {
-      "genres": [
-        "Endless Runner",
-        "Arcade"
-      ],
-      "description": "Dash along railway tracks, dodge trains and obstacles, and collect coins while escaping the inspector.",
-      "thoughts": null
-    },
     "Super Mecha Champions": {
       "genres": [
         "Shooter",
@@ -444,69 +274,12 @@
       "description": "Fight as a pilot and summon a powerful mecha to battle other players in an anime-inspired city.",
       "thoughts": null
     },
-    "Temple Run": {
-      "genres": [
-        "Endless Runner",
-        "Arcade"
-      ],
-      "description": "Escape with a stolen idol, jumping, sliding, and turning to avoid hazards along an endless route.",
-      "thoughts": null
-    },
-    "Temple Run 2": {
-      "genres": [
-        "Endless Runner",
-        "Arcade"
-      ],
-      "description": "Continue the chase through winding paths, cliffs, and mine tracks while collecting coins and avoiding obstacles.",
-      "thoughts": null
-    },
-    "Toilet Time": {
-      "genres": [
-        "Mini-games",
-        "Casual"
-      ],
-      "description": "Play a collection of silly bathroom-themed mini-games that test your timing and reactions.",
-      "thoughts": null
-    },
-    "Tomb of the Mask": {
-      "genres": [
-        "Arcade",
-        "Maze"
-      ],
-      "description": "Dash through trap-filled mazes with a mysterious mask that lets you climb walls.",
-      "thoughts": null
-    },
     "Tower of Fantasy": {
       "genres": [
         "Action RPG",
         "Open World"
       ],
       "description": "Explore a science-fiction world, discover new weapons, and take on enemies with other players.",
-      "thoughts": null
-    },
-    "Tsuki’s Odyssey": {
-      "genres": [
-        "Simulation",
-        "Casual"
-      ],
-      "description": "Spend time in Mushroom Village with Tsuki, decorating his home, fishing, and meeting the local residents.",
-      "thoughts": null
-    },
-    "Virtual Villagers: A New Home": {
-      "genres": [
-        "Simulation",
-        "Strategy"
-      ],
-      "description": "Help a small group of villagers establish a home on an island, learn skills, and uncover its mysteries.",
-      "thoughts": null
-    },
-    "Virtual Villagers Origins 2": {
-      "genres": [
-        "Simulation",
-        "Strategy",
-        "Puzzle"
-      ],
-      "description": "Build a village on Isola, gather and craft resources, and solve puzzles while caring for your growing community.",
       "thoughts": null
     },
     "Wuthering Waves": {

@@ -5,6 +5,7 @@ import CollectionIcon from "./CollectionIcon";
 import CollectionHeader from "./CollectionHeader";
 import useCollectionPeek from "../../../hooks/useCollectionPeek";
 import gameData from "../../../data/gameData.json";
+import "../../../styles/game-cartridges.css";
 
 export { favorites, playing, collection };
 
@@ -98,8 +99,15 @@ export default function GameShelf({ isOpen = false, onClose }) {
           <ul className="game-cartridges">{collection.map(game => <li key={game.title} className="game-cartridge">
             <button className="reading-list-card-button game-cartridge-button" aria-label={`View details for ${game.title}`} aria-expanded={selectedId === game.image} aria-controls="game-shelf-peek" onClick={event => openPeek(game.image, event.currentTarget)}>
               <span className="game-cartridge-art" aria-hidden="true">
-                <img className="game-cartridge-shell" src={assets["game-cartridge.png"]} alt="" />
-                <img className="game-cartridge-label" src={assets[game.image]} style={{ objectPosition: game.imagePosition }} alt="" />
+                <span className="game-cartridge-body">
+                  <span className="game-cartridge-label-frame">
+                    <span className="game-cartridge-brand"><CollectionIcon name="game" /><span>PLAYER ONE</span></span>
+                    <span className="game-cartridge-picture"><img className="game-cartridge-label" src={assets[game.image]} style={{ objectPosition: game.imagePosition }} alt="" /></span>
+                    <span className="game-cartridge-label-footer"><span className="game-label-bars" /><span>a little escape</span></span>
+                  </span>
+                  <span className="game-cartridge-insert-mark" />
+                </span>
+                {favorites.some(title => normalizeTitle(title) === normalizeTitle(game.title)) && <span className="game-cartridge-sticker"><CollectionIcon name="heart" /></span>}
               </span>
               <span className="game-cartridge-title">{game.title}</span>
             </button>

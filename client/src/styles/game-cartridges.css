@@ -1,0 +1,33 @@
+/* Molded cartridges with printed labels and playful favorite stickers. */
+.personal-room .game-shelf-overlay .game-cartridge { --cartridge-tint: var(--color-periwinkle); --cartridge-tilt: -1.5deg; max-width: 11rem; padding: .45rem; border: 0; border-radius: 0; background: transparent; }
+.personal-room .game-shelf-overlay .game-cartridge:nth-child(2n) { --cartridge-tint: var(--color-lavender); --cartridge-tilt: 1.5deg; }
+.personal-room .game-shelf-overlay .game-cartridge:nth-child(3n) { --cartridge-tilt: -.5deg; }
+.personal-room .game-shelf-overlay .game-cartridge-art { isolation: isolate; aspect-ratio: 1 / 1.13; margin: .45rem .35rem .6rem; border-radius: .35rem .35rem .8rem .35rem; background: transparent; filter: drop-shadow(2px 6px 4px rgb(37 41 50 / .2)); transform: rotate(var(--cartridge-tilt)); }
+.game-cartridge-body { position: absolute; inset: 0; border: 1px solid var(--color-navy); border-radius: .35rem .35rem .8rem .35rem; background: linear-gradient(135deg, var(--color-room-button), var(--color-navy) 65%); box-shadow: inset 1px 1px 0 var(--color-steel), inset -2px -2px 0 rgb(0 0 0 / .25), 0 1px 2px rgb(37 41 50 / .3); }
+.game-cartridge-label-frame { position: absolute; inset: 7% 7% 9%; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--color-steel); border-radius: .3rem .3rem .5rem .3rem; background: var(--color-cream); box-shadow: 0 0 0 2px rgb(0 0 0 / .18); }
+.game-cartridge-brand { display: flex; flex: 0 0 17%; align-items: center; justify-content: center; gap: 5%; padding-inline: 4%; color: var(--color-navy); }
+.game-cartridge-brand > .watchlist-icon { width: 14%; height: auto; }
+.game-cartridge-brand > span { font-family: var(--font-body); font-size: clamp(.4rem, .6vw, .6rem); font-weight: 600; letter-spacing: .08em; line-height: 1; white-space: nowrap; }
+.game-cartridge-picture { position: relative; flex: 1; min-height: 0; overflow: hidden; border-block: 1px solid color-mix(in srgb, var(--color-navy) 20%, transparent); background: var(--cartridge-tint); }
+.personal-room .game-shelf-overlay .game-cartridge-label { inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.game-cartridge-label-footer { display: flex; flex: 0 0 15%; align-items: center; justify-content: space-between; gap: 5%; padding-inline: 6%; color: var(--color-navy); }
+.game-cartridge-label-footer > span:last-child { font-family: var(--font-body); font-size: clamp(.4rem, .6vw, .6rem); font-style: italic; white-space: nowrap; }
+.game-label-bars { width: 23%; height: 45%; background: repeating-linear-gradient(90deg, var(--color-navy) 0 1px, transparent 1px 2px, var(--color-navy) 2px 4px, transparent 4px 5px); opacity: .65; }
+.game-cartridge-insert-mark { position: absolute; bottom: 2%; left: 47%; width: 0; height: 0; border-inline: .2rem solid transparent; border-top: .2rem solid var(--color-steel); }
+.game-cartridge-sticker { position: absolute; z-index: 4; top: 3%; right: -3%; display: grid; place-items: center; width: 23%; aspect-ratio: 1; border: 2px solid var(--color-cream); border-radius: 50%; background: var(--color-cobalt); color: var(--color-cream); box-shadow: 1px 2px 0 rgb(37 41 50 / .2); transform: rotate(12deg); }
+.game-cartridge-sticker .watchlist-icon { width: 55%; height: 55%; }
+.personal-room .game-shelf-overlay .game-cartridge-title { margin-top: .65rem; padding: .3rem 0; border: 0; font-family: var(--font-body); font-size: .9rem; line-height: 1.4; }
+.personal-room .game-shelf-overlay .game-cartridge-button { transform: none; translate: none; }
+.personal-room .game-shelf-overlay .game-cartridge-button[aria-expanded="true"] .game-cartridge-art { outline: 2px solid var(--color-cobalt); outline-offset: 4px; }
+.personal-room .game-shelf-overlay .game-cartridge-button:focus-visible { outline: 2px solid var(--color-cobalt); outline-offset: 4px; }
+@media (hover: hover) and (pointer: fine) {
+  .personal-room .game-shelf-overlay .game-cartridge-button:hover .game-cartridge-art { filter: drop-shadow(2px 9px 5px rgb(37 41 50 / .22)); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .personal-room .game-shelf-overlay .game-cartridge-art { transition: transform .25s cubic-bezier(.2,.8,.3,1.2), filter .25s ease; }
+  .personal-room .game-shelf-overlay .game-cartridge-button:focus-visible .game-cartridge-art { transform: translateY(-5px) rotate(0deg); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .personal-room .game-shelf-overlay .game-cartridge-button:hover .game-cartridge-art { transform: translateY(-5px) rotate(0deg) scale(1.03); }
+  .personal-room .game-shelf-overlay .game-cartridge-button:active .game-cartridge-art { transform: translateY(-1px) rotate(0deg); }
+}
