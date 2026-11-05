@@ -11,7 +11,7 @@ import "../../../styles/reading-corner.css";
 
 const sections = [
   { id: "favorites", title: "Favorites", icon: "heart", caption: "The ones that stay with me." },
-  { id: "reading", title: "Currently Reading", icon: "bookmark", caption: "Somewhere between the first page and the last." },
+  { id: "reading", title: "Currently Reading", icon: "page-pencil", caption: "Somewhere between the first page and the last." },
   { id: "finished", title: "Finished Reading", icon: "check", caption: "Last page turned, story kept." },
 ];
 
@@ -49,7 +49,7 @@ export default function ReadingList({ isOpen = false, onClose }) {
         <div className="reading-list-peek-scroll watchlist-scroll" key={selectedId}>
 
           <div className="reading-journal-hero">
-            <span className="reading-journal-eyebrow"><CollectionIcon name="book" />From my bookshelf</span>
+            <span className="reading-journal-eyebrow"><CollectionIcon name="book" />About this read</span>
             <div className="reading-journal-cover-stage">
             <img className="reading-list-peek-cover" src={assets[selected.image]} alt="" />
             </div>

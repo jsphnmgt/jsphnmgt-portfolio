@@ -5,11 +5,12 @@ import CollectionHeader from "./CollectionHeader";
 import { assets } from "../../../assets";
 import watchlist from "../../../data/watchlistData.json";
 import useCollectionPeek from "../../../hooks/useCollectionPeek";
+import "../../../styles/watchlist-journal.css";
 
 const sections = [
-  { id: "favorites", title: "Favorites", icon: "heart" },
-  { id: "watching", title: "Currently Watching", icon: "play" },
-  { id: "watched", title: "Watched", icon: "check" },
+  { id: "favorites", title: "Favorites", icon: "heart", caption: "The ones I would watch all over again." },
+  { id: "watching", title: "Currently Watching", icon: "play", caption: "A few stories I am still caught up in." },
+  { id: "watched", title: "Watched", icon: "check", caption: "End credits, lasting impressions." },
 ];
 
 
@@ -40,22 +41,44 @@ export default function Watchlist({ isOpen = false, onClose }) {
     }
     return () => animations.forEach(animation => animation.cancel());
   }, [hasPeek]);
+  const currentId = watchlist.watching[0];
+  const current = currentId ? watchlist.catalog[currentId] : null;
+  const chooseSection = id => {
+    const heading = document.getElementById('watchlist-' + id);
+    heading?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    heading?.focus({ preventScroll: true });
+  };
   const selected = selectedId ? watchlist.catalog[selectedId] : null;
   const statuses = selectedId ? sections.filter(section => watchlist[section.id].includes(selectedId)) : [];
   return <Overlay className="watchlist-overlay cinema-overlay" isOpen={isOpen} onClose={onClose}>
     <CollectionHeader title="Watchlist" icon="clapperboard" />
     <div className={`reading-list-layout${selected ? " has-peek" : ""}`} onKeyDown={onPeekKeyDown}>
       <div ref={collectionsRef} className="watchlist-scroll reading-list-collections" role="region" aria-label="Watchlist collections" tabIndex={0}>
+        <div className="cinema-intro">
+          <div className="cinema-intro-copy">
+            <span className="cinema-kicker"><CollectionIcon name="film" />My little picture house</span>
+            <p>Just one<br />more <em>episode.</em></p>
+            <span className="cinema-intro-foot">Anime, dramas, and stories worth staying up for.</span>
+          </div>
+          {current && <button className="cinema-now-showing" onClick={event => openTicket(currentId, event.currentTarget)} aria-label={'Open now showing: ' + current.title} aria-controls="watchlist-peek">
+            <span className="cinema-now-poster"><img src={assets[current.image]} alt="" /></span>
+            <span className="cinema-now-copy"><span className="cinema-kicker"><i aria-hidden="true" />Now showing</span><strong>{current.title}</strong><span className="cinema-now-meta">{current.type} &middot; {current.year}</span><span className="cinema-now-link">Take a peek <span aria-hidden="true">&#8599;</span></span></span>
+            <span className="cinema-ticket-side" aria-hidden="true">ADMIT ONE</span>
+          </button>}
+        </div>
+        <nav className="cinema-section-tabs" aria-label="Jump to a watchlist section">
+          {sections.map(section => <button key={section.id} onClick={() => chooseSection(section.id)}><CollectionIcon name={section.icon} /><span>{section.id === "watching" ? "Watching" : section.title}</span><span className="cinema-tab-count">{watchlist[section.id].length}</span></button>)}
+        </nav>
         {sections.map(section => <section className="watchlist-section" key={section.id} aria-labelledby={`watchlist-${section.id}`}>
-          <h3 id={`watchlist-${section.id}`}><CollectionIcon name={section.icon} />{section.title}<span className="collection-count">{watchlist[section.id].length}</span></h3>
+          <h3 id={`watchlist-${section.id}`} tabIndex={-1}><CollectionIcon name={section.icon} />{section.title}<span className="collection-count">{watchlist[section.id].length}</span></h3>
+          <p className="cinema-section-caption">{section.caption}</p>
           <ul className="watchlist-cards" aria-label={section.title}>
-            {[...watchlist[section.id]].sort((a, b) => watchlist.catalog[a].title.localeCompare(watchlist.catalog[b].title, "en", { numeric: true, sensitivity: "base" })).map((id, index) => {
+            {[...watchlist[section.id]].sort((a, b) => watchlist.catalog[a].title.localeCompare(watchlist.catalog[b].title, "en", { numeric: true, sensitivity: "base" })).map(id => {
               const item = watchlist.catalog[id];
               return <li key={id} className="watchlist-card" style={{ transformOrigin: "top left" }}>
                 <button className="reading-list-card-button watchlist-card-button" aria-label={`View details for ${item.title}`} aria-expanded={selectedId === id} aria-controls="watchlist-peek" onClick={event => openTicket(id, event.currentTarget)}>
-                  <span className="watchlist-ticket-number" aria-hidden="true"><span>★ ★ ★</span><span>No. {String(index + 1).padStart(3, "0")}</span></span>
-                  <span className="watchlist-poster" aria-hidden="true">{item.image ? <img src={assets[item.image]} alt="" loading="lazy" /> : <CollectionIcon name="film" />}</span>
-                  <span className="watchlist-card-caption watchlist-ticket-stub"><span className="watchlist-card-title" title={item.title}>{item.title}</span><span className="watchlist-card-type">{item.type}</span></span>
+                  <span className="watchlist-poster" aria-hidden="true">{item.image ? <img src={assets[item.image]} alt="" loading="lazy" /> : <CollectionIcon name="film" />}{watchlist.favorites.includes(id) && <span className="cinema-favorite-stamp"><CollectionIcon name="heart" /></span>}</span>
+                  <span className="watchlist-card-caption watchlist-ticket-stub"><span className="watchlist-card-title" title={item.title}>{item.title}</span><span className="watchlist-card-type">{item.type}{item.year && <> &middot; {item.year}</>}</span></span>
                 </button>
               </li>;
             })}
@@ -64,7 +87,7 @@ export default function Watchlist({ isOpen = false, onClose }) {
       </div>
       {selected && <button className={`watchlist-peek-scrim${isPeekVisible ? " is-visible" : ""}`} tabIndex={-1} aria-label="Back to watchlist" onClick={closePeek} />}
       {selected && <aside className={`reading-list-peek${isPeekVisible ? " is-visible" : ""}`} id="watchlist-peek" aria-labelledby="watchlist-peek-title" onTransitionEnd={onPeekTransitionEnd}>
-        <div className="reading-list-peek-toolbar"><span className="watchlist-detail-label">Title details</span><button className="reading-list-peek-close" onClick={closePeek} aria-label="Close show details"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m6.7 5.3 5.3 5.3 5.3-5.3 1.4 1.4-5.3 5.3 5.3 5.3-1.4 1.4-5.3-5.3-5.3 5.3-1.4-1.4 5.3-5.3-5.3-5.3z" /></svg></button></div>
+        <div className="reading-list-peek-toolbar"><span className="watchlist-detail-label">About this watch</span><button className="reading-list-peek-close" onClick={closePeek} aria-label="Close show details"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m6.7 5.3 5.3 5.3 5.3-5.3 1.4 1.4-5.3 5.3 5.3 5.3-1.4 1.4-5.3-5.3-5.3 5.3-1.4-1.4 5.3-5.3-5.3-5.3z" /></svg></button></div>
         <div className="reading-list-peek-scroll watchlist-scroll" key={selectedId}>
           <div className="reading-list-peek-summary watchlist-peek-hero">
             <img className="watchlist-peek-backdrop" src={assets[selected.image]} alt="" aria-hidden="true" />

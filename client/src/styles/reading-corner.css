@@ -28,17 +28,19 @@
 .reading-pick-cover img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
 .reading-pick-caption { display: flex; align-items: center; justify-content: center; gap: .35rem; padding-top: .45rem; font-family: var(--font-body); font-size: .65rem; font-style: italic; }
 .reading-pick-caption .watchlist-icon { width: .65rem; height: .65rem; }
-.reading-shelf-shortcuts { display: flex; justify-content: center; flex-wrap: wrap; gap: .6rem; margin-top: .85rem; }
-.reading-shelf-shortcuts button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; padding: .5rem .9rem; border: 1px solid var(--journal-line); border-radius: .2rem .2rem .5rem .2rem; background: var(--color-cream); box-shadow: 0 2px 0 color-mix(in srgb, var(--color-lavender) 65%, transparent); color: var(--journal-accent); font-family: var(--font-body); font-size: .85rem; cursor: pointer; }
-.reading-shelf-shortcuts .watchlist-icon { width: .85rem; height: .85rem; flex-shrink: 0; }
-.reading-shortcut-count { color: var(--color-steel); font-size: .7rem; }
+.reading-shelf-shortcuts { display: flex; justify-content: center; flex-wrap: wrap; gap: .65rem; margin-top: 1.25rem; }
+.reading-shelf-shortcuts button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; padding: .4rem .85rem; border: 1px solid var(--journal-line); border-radius: .25rem; background: transparent; box-shadow: none; color: var(--journal-accent); font-family: var(--font-body); font-size: .8rem; cursor: pointer; }
+.reading-shelf-shortcuts .watchlist-icon { width: .8rem; height: .8rem; flex-shrink: 0; }
+.reading-shortcut-count { margin-left: .3rem; color: var(--color-steel); font-size: .65rem; }
 .reading-shelf-shortcuts button:hover { background: color-mix(in srgb, var(--color-lavender) 25%, var(--color-cream)); border-color: var(--color-steel); }
 .reading-pinned-pick:focus-visible, .reading-shelf-shortcuts button:focus-visible { outline: 2px solid var(--journal-accent); outline-offset: 4px; }
 .personal-room .reading-list-overlay .watchlist-section { padding: 1.25rem 0 0; border-top: 0; }
 .personal-room .reading-list-overlay .watchlist-section + .watchlist-section { margin-top: 2.2rem; }
-.personal-room .reading-list-overlay .watchlist-section h3 { width: fit-content; padding: .35rem .7rem; border: 1px solid var(--journal-line); border-radius: .2rem; background: color-mix(in srgb, var(--color-lavender) 28%, var(--color-cream)); font-size: 1.15rem; scroll-margin-top: 1rem; }
+.personal-room .reading-list-overlay .watchlist-section h3 { margin: 0 0 .3rem; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--journal-ink); font-family: var(--font-display); font-size: 1.35rem; scroll-margin-top: .8rem; }
+.personal-room .reading-list-overlay .watchlist-section h3 > .watchlist-icon { width: .9rem; height: .9rem; }
+.personal-room .reading-list-overlay .watchlist-section h3 .collection-count { font-family: var(--font-body); font-size: .65rem; font-weight: 400; }
 .personal-room .reading-list-overlay .watchlist-section h3:focus-visible { outline: 2px solid var(--journal-accent); outline-offset: 3px; }
-.overlay-content .reading-shelf-caption { margin-top: .4rem; }
+.overlay-content .reading-shelf-caption { margin: 0 0 1.25rem; color: var(--color-steel); font-family: var(--font-body); font-size: .75rem; font-style: italic; line-height: 1.4; }
 .personal-room .reading-list-overlay .watchlist-cards { column-gap: 1.5rem; row-gap: 2rem; padding-inline: .5rem; }
 .personal-room .reading-list-overlay .reading-list-cover-frame { padding-bottom: .55rem; }
 .reading-list-overlay .reading-list-cover-frame::after { content: none; }
@@ -109,7 +111,7 @@
   .reading-shelf-shortcuts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; }
   .reading-shelf-shortcuts button { gap: .25rem; padding-inline: .25rem; font-size: .7rem; }
   .reading-shelf-shortcuts .watchlist-icon { width: .65rem; height: .65rem; }
-  .reading-shortcut-count { font-size: .6rem; }
+  .reading-shortcut-count { margin-left: 0; font-size: .55rem; }
 }
 @media (max-height: 600px) and (min-width: 700px) {
   .reading-pegboard { min-height: 0; padding: 1.2rem; }
@@ -242,7 +244,7 @@
   .reading-pegboard .reading-paper-piece:hover::after { opacity: 1; }
   .reading-pegboard .reading-board-keychain:hover { animation: reading-keychain-swing 1.1s ease-in-out; filter: drop-shadow(2px 5px 3px rgb(37 41 50 / .18)); }
   .reading-pegboard .reading-strip-frame:hover { filter: saturate(1.3) brightness(1.08); }
-  .reading-shelf-shortcuts button:hover { translate: 0 -3px; box-shadow: 0 5px 0 color-mix(in srgb, var(--color-lavender) 65%, transparent); }
+  .reading-shelf-shortcuts button:hover { translate: 0 -2px; }
 }
 @keyframes reading-keychain-swing { 0% { rotate: 0deg; } 12% { rotate: -24deg; } 30% { rotate: 18deg; } 49% { rotate: -12deg; } 67% { rotate: 7deg; } 83% { rotate: -3deg; } 100% { rotate: var(--pointer-tilt, 0deg); } }
 @media (prefers-reduced-motion: reduce) {
@@ -268,7 +270,7 @@
 .reading-shelf-ledge { position: relative; z-index: 1; grid-column: 1 / span var(--shelf-book-count); grid-row: 1; align-self: end; height: .85rem; margin-inline: -.4rem; border-bottom: .15rem solid var(--color-lavender); border-top: .15rem solid color-mix(in srgb, var(--journal-accent) 65%, var(--color-cream)); border-radius: 1px 1px 2px 2px; background: var(--journal-accent); box-shadow: 0 3px 0 color-mix(in srgb, var(--journal-accent) 25%, var(--color-cream)), 0 7px 9px rgb(37 41 50 / .13); pointer-events: none; }
 .personal-room .reading-list-overlay .reading-shelf-books .reading-list-caption { align-self: start; padding-top: 1rem; }
 
-.personal-room .reading-list-overlay .reading-corner-board + .watchlist-section { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--journal-line); }
+.personal-room .reading-list-overlay .reading-corner-board + .watchlist-section { margin-top: 2.25rem; padding-top: 2.25rem; border-top: 1px solid var(--journal-line); }
 
 /* A little desk-side theatre: pinned paper, glossy photos, and a pendulum charm. */
 .reading-pegboard { perspective: 950px; }

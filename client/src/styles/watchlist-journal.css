@@ -1,0 +1,135 @@
+/* A softer cinema journal, scoped to Watchlist. */
+.personal-room .cinema-overlay { --cinema-header: color-mix(in srgb, var(--color-lavender) 42%, var(--color-cream)); --cinema-ink: var(--color-navy); --cinema-accent: color-mix(in srgb, var(--color-navy) 65%, var(--color-cobalt)); --cinema-line: color-mix(in srgb, var(--color-steel) 22%, transparent); --cinema-ticket: color-mix(in srgb, var(--color-lavender) 9%, var(--color-cream)); }
+.personal-room .cinema-overlay .collection-header { border-bottom: 1px solid var(--cinema-line); }
+.personal-room .cinema-overlay .reading-list-layout { padding-top: 0; }
+.personal-room .cinema-overlay .reading-list-collections { container: watch-journal / inline-size; padding-top: 1.5rem; }
+.cinema-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 2rem; padding: .25rem .4rem 1.1rem; }
+.cinema-kicker { display: flex; align-items: center; gap: .45rem; color: var(--color-steel); font-family: var(--font-body); font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; }
+.cinema-kicker .watchlist-icon { width: .8rem; height: .8rem; }
+.overlay-content .cinema-intro-copy p { margin: .65rem 0 .75rem; color: var(--cinema-ink); font-family: var(--font-display); font-size: clamp(1.8rem, 3.7cqw, 2.4rem); line-height: 1.06; }
+.cinema-intro-copy em { color: var(--color-cobalt); font-weight: 400; }
+.cinema-intro-foot { display: block; max-width: 19rem; color: var(--color-steel); font-family: var(--font-body); font-size: .75rem; line-height: 1.5; }
+.cinema-now-showing { position: relative; display: flex; align-items: center; gap: 1.2rem; width: 100%; max-width: 25rem; justify-self: end; min-width: 0; padding: 1rem 2rem 1rem 1rem; border: 1px solid var(--cinema-line); border-radius: .25rem; background: linear-gradient(120deg, var(--color-cream), color-mix(in srgb, var(--color-lavender) 40%, var(--color-cream))); color: var(--cinema-ink); text-align: left; cursor: pointer; box-shadow: 2px 4px 0 color-mix(in srgb, var(--color-lavender) 45%, transparent); transform: rotate(1deg); }
+.cinema-now-showing::before, .cinema-now-showing::after { content: ''; position: absolute; right: 1.05rem; width: .65rem; height: .65rem; border: 1px solid var(--cinema-line); border-radius: 50%; background: var(--color-cream); }
+.cinema-now-showing::before { top: -.35rem; }
+.cinema-now-showing::after { bottom: -.35rem; }
+.cinema-now-poster { flex: 0 0 4.5rem; aspect-ratio: 2 / 3; padding: .2rem; background: var(--color-cream); box-shadow: 1px 3px 6px rgb(37 41 50 / .16); transform: rotate(-4deg); }
+.cinema-now-poster img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cinema-now-copy { display: flex; flex-direction: column; align-items: start; gap: .65rem; min-width: 0; }
+.cinema-now-copy strong { font-family: var(--font-display); font-size: clamp(1.25rem, 2.6cqw, 1.9rem); font-weight: 400; line-height: 1.12; }
+.cinema-now-copy .cinema-kicker { font-size: .55rem; letter-spacing: .1em; }
+.cinema-kicker i { width: .3rem; height: .3rem; border-radius: 50%; background: var(--color-cobalt); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-cobalt) 12%, transparent); }
+.cinema-now-meta { color: var(--color-steel); font-family: var(--font-body); font-size: .65rem; }
+.cinema-now-link { margin-top: .3rem; font-family: var(--font-body); font-size: .7rem; }
+.cinema-now-link > span { display: inline-block; margin-left: .6rem; }
+.cinema-ticket-side { position: absolute; top: .9rem; bottom: .9rem; right: .3rem; display: grid; place-items: center; padding-left: .5rem; border-left: 1px dashed var(--cinema-line); writing-mode: vertical-rl; color: var(--color-steel); font-size: .45rem; letter-spacing: .18em; }
+.cinema-section-tabs { display: flex; flex-wrap: wrap; gap: .65rem; padding: .25rem 0 1.2rem; margin-bottom: 1.4rem; border-bottom: 1px solid var(--cinema-line); }
+.cinema-section-tabs button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; padding: .4rem .85rem; border: 1px solid var(--cinema-line); border-radius: .25rem; background: transparent; color: var(--cinema-accent); font-family: var(--font-body); font-size: .8rem; cursor: pointer; }
+.cinema-section-tabs .watchlist-icon { width: .8rem; height: .8rem; flex-shrink: 0; }
+.cinema-tab-count { margin-left: .3rem; color: var(--color-steel); font-size: .65rem; }
+.cinema-section-tabs button:hover { background: color-mix(in srgb, var(--color-lavender) 22%, var(--color-cream)); border-color: var(--color-steel); }
+.cinema-now-showing:focus-visible, .cinema-section-tabs button:focus-visible { outline: 2px solid var(--color-cobalt); outline-offset: 4px; }
+.personal-room .cinema-overlay .watchlist-section h3 { margin: 0 0 .3rem; color: var(--cinema-ink); font-family: var(--font-display); font-size: 1.35rem; scroll-margin-top: .8rem; }
+.personal-room .cinema-overlay .watchlist-section h3 > .watchlist-icon { width: .9rem; height: .9rem; }
+.personal-room .cinema-overlay .watchlist-section h3 .collection-count { font-family: var(--font-body); font-size: .65rem; font-weight: 400; }
+.overlay-content .cinema-section-caption { margin: 0 0 1.25rem; color: var(--color-steel); font-family: var(--font-body); font-size: .75rem; font-style: italic; line-height: 1.4; }
+.personal-room .cinema-overlay .watchlist-section + .watchlist-section { margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid var(--cinema-line); }
+.personal-room .cinema-overlay .watchlist-cards { grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 1.3rem; row-gap: 1.65rem; }
+.personal-room .cinema-overlay .watchlist-card { padding: 0; filter: none; }
+.personal-room .cinema-overlay .watchlist-card-button { padding: .4rem .4rem .65rem; border: 1px solid var(--cinema-line); border-radius: .35rem; mask: none; background: var(--cinema-ticket); overflow: visible; box-shadow: 0 2px 3px rgb(37 41 50 / .04); }
+.personal-room .cinema-overlay .watchlist-poster { position: relative; border: 0; border-radius: .15rem; background: var(--color-lavender); overflow: hidden; }
+.personal-room .cinema-overlay .watchlist-poster img { width: 100%; height: 100%; object-fit: cover; }
+.personal-room .cinema-overlay .watchlist-card-caption { margin: .65rem -.4rem 0; padding: .7rem .65rem .1rem; min-height: 4.4rem; border-top: 1px dashed var(--cinema-line); gap: .4rem; }
+.personal-room .cinema-overlay .watchlist-card-title { font-size: .9rem; line-height: 1.3; }
+.personal-room .cinema-overlay .watchlist-card-type { font-size: .6rem; line-height: 1.4; }
+.cinema-overlay .watchlist-ticket-stub::before, .cinema-overlay .watchlist-ticket-stub::after { top: -.35rem; z-index: 2; width: .65rem; height: .65rem; border: 1px solid var(--cinema-line); }
+.cinema-overlay .watchlist-ticket-stub::before { left: calc(-.35rem - 1px); clip-path: inset(0 0 0 calc(50% - 2px)); }
+.cinema-overlay .watchlist-ticket-stub::after { right: calc(-.35rem - 1px); clip-path: inset(0 calc(50% - 2px) 0 0); }
+.cinema-favorite-stamp { position: absolute; top: .4rem; right: .4rem; display: grid; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: var(--color-cream); color: var(--cinema-accent); box-shadow: 0 1px 3px rgb(37 41 50 / .18); }
+.cinema-favorite-stamp .watchlist-icon { width: .65rem; height: .65rem; }
+.personal-room .cinema-overlay .watchlist-card:has(.watchlist-card-button:focus-visible) { border-radius: .35rem; outline-color: var(--color-cobalt); }
+.personal-room .cinema-overlay .watchlist-card:has([aria-expanded="true"]) { outline-color: var(--color-cobalt); outline-offset: 3px; }
+.personal-room .cinema-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.personal-room .cinema-overlay .reading-list-peek-section { border-top-style: solid; border-color: var(--cinema-line); }
+.personal-room .cinema-overlay .watchlist-peek-hero::after { background: linear-gradient(rgb(37 41 50 / .1), rgb(37 41 50 / .1)), linear-gradient(0deg, color-mix(in srgb, var(--color-cream) 88%, transparent), color-mix(in srgb, var(--color-lavender) 55%, transparent)); }
+.personal-room .cinema-overlay .watchlist-scroll { --cinema-scroll-track: transparent; --watchlist-scroll-thumb: color-mix(in srgb, var(--color-steel) 30%, var(--color-cream)); scrollbar-color: var(--watchlist-scroll-thumb) transparent; }
+.personal-room .cinema-overlay .watchlist-scroll::-webkit-scrollbar-track { background: transparent; }
+.personal-room .cinema-overlay .watchlist-scroll::-webkit-scrollbar-thumb { background: var(--watchlist-scroll-thumb); border: 3px solid transparent; background-clip: padding-box; }
+.personal-room .cinema-overlay .watchlist-scroll::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--color-steel) 50%, var(--color-cream)); background-clip: padding-box; }
+@supports selector(::-webkit-scrollbar) { .personal-room .cinema-overlay .watchlist-scroll { scrollbar-color: auto; } }
+@container watch-journal (max-width: 850px) {
+ .personal-room .cinema-overlay .watchlist-cards, .personal-room .cinema-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+ .cinema-intro { gap: 1.25rem; }
+ .cinema-now-showing { gap: .85rem; }
+}
+@container watch-journal (max-width: 650px) {
+ .personal-room .cinema-overlay .watchlist-cards, .personal-room .cinema-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 1rem; }
+ .cinema-intro { gap: 1rem; }
+ .cinema-now-showing { padding: .75rem 1.6rem .75rem .65rem; gap: .75rem; }
+ .cinema-now-poster { flex-basis: 3.5rem; }
+ .cinema-now-copy { gap: .4rem; }
+ .cinema-now-meta { font-size: .55rem; }
+ .cinema-now-link { font-size: .6rem; }
+ .cinema-intro-foot { font-size: .65rem; }
+}
+@container watch-journal (max-width: 450px) {
+ .personal-room .cinema-overlay .watchlist-cards, .personal-room .cinema-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 1rem; }
+ .cinema-intro { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; padding: 0 0 1.4rem; }
+ .overlay-content .cinema-intro-copy p { font-size: 2rem; }
+ .cinema-intro-copy p br { display: none; }
+ .cinema-intro-foot { max-width: none; }
+ .cinema-now-showing { padding: .75rem 2rem .75rem .8rem; }
+ .cinema-now-poster { flex-basis: 3.75rem; }
+ .cinema-now-copy strong { font-size: 1.3rem; }
+ .cinema-section-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; padding-bottom: 1.4rem; margin-bottom: 1.4rem; }
+ .cinema-section-tabs button { gap: .3rem; padding-inline: .25rem; font-size: .65rem; }
+ .cinema-section-tabs .watchlist-icon { width: .65rem; height: .65rem; }
+ .cinema-tab-count { margin-left: 0; font-size: .55rem; }
+ .personal-room .cinema-overlay .watchlist-card-caption { padding-inline: .45rem; }
+ .personal-room .cinema-overlay .watchlist-card-title { font-size: .85rem; }
+}
+@media (hover: hover) and (pointer: fine) {
+ .personal-room .cinema-overlay .watchlist-card:hover { filter: none; }
+ .personal-room .cinema-overlay .watchlist-card:hover .watchlist-card-button { border-color: color-mix(in srgb, var(--color-cobalt) 45%, var(--color-cream)); box-shadow: 0 7px 12px rgb(37 41 50 / .12); }
+}
+@media (prefers-reduced-motion: no-preference) {
+ .cinema-now-showing, .cinema-section-tabs button { transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
+ .cinema-now-showing:hover { transform: rotate(0deg) translateY(-3px); box-shadow: 3px 7px 0 color-mix(in srgb, var(--color-lavender) 45%, transparent); }
+ .cinema-section-tabs button:hover { transform: translateY(-2px); }
+ .personal-room .cinema-overlay .watchlist-card-button { transition: border-color .25s ease, box-shadow .25s ease; }
+}
+@media (max-height: 600px) and (min-width: 700px) {
+ .cinema-intro { padding-bottom: .85rem; }
+ .overlay-content .cinema-intro-copy p { font-size: 1.6rem; }
+ .cinema-now-poster { flex-basis: 3rem; }
+ .cinema-now-showing { padding-block: .65rem; }
+ .cinema-now-copy { gap: .3rem; }
+ .cinema-section-tabs { padding-bottom: 1rem; margin-bottom: 1rem; }
+}
+
+/* Keep the feature in place behind the sliding detail panel. */
+@media (min-width: 768px) {
+ .personal-room .cinema-overlay .reading-list-layout.has-peek { padding-right: 0; }
+ .personal-room .cinema-overlay .has-peek .watchlist-section,
+ .personal-room .cinema-overlay .has-peek .cinema-section-tabs { width: calc(100% - min(26rem, 40%) - 1.5rem); }
+ .personal-room .cinema-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 768px) and (max-width: 1000px) {
+ .personal-room .cinema-overlay .has-peek .watchlist-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Hide immediately on opening; animate only the ticket's return. */
+.personal-room .cinema-overlay .has-peek .cinema-now-showing { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+ .personal-room .cinema-overlay .cinema-now-showing {
+  opacity: 1; filter: blur(0); transform-origin: 85% 50%;
+  transition: opacity .32s ease, transform .42s cubic-bezier(.22,.75,.2,1), filter .32s ease, box-shadow .25s ease, display .42s allow-discrete;
+ }
+ .personal-room .cinema-overlay .cinema-now-showing:hover { transform: rotate(0deg) translateY(-3px); }
+ .personal-room .cinema-overlay .has-peek .cinema-now-showing { transition: none; }
+ @starting-style {
+  .personal-room .cinema-overlay .cinema-now-showing {
+   opacity: 0; transform: translate(-1.5rem, .6rem) rotate(-6deg) scale(.94); filter: blur(2px);
+  }
+ }
+}
