@@ -1,0 +1,14 @@
+/* Dark city-night neutrals, with a little blue from the wallpaper. */
+.personal-room .pc-overlay { --pc-text-accent: #d4baee; }
+.personal-room .pc-overlay { --color-pc-accent: #9baadc; --color-pc-selection: rgb(149 165 210 / .15); background: #1c2132; border-color: #64708a; box-shadow: inset 0 1px 0 #b7c2e21a, 0 24px 80px rgb(0 0 0 / .5); }
+.personal-room .pc-overlay .pc-explorer { background: linear-gradient(180deg, rgb(23 29 45 / .94), rgb(13 17 28 / .97)); border-color: rgb(155 170 209 / .28); -webkit-backdrop-filter: blur(18px) saturate(.85); backdrop-filter: blur(18px) saturate(.85); }
+.personal-room .pc-overlay .pc-window-titlebar { background: rgb(36 43 63 / .88); border-bottom-color: rgb(155 170 209 / .18); }
+.personal-room .pc-overlay .pc-navigation-bar { border-bottom-color: rgb(155 170 209 / .14); }
+.personal-room .pc-overlay .pc-search { background: rgb(155 170 209 / .06); border-color: rgb(155 170 209 / .2); }
+.personal-room .pc-overlay .pc-sidebar { border-color: rgb(155 170 209 / .14); }
+.personal-room .pc-overlay .pc-sidebar-selection { background: var(--color-pc-selection); }
+.personal-room .pc-overlay .pc-sidebar button:hover { background: rgb(149 165 210 / .12); }
+.personal-room .pc-overlay .pc-taskbar { background: rgb(21 26 43 / .95); border-top-color: rgb(155 170 209 / .22); }
+.personal-room .pc-overlay .pc-quick-link { border-color: rgb(155 170 209 / .23); background: rgb(155 170 209 / .035); }
+.personal-room .pc-overlay .pc-quick-link:hover { border-color: #8b9ac3; background: rgb(149 165 210 / .1); }
+.personal-room .pc-overlay .pc-quick-link .watchlist-icon { margin-inline: .3rem; color: var(--pc-text-accent); }

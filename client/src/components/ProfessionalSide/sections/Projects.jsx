@@ -29,9 +29,9 @@ const projects = [
 ];
 export default function Projects({ onCardClick }) {
   return <section id="projects" aria-labelledby="projects-title">
-    <p className="chapter-label"><span>01 /</span> Ideas made real</p>
+    <p className="chapter-label">Ideas made real</p>
     <div className="section-heading">
-      <h2 id="projects-title">Selected <em>projects.</em></h2><span className="ornament" aria-hidden="true" />
+      <h2 id="projects-title">Featured <em>projects.</em></h2><span className="ornament" aria-hidden="true" />
     </div>
     <p className="section-intro">A collection of things I've built, explored, and learned along the way.</p>
     <div className="projects-grid">{projects.map((project, index) => <button key={project.title} className="project-card" onClick={() => onCardClick({ ...project, showcase: projectShowcases[project.title], image: project.image || assets[project.asset] })} aria-label={`View ${project.title} project`}>

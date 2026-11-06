@@ -1,5 +1,6 @@
 import ComputerIntro from "./ComputerIntro";
 import recycleBinIcon from "../../../assets/personal-computer/pc-recycle-bin.png";
+import pcWallpaper from "../../../assets/optimized/pc-city-wallpaper.jpg.webp";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Overlay from "../../ProfessionalSide/Overlay";
 import { assets } from "../../../assets";
@@ -7,6 +8,7 @@ import watchlist from "../../../data/watchlistData.json";
 import readingList from "../../../data/readingListData.json";
 import gameData from "../../../data/gameData.json";
 import musicData from "../../../data/musicData.json";
+import "../../../styles/pc-wallpaper-theme.css";
 
 const { favorites: favoriteGames, playing, collection } = gameData;
 const { songs } = musicData;
@@ -43,7 +45,17 @@ export default function PersonalComputer({ isOpen = false, onClose, onOpenCollec
   const [imagesReady, setImagesReady] = useState(false);
   const desktopRef = useRef(null);
   const sidebarRef = useRef(null);
+  const folderContentRef = useRef(null);
+  const focusFolderRef = useRef(false);
   const [selection, setSelection] = useState(null);
+
+  useLayoutEffect(() => {
+    if (folderContentRef.current) folderContentRef.current.scrollTop = 0;
+    if (focusFolderRef.current) {
+      sidebarRef.current?.querySelector('[aria-current="page"]')?.focus({ preventScroll: true });
+      focusFolderRef.current = false;
+    }
+  }, [currentFolder]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -73,7 +85,7 @@ export default function PersonalComputer({ isOpen = false, onClose, onOpenCollec
   return <Overlay className="pc-overlay" isOpen={isOpen} onClose={onClose}>
     <h2 id="detail-title" className="pc-accessible-title">Personal Computer</h2>
     <div className="pc-desktop" ref={desktopRef}>
-      <img className="pc-wallpaper" src={assets["pc-rectangle49.png"]} alt="" />
+      <img className="pc-wallpaper" src={pcWallpaper} alt="" />
       <div className="pc-desktop-folders" aria-label="Desktop icons">
         <div className="pc-desktop-folder">
           <img src={recycleBinIcon} alt="" />
@@ -112,9 +124,9 @@ export default function PersonalComputer({ isOpen = false, onClose, onOpenCollec
               }}>{iconFolder(folder, folder.name === "Favorites" ? "pc-icon-explorer" : "")}<span>{folder.name}</span><Icon name="interface-arrow1" className="pc-small-arrow" /></button>)}
             </div>
           </nav>
-          <div className="pc-folder-content" aria-live="polite">
+          <div className="pc-folder-content" ref={folderContentRef} aria-live="polite">
             <div key={currentFolder} className="pc-folder-view" data-animate={hasChangedFolder ? "" : undefined}>
-              {currentFolder === "Welcome" || currentFolder === "About Me" ? <ComputerIntro about={currentFolder === "About Me"} onAbout={() => { setHasChangedFolder(true); setCurrentFolder("About Me"); }} onOpenCollection={onOpenCollection} /> : <div className="pc-collection-summary">
+              {currentFolder === "Welcome" || currentFolder === "About Me" ? <ComputerIntro about={currentFolder === "About Me"} onAbout={() => { focusFolderRef.current = true; setHasChangedFolder(true); setCurrentFolder("About Me"); }} onOpenCollection={onOpenCollection} /> : <div className="pc-collection-summary">
                 <h3>{currentFolder}</h3>
                 <ul className="pc-summary-list">{summaries[currentFolder].map(group => <li key={group.id}>
                   <button className="pc-summary-link" onClick={() => onOpenCollection?.(group.id)} aria-label={`Open ${group.label} collection`}>

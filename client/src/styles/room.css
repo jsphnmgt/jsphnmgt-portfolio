@@ -3,7 +3,7 @@
   --motion-room-duration: 1.65s;
   --motion-room-fade-duration: 1.8s;
   --motion-room-hover-duration: .3s;
-  --shadow-room-object-glow: brightness(1.12) drop-shadow(0 0 5px rgb(255 245 90 / 1)) drop-shadow(0 0 18px rgb(255 237 41 / .85)) drop-shadow(0 0 30px rgb(255 220 0 / .45));
+  --shadow-room-object-glow: brightness(1.2) drop-shadow(0 0 4px #e2c5ff) drop-shadow(0 0 14px rgb(191 145 255 / 1)) drop-shadow(0 0 32px rgb(175 119 255 / .85));
   width: 100%;
   height: 100svh;
   min-height: 100svh;
@@ -406,14 +406,15 @@
   bottom: calc(100% + var(--space-2));
   left: 50%;
   translate: -50% 0;
-  padding: var(--space-1) var(--space-3);
+  min-height: 34px;
+  padding: .5rem var(--space-3);
   border: var(--border-room-menu);
   border-radius: var(--radius-md);
-  background: var(--color-navy);
+  background: rgb(27 24 42 / .8);
   color: var(--color-cream);
   font-family: var(--font-body);
   font-size: var(--font-size-lg);
-  line-height: var(--line-height-body);
+  line-height: 1;
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
@@ -421,13 +422,15 @@
   transition: opacity var(--motion-room-hover-duration) ease-out;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: .6rem;
-  border: 1px solid rgb(230 213 185 / .6);
+  border: 1px solid #d9b8ff;
   border-radius: 999px;
   box-shadow: 0 4px 16px rgb(0 0 0 / .2);
 }
 
-.room-object-number { color: #dfc59c; font-size: .7em; letter-spacing: .06em; }
+.room-object-number { color: #d4baee; font-size: .7em; letter-spacing: .06em; }
+.room-object-label :is(.room-object-number, .room-object-name) { display: block; line-height: 1; text-box-trim: trim-both; text-box-edge: cap alphabetic; }
 
 .room-object:focus-visible .room-object-label {
   opacity: 1;
@@ -442,8 +445,8 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .room-entered.room-ready .room-object {
-    animation: room-discovery-glow var(--motion-room-discovery-duration) ease-in-out var(--motion-room-discovery-delay) both;
+  .room-entered.room-ready.is-locating .room-object {
+    animation: room-discovery-glow 1.1s ease-in-out calc(.25s + var(--room-discovery-index, 0) * .18s) 1 backwards;
   }
 }
 
@@ -454,11 +457,16 @@
     filter: var(--shadow-room-object-rest);
   }
 
-  35%,
-  65% {
+  50% {
     filter: var(--shadow-room-object-glow);
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .personal-room.room-leaving::before { content: ''; position: absolute; inset: 0; z-index: 10; background: #222c4c; pointer-events: none; animation: room-return-cover .2s ease-out both; }
+  .room-leaving :is(.room-back-button, .room-navigation, .room-explore-hint) { pointer-events: none; }
+}
+@keyframes room-return-cover { from { opacity: 0; } to { opacity: 1; } }
 
 @media (max-width: 600px) {}
 
@@ -653,4 +661,7 @@
 .room-navigation-panel button:nth-of-type(5) {
   --room-menu-item-index: 5;
 }
+
+
+
 

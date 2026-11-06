@@ -15,6 +15,10 @@ const tabs = [
 ];
 const { songs, playlists, genres, artists } = musicData;
 
+function RecordSleeve({ image }) {
+  return <span className="music-sleeve" aria-hidden="true"><img src={assets[image]} alt="" /></span>;
+}
+
 export default function Music({ isOpen = false, onClose }) {
   const [activeTab, setActiveTab] = useState("songs");
   const [selected, setSelected] = useState(songs[0]);
@@ -39,7 +43,7 @@ export default function Music({ isOpen = false, onClose }) {
 
   return <Overlay className="watchlist-overlay music-overlay" isOpen={isOpen} onClose={onClose} showCloseButton={false}>
     <header className="watchlist-header music-header">
-      <h2 id="detail-title"><CollectionIcon name="music" />Music Corner<span className="music-equalizer" aria-hidden="true"><i /><i /><i /><i /><i /></span></h2>
+      <h2 id="detail-title"><CollectionIcon name="music" /><span className="music-header-title">Music Corner</span><span className="music-equalizer" aria-hidden="true"><i /><i /><i /><i /><i /></span></h2>
       <div className="music-navigation">
         <div className="music-tabs" role="tablist" aria-label="Music collections">
           {tabs.map((tab, index) => <button key={tab.id} role="tab" id={`music-tab-${tab.id}`} aria-selected={activeTab === tab.id} aria-controls="music-panel" tabIndex={activeTab === tab.id ? 0 : -1} ref={element => { tabRefs.current[index] = element; }} onClick={() => setActiveTab(tab.id)} onKeyDown={event => navigateTabs(event, index)}><span className="music-tab-label">{tab.label}</span></button>)}
@@ -57,11 +61,11 @@ export default function Music({ isOpen = false, onClose }) {
           <span className="music-paper-note" aria-hidden="true">a soundtrack for<br /><em>daydreaming.</em><span>↝</span></span>
           <div className="music-turntable" aria-hidden="true">
             <div className="music-turntable-platter"><div key={selectionCount} className={`music-record music-picked-record${selectionCount ? " is-selected" : ""}`}><img src={assets["music-vinyl.png"]} alt="" /><span className="music-record-artwork"><img src={assets[selected.image]} alt="" /></span></div></div>
-            <svg className="music-turntable-arm" viewBox="0 0 100 250" fill="none" focusable="false"><circle cx="68" cy="27" r="18" fill="#717b81" stroke="#343b47" strokeWidth="2" /><circle cx="68" cy="27" r="9" fill="#b8c2c2" /><path d="M68 27v108l-37 62" stroke="#343b47" strokeWidth="10" strokeLinecap="round" /><path d="M66 27v108l-37 62" stroke="#d9ded6" strokeWidth="5" strokeLinecap="round" /><path d="m24 183 18 10-13 24-18-10Z" fill="#343b47" stroke="#d9ded6" strokeWidth="1.5" /></svg>
+            <svg key={`needle-${selectionCount}`} className={`music-turntable-arm${selectionCount ? " is-cueing" : ""}`} viewBox="0 0 100 250" fill="none" focusable="false"><circle cx="68" cy="27" r="18" fill="#717b81" stroke="#343b47" strokeWidth="2" /><circle cx="68" cy="27" r="9" fill="#b8c2c2" /><path d="M68 27v108l-37 62" stroke="#343b47" strokeWidth="10" strokeLinecap="round" /><path d="M66 27v108l-37 62" stroke="#d9ded6" strokeWidth="5" strokeLinecap="round" /><path d="m24 183 18 10-13 24-18-10Z" fill="#343b47" stroke="#d9ded6" strokeWidth="1.5" /></svg>
             <span className="music-turntable-light" /><span className="music-turntable-speed">33 / 45</span><span className="music-turntable-dial" />
-            <span className="music-turntable-sticker"><span className="music-sticker-copy">good<br />vibrations</span><span className="music-sticker-star">✷</span></span>
           </div>
           <div className="music-pick-card" id="music-record-details">
+            <span className="music-on-repeat" aria-hidden="true">on repeat <svg viewBox="0 0 100 20" fill="none"><path d="M3 6c22 10 57-9 88 2m-7-6 8 6-9 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
             <img className="music-pick-cover" src={assets[selected.image]} alt="" />
             <div className="music-pick-copy"><div aria-live="polite" aria-atomic="true"><span className="music-pick-eyebrow">ON THE TURNTABLE</span><h3>{selected.title}</h3><p>{selected.artist || "A playlist from my collection"}</p></div><a href={selected.url} target="_blank" rel="noopener noreferrer" className="music-pick-link">Open in Spotify <span aria-hidden="true">&#8599;</span><span className="sr-only"> (opens in a new tab)</span></a></div>
           </div>
@@ -71,12 +75,12 @@ export default function Music({ isOpen = false, onClose }) {
           <div className="music-card-area">
             {activeTab === "songs" ? <ul className="music-song-list">
               {songs.map(song => <li key={song.title}><button className="music-song-card" onClick={() => selectRecord(song)} aria-pressed={selected.url === song.url} aria-controls="music-record-details" aria-label={`Select ${song.title} by ${song.artist}`}>
-                <img src={assets[song.image]} alt="" />
+                <RecordSleeve image={song.image} />
                 <span className="music-song-copy"><span className="music-song-title">{song.title}</span><span className="music-song-artist">{song.artist}</span></span>
               </button></li>)}
             </ul> : activeTab === "playlists" ? <ul className="music-song-list" aria-label="Favorite playlists">
               {playlists.map(playlist => <li key={playlist.title}><button className="music-song-card" onClick={() => selectRecord(playlist)} aria-pressed={selected.url === playlist.url} aria-controls="music-record-details" aria-label={`Select ${playlist.title}`}>
-                <img src={assets[playlist.image]} alt="" />
+                <RecordSleeve image={playlist.image} />
                 <span className="music-song-title">{playlist.title}</span>
               </button></li>)}
             </ul> : activeTab === "genres" ? <ul className="music-song-list music-genre-list" aria-label="Favorite genres">

@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="hero-text">
         <p className="hero-eyebrow"><span aria-hidden="true">✦</span> Frontend developer & creative thinker</p>
         <div className="hero-heading">
-          <h1 id="hero-title"><span className="hero-greeting">Hi, I'm</span> Josephine <em>Magat.</em></h1>
+          <h1 id="hero-title"><span className="hero-greeting">Hi, I'm</span> Maria Josephine <em>Magat.</em></h1>
         </div>
         <p className="tagline">A little code. A little curiosity. A lot of care.</p>
         <div className="hero-bio"><p>I'm a Computer Science student focused on frontend development, interface design, and the details that make products intuitive. I enjoy turning messy ideas into clean, usable experiences where design and code meet.</p><p>I'm seeking an internship where I can learn from experienced people, contribute to a team, and help ship thoughtful work.</p></div>

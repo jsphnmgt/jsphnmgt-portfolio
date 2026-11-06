@@ -1,4 +1,8 @@
 /* A celestial field journal. All decoration is local artwork or lightweight CSS. */
+@media (prefers-reduced-motion: no-preference) {
+  .app.is-returning::after { content: ''; position: fixed; inset: 0; z-index: 1000; background: #222c4c; pointer-events: none; animation: portfolio-return-reveal .2s ease-out both; }
+}
+@keyframes portfolio-return-reveal { from { opacity: 1; } to { opacity: 0; } }
 #home {
   padding: clamp(.75rem, 2vh, 1.5rem) max(1.25rem, 5vw) 2rem;
   min-height: calc(100svh - var(--navbar-height, 5rem));

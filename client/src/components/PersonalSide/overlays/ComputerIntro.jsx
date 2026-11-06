@@ -14,7 +14,7 @@ export default function ComputerIntro({ about = false, onAbout, onOpenCollection
       <p>I’m a Computer Science student who enjoys turning half-formed ideas into digital experiences, one small piece at a time.</p>
       <div className="pc-intro-interests">
         <h4>Away from the keyboard</h4>
-        <ul>{["Drawing", "Films & series", "Reading", "Games", "Music"].map(interest => <li key={interest}>{interest}</li>)}</ul>
+        <ul>{["Films & series", "Reading", "Games", "Music"].map(interest => <li key={interest}>{interest}</li>)}</ul>
       </div>
       <p className="pc-intro-note">This room is where I keep the stories, games, and songs I come back to. Feel free to look around.</p>
     </> : <>

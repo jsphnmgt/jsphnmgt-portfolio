@@ -6,7 +6,7 @@ const education = [
 ];
 export default function Education() {
   return <section id="education" aria-labelledby="education-title">
-    <p className="chapter-label"><span>03 /</span> Always a student</p>
+    <p className="chapter-label">My learning journey</p>
     <div className="section-heading">
       <h2 id="education-title">Education</h2>
       <span className="ornament" aria-hidden="true" />

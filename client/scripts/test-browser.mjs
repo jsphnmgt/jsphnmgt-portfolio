@@ -123,6 +123,19 @@ try {
         await page.locator('.reading-list-peek').waitFor({ state: 'detached' });
         assert(await page.locator('dialog[open]').count(), 'Closing details closed the collection');
       }
+      if (label === 'Personal Computer') {
+        const folders = page.getByRole('navigation', { name: 'Computer folders' });
+        await page.getByRole('button', { name: /A little about me/ }).click();
+        const about = folders.getByRole('button', { name: 'About Me', exact: true });
+        assert(await about.evaluate(button => button === document.activeElement), 'About shortcut lost keyboard focus');
+        await page.locator('.pc-folder-content').evaluate(content => { content.scrollTop = content.scrollHeight; });
+        for (const name of ['Favorites', 'Currents', 'Welcome']) {
+          const folder = folders.getByRole('button', { name, exact: true });
+          await folder.click();
+          assert.equal(await folder.getAttribute('aria-current'), 'page');
+          assert.equal(await page.locator('.pc-folder-content').evaluate(content => content.scrollTop), 0, 'Folder retained the previous scroll position');
+        }
+      }
       if (label === 'Music Corner') {
         for (const tab of ['Songs', 'Playlists']) {
           await page.getByRole('tab', { name: tab, exact: true }).click();

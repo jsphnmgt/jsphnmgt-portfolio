@@ -5,7 +5,7 @@ const experience = [
 ];
 export default function Experience() {
   return <section id="experience" aria-labelledby="experience-title">
-    <p className="chapter-label"><span>02 /</span> Along the way</p>
+    <p className="chapter-label">Along the way</p>
     <h2 id="experience-title" className="display-heading">Experience</h2>
     <p className="experience-subtitle">Roles and contributions in student organizations.</p>
     <div className="experience-layout">

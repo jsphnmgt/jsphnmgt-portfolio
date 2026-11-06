@@ -7,6 +7,7 @@ const PersonalSide = lazy(() => import('./components/PersonalSide/PersonalSide')
 function App() {
   const [isRoomOpen, setIsRoomOpen] = useState(() => window.location.hash === '#room');
   const [returnHref, setReturnHref] = useState('#home');
+  const [isReturning, setIsReturning] = useState(false);
   const previousHash = useRef(window.location.hash);
   const portfolioPosition = useRef({ hash: '#home', top: 0 });
   const restorePosition = useRef(false);
@@ -14,6 +15,7 @@ function App() {
   useEffect(() => {
     const updatePage = () => {
       const nextHash = window.location.hash;
+      setIsReturning(previousHash.current === '#room' && nextHash !== '#room' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
       if (nextHash === '#room' && previousHash.current !== '#room') {
         const anchorId = document.querySelector('#portfolio-nav-links a[aria-current="location"]')?.hash.slice(1);
         const anchor = anchorId ? document.getElementById(anchorId) : null;
@@ -36,7 +38,9 @@ function App() {
   }, [isRoomOpen]);
 
   return (
-    <main className="app">
+    <main className={`app${isReturning ? ' is-returning' : ''}`} onAnimationEnd={event => {
+      if (event.target === event.currentTarget && event.animationName === 'portfolio-return-reveal') setIsReturning(false);
+    }}>
       <LoadBoundary key={isRoomOpen ? 'room' : 'portfolio'}>
         <Suspense fallback={<div className="page-loading" role="status">Opening the room… <a href={returnHref}>Back to portfolio</a></div>}>
           {isRoomOpen ? <PersonalSide returnHref={returnHref} /> : <ProfessionalSide savedPosition={restorePosition.current ? portfolioPosition.current : null} />}

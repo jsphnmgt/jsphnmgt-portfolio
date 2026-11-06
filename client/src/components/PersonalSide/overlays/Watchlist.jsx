@@ -56,7 +56,7 @@ export default function Watchlist({ isOpen = false, onClose }) {
       <div ref={collectionsRef} className="watchlist-scroll reading-list-collections" role="region" aria-label="Watchlist collections" tabIndex={0}>
         <div className="cinema-intro">
           <div className="cinema-intro-copy">
-            <span className="cinema-kicker"><CollectionIcon name="film" />My little picture house</span>
+            <span className="cinema-kicker"><CollectionIcon name="film" />Movie nights and favorites</span>
             <p>Just one<br />more <em>episode.</em></p>
             <span className="cinema-intro-foot">Anime, dramas, and stories worth staying up for.</span>
           </div>

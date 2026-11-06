@@ -74,7 +74,7 @@ const certificates = [
 ];
 export default function Certificates({ onCardClick }) {
   return <section id="certificates" aria-labelledby="certificates-title">
-    <p className="chapter-label"><span>04 /</span> Little milestones, real growth</p>
+    <p className="chapter-label">Courses &amp; credentials</p>
     <h2 id="certificates-title" className="display-heading">Certificates</h2>
     <p className="section-subtitle">Professional achievements and certificates</p>
     <div className="certificates-grid">{certificates.map(certificate => <article className="certificate-card" key={certificate.title}>
