@@ -1,12 +1,12 @@
-﻿# jsphnmgt Portfolio
+﻿# Maria Josephine Magat — Portfolio
 
-A personal portfolio by **[Maria Josephine Magat](https://github.com/jsphnmgt)**, a Computer Science student interested in frontend development and interface design.
+A personal portfolio exploring frontend development, interface design, and the interests behind the work.
 
 The website brings together my work and the interests behind it. Its professional side presents my projects, skills, and background, while an interactive room offers a more personal introduction through the stories, games, and music I enjoy.
 
-[View the repository](https://github.com/jsphnmgt/jsphnmgt-portfolio)
+[View the live site](https://jsphnmgt.github.io/jsphnmgt-portfolio/)
 
-![Professional side of jsphnmgt Portfolio](client/src/assets/screenshots/main-screen.png)
+![Professional side of Maria Josephine Magat — Portfolio](client/src/assets/screenshots/main-screen.png)
 
 ## Explore my work
 
@@ -94,8 +94,12 @@ npm run dev
 
 Open the local address printed in your terminal.
 
+## Author
+
+**[Maria Josephine Magat](https://github.com/jsphnmgt)** — a Computer Science student interested in frontend development and interface design.
+
 ## License
 
 Copyright (c) 2026 Maria Josephine M. Magat. All rights reserved. See [LICENSE](LICENSE) for the copyright and third-party notices. Third-party materials remain subject to their respective licenses and ownership.
 
-See [Asset credits](ASSET-CREDITS.md) for recorded sources and assets whose original creators or usage terms still need confirmation.
+See [Asset credits](ASSET-CREDITS.md) for recorded sources and assets.
