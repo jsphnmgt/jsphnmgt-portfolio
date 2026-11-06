@@ -87,8 +87,8 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .watchlist-peek-scrim { transition: opacity .22s ease; }
-  .personal-room .cinema-overlay .reading-list-peek { opacity: 0; transform: translateX(1rem); transition: transform .35s ease, opacity .35s ease; pointer-events: none; }
-  .personal-room .cinema-overlay .reading-list-peek.is-visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+  .personal-room .cinema-overlay .reading-list-peek { transform: translateX(calc(100% + var(--space-watchlist-inset) + var(--space-4))); transition: transform var(--motion-reading-peek-exit-duration) var(--motion-reading-peek-ease); pointer-events: none; }
+  .personal-room .cinema-overlay .reading-list-peek.is-visible { transform: translateX(0); transition-duration: var(--motion-reading-peek-duration); pointer-events: auto; }
 }
 @media (max-width: 1000px) {
   .personal-room .cinema-overlay .watchlist-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }

@@ -4,6 +4,7 @@ import Overlay from "./ProfessionalSide/Overlay";
 export default class LoadBoundary extends Component {
   state = { failed: false };
   static getDerivedStateFromError() { return { failed: true }; }
+  componentDidCatch() { this.props.onError?.(); }
   render() {
     if (!this.state.failed) return this.props.children;
     const message = <div className="load-error" role="alert">

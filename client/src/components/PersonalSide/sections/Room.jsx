@@ -8,6 +8,8 @@ import "../../../styles/personal-creative.css";
 import "../../../styles/collection-scenes.css";
 import "../../../styles/room-navigation.css";
 import "../../../styles/room-loading.css";
+import "../../../styles/room-tablet.css";
+import "../../../styles/room-mobile.css";
 
 const PersonalComputer = lazy(() => import("../overlays/PersonalComputer"));
 const Watchlist = lazy(() => import("../overlays/Watchlist"));
@@ -79,10 +81,24 @@ export default function Room({ returnHref = "#home" }) {
   const [loadingId, setLoadingId] = useState(null);
   const [loadingSource, setLoadingSource] = useState(null);
   const menuRef = useRef(null);
+  const viewportRef = useRef(null);
   const returnFocusRef = useRef(null);
   const discoveryCheckedRef = useRef(false);
   const overlayReadyRef = useRef(false);
   const ActiveOverlay = activeObject?.component;
+
+  useLayoutEffect(() => {
+    const viewport = viewportRef.current;
+    const centerRoom = () => {
+      if (window.matchMedia("(max-width: 1100px)").matches) {
+        viewport.scrollLeft = (viewport.scrollWidth - viewport.clientWidth) / 2;
+      }
+    };
+    const observer = new ResizeObserver(centerRoom);
+    observer.observe(viewport);
+    centerRoom();
+    return () => observer.disconnect();
+  }, [imageReady]);
 
   useEffect(() => {
     if (loadingId && document.activeElement === document.body) {
@@ -188,6 +204,7 @@ export default function Room({ returnHref = "#home" }) {
   }} onAnimationEnd={event => {
     if (event.target === event.currentTarget && event.animationName === "room-return-cover") window.location.hash = returnHref;
   }}>
+    <div className="room-viewport" ref={viewportRef} tabIndex={0} role="region" aria-label="Room view, scroll to explore">
     <div className="room-scene">
       <img className="personal-room-image" src={assets["room.jpg"]} alt="An illustrated bedroom overlooking a purple city skyline at night" fetchPriority="high" onLoad={() => setImageReady(true)} onError={() => { setImageFailed(true); setImageReady(true); setHasEntered(true); }} />
       <div className="room-objects" inert={!hasEntered || isLeaving ? "" : undefined}>
@@ -196,6 +213,7 @@ export default function Room({ returnHref = "#home" }) {
           <span className="room-object-label" aria-hidden="true"><span className="room-object-number">{String(index + 1).padStart(2, "0")}</span><span className="room-object-name">{object.label}</span>{loadingId === object.id && loadingSource === "object" && <span className="room-inline-spinner" />}</span>
         </button>)}
       </div>
+    </div>
     </div>
     {!hasEntered && !isLeaving && <div className="room-entrance" aria-hidden="true" onAnimationEnd={event => {
       if (event.target === event.currentTarget && event.animationName === "room-entrance-finish") setHasEntered(true);
@@ -227,7 +245,7 @@ export default function Room({ returnHref = "#home" }) {
       }}>
         <button className="room-navigation-toggle" aria-expanded={isMenuOpen} aria-controls="room-explore-links" onClick={() => setIsMenuOpen(open => !open)}>
           <span>EXPLORE ROOM</span>
-          <svg className="room-menu-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          <svg className="room-menu-chevron" viewBox="3 5 10 6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </button>
         {!imageFailed && <span className="room-locate-control"><button className="room-locate-button" onClick={() => { setIsMenuOpen(false); setIsLocating(true); }} aria-label="Locate clickable objects" aria-busy={isLocating}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><circle cx="12" cy="12" r="7" /><circle cx="12" cy="12" r="2" /><path d="M12 2v3m0 14v3M2 12h3m14 0h3" strokeLinecap="round" /></svg></button><span className="room-locate-tooltip" aria-hidden="true">Locate Objects</span></span>}
         <div className="room-navigation-panel" inert={!isMenuOpen ? "" : undefined} aria-hidden={!isMenuOpen}>
@@ -243,9 +261,9 @@ export default function Room({ returnHref = "#home" }) {
           </div>
         </div>
       </div>
-      {hasEntered && <p className="room-explore-hint" role={imageFailed ? "status" : undefined}>{imageFailed ? "The room artwork couldn't load. Use Explore Room to open any collection." : "Click an object to explore."}</p>}
+      {hasEntered && <p className="room-explore-hint" role={imageFailed ? "status" : undefined}>{imageFailed ? "The room artwork couldn't load. Use Explore Room to open any collection." : <><span className="room-hint-desktop">Click an object to explore.</span><span className="room-hint-mobile">Swipe to explore the room. Tap an object.</span></>}</p>}
     <span className="sr-only" role="status">{loadingId ? `Loading ${activeObject?.label || "collection"}` : ""}</span>
-    {ActiveOverlay && <LoadBoundary key={activeObject.id} onDismiss={() => setActiveObject(null)}><Suspense fallback={<RoomLoadingState objectId={activeObject.id} setLoadingId={setLoadingId} />}><><ActiveOverlay key={activeObject.id} isOpen onClose={() => setActiveObject(null)} onOpenCollection={id => {
+    {ActiveOverlay && <LoadBoundary key={activeObject.id} onDismiss={() => setActiveObject(null)} onError={() => { overlayReadyRef.current = true; setLoadingId(null); setIsMenuOpen(false); }}><Suspense fallback={<RoomLoadingState objectId={activeObject.id} setLoadingId={setLoadingId} />}><><ActiveOverlay key={activeObject.id} isOpen onClose={() => setActiveObject(null)} onOpenCollection={id => {
       const object = roomObjects.find(item => item.id === id);
       if (object) {
         overlayReadyRef.current = false;

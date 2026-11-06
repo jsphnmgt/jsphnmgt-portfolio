@@ -584,6 +584,10 @@
 .certificate-detail-meta dt { font-size: .8rem; font-weight: 400; text-transform: uppercase; letter-spacing: .06em; }
 .certificate-detail-meta dd { overflow-wrap: anywhere; }
 .certificate-issuer-line { display: block; }
+.certificate-detail-footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-sage); }
+.project-overlay .certificate-detail-footer .certificate-detail-meta { margin: 0; padding: 0; border: 0; }
+.certificate-detail-footer .project-detail-actions { justify-content: flex-end; align-self: end; }
+.certificate-detail-footer .project-code-button { padding: .45rem .7rem; font-size: .8rem; white-space: nowrap; }
 
 /* Project and certificate previews share a clean showcase treatment. */
 .overlay-content.project-overlay {
@@ -635,6 +639,35 @@
   .overlay-content.certificate-overlay h2 { font-size: 1.75rem; }
   .overlay-content.project-overlay p { font-size: 1.05rem; }
   .project-overlay .certificate-detail-meta { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 1100px) {
+  .overlay-content.project-overlay.certificate-overlay {
+    height: fit-content;
+    max-height: calc(100svh - 1.5rem);
+  }
+  .certificate-overlay .project-detail-scroll {
+    flex: 0 1 auto;
+    container-type: inline-size;
+    max-height: calc(100svh - 5rem);
+  }
+  .certificate-overlay .certificate-detail-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    min-height: 0;
+  }
+  .certificate-overlay .certificate-detail-preview {
+    padding: 2.5rem 1.5rem;
+    gap: .85rem;
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-navy) 15%, transparent);
+  }
+  .certificate-overlay .project-preview-frame img {
+    max-height: min(30svh, 18rem);
+  }
+  .certificate-overlay .project-detail-copy { justify-content: flex-start; padding: 1.25rem; }
+  .certificate-overlay .project-detail-body { gap: 1rem; }
+  .certificate-overlay .certificate-image-link { min-height: 36px; padding-block: .25rem; }
 }
 
 @media (max-height: 500px) and (min-width: 651px) {

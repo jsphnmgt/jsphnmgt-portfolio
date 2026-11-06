@@ -1,0 +1,122 @@
+@media (max-width: 650px) {
+  .navbar { padding: .6rem 1rem; min-height: 56px; background: rgb(86 114 178 / .82); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+  .navbar .nav-toggle, .navbar .explore-room-btn { height: 36px; min-height: 36px; padding: 0 .7rem; font-size: .8rem; }
+  .navbar .nav-toggle { min-width: 4.5rem; }
+  .navbar .explore-room-btn { min-width: 10.5rem; gap: .4rem; }
+  .navbar .explore-room-btn img { width: 1.1rem; }
+  #home { padding: 1.75rem 1rem 1.5rem; }
+  #home .hero-card-stack {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "heading" "portrait" "bio" "skills" "actions";
+    grid-template-rows: repeat(5, auto);
+    min-height: auto;
+    align-content: start;
+    padding: 1.35rem;
+    gap: 1.4rem;
+    border-radius: 1.1rem 1.1rem 2.75rem 1.1rem;
+    background: radial-gradient(ellipse at 100% 0, rgb(188 195 227 / .28), transparent 45%), var(--color-cream);
+  }
+  #home .hero-text h1 { font-size: clamp(1.25rem, 6vw, 2.25rem); line-height: 1.1; letter-spacing: -.045em; white-space: nowrap; }
+  #home .hero-text h1 em { display: inline; margin-top: 0; }
+  #home .hero-text h1 .hero-greeting { display: flex; align-items: center; justify-content: space-between; margin-bottom: .8rem; font-size: .9rem; color: #000; }
+  #home .hero-greeting::after { content: "✧"; font-size: 1.75rem; line-height: .6; color: var(--color-cobalt); rotate: 12deg; }
+  #home .hero-media { width: 100%; max-width: none; padding: .5rem; margin: .2rem 0 .45rem; rotate: -1.5deg; border-color: var(--color-steel); border-radius: .45rem; background: color-mix(in srgb, var(--color-lavender) 55%, var(--color-cream)); box-shadow: 4px 5px 0 color-mix(in srgb, var(--color-steel) 45%, transparent); }
+  #home .portrait-caption { display: flex; margin-bottom: .4rem; font-size: .58rem; color: var(--color-navy); }
+  #home .hero-media > img { aspect-ratio: 1.9; object-fit: cover; object-position: center 45%; }
+  #home .portrait-sticker { display: flex; top: auto; bottom: -.6rem; right: -.5rem; width: 3.3rem; height: 3.3rem; gap: .15rem; padding: .25rem; font-size: .55rem; rotate: 9deg; box-shadow: 1px 2px 0 rgb(37 41 50 / .15); }
+  #home .portrait-sticker em { font-size: .9rem; }
+  #home .hero-bio { font-size: 1rem; line-height: 1.5; }
+  #home .hero-bio p + p { margin-top: .75rem; color: #545b6a; font-size: .95rem; }
+  #home .hero-skills { padding-top: .85rem; border-top: 1px dashed color-mix(in srgb, var(--color-steel) 35%, transparent); }
+  #home .hero-skills .skills-list { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: .4rem; }
+  #home .hero-skills .skills-row { display: contents; }
+  #home .hero-skills .skill-tag { padding: .2rem .5rem; font-size: .75rem; background: color-mix(in srgb, var(--color-lavender) 40%, var(--color-cream)); border-color: color-mix(in srgb, var(--color-steel) 50%, transparent); }
+  #home .hero-actions { justify-content: space-between; align-items: center; gap: 1rem; }
+  #home .hero-actions .hero-cv-button { min-height: 40px; padding: .45rem .85rem; font-size: .85rem; background: var(--color-lavender); border-color: var(--color-steel); }
+  #home .hero-actions .hero-contact-link { min-height: 40px; font-size: .85rem; }
+  #portfolio-content section { scroll-margin-top: calc(var(--navbar-height, 56px) + 1rem); }
+  #projects, #skills, #experience, #education, #certificates, #contact { padding: 2rem 1rem; min-height: auto; }
+  #projects { padding-top: 1.5rem; }
+  #skills { padding-top: 1rem; }
+  #portfolio-content .chapter-label { margin-bottom: .65rem; font-size: .7rem; }
+  #portfolio-content :is(.section-heading h2, .display-heading) { font-size: clamp(2rem, 8.5vw, 2.5rem); line-height: 1.1; }
+  #portfolio-content :is(.section-intro, .section-subtitle, .experience-subtitle, .contact-intro) { margin-top: .75rem; font-size: 1rem; font-weight: 400; line-height: 1.5; text-align: left; }
+
+  .projects-grid { width: 100%; margin-top: 1.25rem; gap: 1.25rem; }
+  .project-card { border-radius: .8rem; }
+  .project-windowbar { padding: .45rem .65rem; font-size: .7rem; }
+  .project-image { display: flex; align-items: center; justify-content: center; aspect-ratio: 1.9; background: #e6e8f0; }
+  .project-image img { position: static; inset: auto; width: 100%; height: 100%; max-width: 100%; object-fit: cover; object-position: center top; }
+  .project-image:is(.capsicam, .haulam) { padding: .65rem; }
+  .project-image:is(.capsicam, .haulam) img { width: auto; object-fit: contain; border: 1px solid #a6adbe; border-radius: .3rem; box-shadow: 2px 3px 6px rgb(37 41 50 / .15); }
+  .project-copy { padding: 1rem; gap: .6rem; }
+  .project-copy h3 { font-size: 1.35rem; }
+  .project-copy p { font-size: 1rem; line-height: 1.45; }
+  .project-copy .tags { gap: .35rem; }
+  .project-copy .tags span { padding: .15rem .4rem; font-size: .8rem; }
+  .project-open-note { font-size: .85rem; }
+
+  .professional-skills-grid { margin-top: 1.25rem; }
+  .professional-skill-card { padding: 1rem; }
+  .professional-skill-card > p { font-size: .95rem; line-height: 1.5; }
+  .professional-skill-card .project-technology-name { font-size: .8rem; }
+  .professional-skills-note { margin-top: 1.25rem; font-size: .85rem; line-height: 1.45; }
+
+  .experience-layout { margin-top: 1.25rem; }
+  .experience-list { gap: 1.5rem; }
+  .experience-entry { gap: .65rem; }
+  .experience-date { min-height: 0; padding: .4rem .8rem; font-size: 1rem; }
+  .experience-card { padding: 1.1rem; border-radius: .5rem 1.25rem 1.25rem 1.25rem; }
+  .experience-card h3 { font-size: 1.2rem; line-height: 1.3; }
+  .experience-card .organization { margin-top: .5rem; font-size: .9rem; line-height: 1.4; }
+  .experience-description { margin-top: .85rem; grid-template-columns: .75rem minmax(0, 1fr); gap: .5rem; }
+  .experience-description img { width: .75rem; height: .75rem; }
+  .experience-description p { font-size: .95rem; line-height: 1.5; }
+
+  .education-layout { margin-top: 1.25rem; }
+  .education-list { gap: 1.5rem; }
+  .education-step { gap: .6rem; padding-left: 1.5rem; }
+  .education-step::before { top: .65rem; left: .2rem; width: .6rem; height: .6rem; }
+  .education-step:not(:last-child)::after { top: 1rem; left: .5rem; }
+  .education-milestone { padding-top: .25rem; }
+  .education-path-date { font-size: 1rem; }
+  .education-path-label { margin-top: .15rem; font-size: .8rem; }
+  .education-card { padding: 1rem; border-radius: .8rem; }
+  .education-card h3, .education-card:nth-child(2) h3 { font-size: 1.1rem; line-height: 1.3; }
+  .education-card-heading { flex-wrap: nowrap; align-items: flex-start; gap: .5rem; }
+  .education-card-heading h3 { flex: 1 1 0; }
+  .education-current { padding: .15rem .4rem; font-size: .65rem; line-height: 1.2; white-space: nowrap; }
+  .education-card p { margin-top: .5rem; font-size: .95rem; line-height: 1.4; }
+
+  .certificates-grid { margin-top: 1.25rem; gap: 1rem; }
+  .certificate-card { padding: 1rem; gap: .5rem; border-radius: .8rem; }
+  .certificate-card-heading { grid-template-columns: minmax(0, 1fr) 1.85rem; gap: .65rem; }
+  .certificate-seal { width: 1.85rem; height: 1.85rem; }
+  .certificate-seal svg { width: 1.15rem; height: 1.15rem; }
+  .certificate-card h3, .certificate-card:nth-child(3) h3 { font-size: 1.2rem; line-height: 1.3; overflow-wrap: normal; }
+  .certificate-issuer { font-size: .85rem; line-height: 1.4; }
+  .certificate-footer { padding-top: .35rem; }
+  .certificate-footer button { min-height: 44px; font-size: .85rem; }
+  .certificate-footer > span { font-size: .85rem; }
+
+  .room-invitation { margin: 1rem 1rem; min-height: 0; }
+  .room-invitation-copy { min-height: 18rem; padding: 1.5rem; }
+  .room-invitation h2 { font-size: 2.25rem; }
+  .room-invitation-copy > p:not(.chapter-label) { font-size: 1rem; line-height: 1.5; }
+  #contact .contact-card { margin-top: 1.25rem; }
+  #contact .contact-card > a { padding: 1rem; grid-template-columns: 2.5rem minmax(0, 1fr); column-gap: .9rem; }
+  #contact .contact-stamp { width: 2.5rem; height: 2.5rem; align-self: center; margin: 0; }
+  #contact .contact-stamp img { width: 1.4rem; height: 1.4rem; }
+  #contact .contact-card h3 { font-size: 1.35rem; }
+  #contact .contact-card p { font-size: .9rem; line-height: 1.45; }
+  #contact .contact-action { min-height: 40px; margin-top: .5rem; padding-top: .5rem; font-size: .85rem; }
+  #contact .portfolio-footer { flex-direction: row; justify-content: space-between; align-items: center; gap: .75rem; margin-top: 1.5rem; font-size: .8rem; }
+  #contact .portfolio-footer > a { margin-left: auto; }
+
+  .overlay-content.project-overlay { width: calc(100vw - 1.5rem); max-width: calc(100vw - 1.5rem); height: calc(100svh - 1.5rem); max-height: calc(100svh - 1.5rem); }
+  .project-overlay .project-detail-copy { padding: 1.1rem; }
+  .overlay-content.project-overlay h2 { font-size: 1.75rem; }
+  .overlay-content.project-overlay p { font-size: 1rem; line-height: 1.5; }
+  .project-overlay .certificate-detail-meta { font-size: .9rem; }
+  .project-overlay .project-code-button { font-size: .9rem; }
+}

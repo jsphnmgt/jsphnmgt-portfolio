@@ -2,7 +2,6 @@ import { assets } from "../../../assets";
 import "../../../styles/contact.css";
 export default function Contact() {
   return <section id="contact" aria-labelledby="contact-title">
-    <div className="ornament contact-divider" aria-hidden="true" />
     <p className="chapter-label">Get in touch</p>
     <h2 id="contact-title" className="display-heading">Let's connect</h2>
     <p className="contact-intro">I'm open to internship opportunities and project collaborations.</p>
@@ -25,6 +24,6 @@ export default function Contact() {
         <span className="sr-only">Opens in a new tab</span>
       </a>
     </div>
-    <footer className="portfolio-footer"><span>✦ jsphnmgt Portfolio</span><a href="#home">Back to the stars ↑</a></footer>
+    <footer className="portfolio-footer"><span>✦ jsphnmgt</span><a href="#home">Back to the stars ↑</a></footer>
   </section>;
 }

@@ -38,8 +38,12 @@ try {
     await page.getByRole('heading', { level: 1 }).waitFor();
     assert(await page.locator('.hero-card-stack').evaluate(card => {
       const bounds = card.getBoundingClientRect();
-      return bounds.top >= document.querySelector('.navbar').getBoundingClientRect().bottom - 1 && bounds.bottom + 20 <= innerHeight;
-    }), 'The full introduction card does not fit the first screen');
+      const actions = card.querySelector('.hero-actions').getBoundingClientRect();
+      return bounds.top >= document.querySelector('.navbar').getBoundingClientRect().bottom - 1
+        && bounds.left >= 0 && bounds.right <= innerWidth + 1
+        && actions.bottom <= bounds.bottom + 1
+        && (innerWidth <= 650 || bounds.bottom + 20 <= innerHeight);
+    }), 'The introduction is clipped, overlaps navigation, or overflows the screen');
     assert.equal(await page.locator('.hero-text details').count(), 0, 'Biography is hidden in a toggle');
     assert.deepEqual(await page.locator('.hero-skills .skill-tag').allTextContents(), ['JavaScript', 'HTML', 'CSS', 'React', 'Flutter', 'Figma', 'UI/UX Design']);
     if (configuration.name === 'desktop') {

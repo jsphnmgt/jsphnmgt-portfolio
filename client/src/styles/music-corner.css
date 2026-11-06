@@ -1,4 +1,10 @@
 /* A paper-and-vinyl listening room, with little notes in the margins. */
+.personal-room .music-overlay .music-scroll { --music-scroll-thumb: color-mix(in srgb, var(--color-steel) 30%, var(--color-cream)); scrollbar-width: auto; scrollbar-color: var(--music-scroll-thumb) transparent; }
+.personal-room .music-overlay .music-scroll::-webkit-scrollbar { width: 12px; background: transparent; }
+.personal-room .music-overlay .music-scroll::-webkit-scrollbar-track { margin-block: .5rem .75rem; background: transparent; }
+.personal-room .music-overlay .music-scroll::-webkit-scrollbar-thumb { min-height: 3.25rem; background: var(--music-scroll-thumb); border: 3px solid transparent; border-radius: 999px; background-clip: padding-box; }
+.personal-room .music-overlay .music-scroll::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+@supports selector(::-webkit-scrollbar) { .personal-room .music-overlay .music-scroll { scrollbar-color: auto; } }
 .personal-room .music-overlay { --music-ink: #565d84; --color-music-card: #fffaf1; background: #f9f5ec; border: 1px solid #d5cedd; }
 .personal-room .music-header { background: color-mix(in srgb, var(--color-lavender) 42%, var(--color-cream)); border-bottom: 1px solid color-mix(in srgb, var(--color-steel) 22%, transparent); }
 .personal-room .music-header h2 { display: flex; align-items: center; }

@@ -16,6 +16,16 @@ import SparkleField from "./SparkleField";
 import GreenBackdrop from "./GreenBackdrop";
 import { assets } from "../../assets";
 
+const navigationIcons = {
+  Home: "m3 10 9-7 9 7M5 9v12h14V9M9 21v-8h6v8",
+  Projects: "M3 7h7l2 2h9v11H3ZM3 7V4h7l2 3",
+  Skills: "m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16",
+  Experience: "M3 7h18v13H3ZM8 7V3h8v4M3 12h18M10 12v3h4v-3",
+  Education: "m2 9 10-5 10 5-10 5ZM6 11v6q6 5 12 0v-6M22 9v8",
+  Certificates: "M5 3h14v12H5ZM8 7h8M8 10h5M9 15v6l3-2 3 2v-6",
+  Contact: "M3 5h18v14H3Zm0 0 9 8 9-8",
+};
+
 export default function ProfessionalSide({ savedPosition = null }) {
   const [activeItem, setActiveItem] = useState(null);
   const [activeSection, setActiveSection] = useState("home");
@@ -94,8 +104,9 @@ export default function ProfessionalSide({ savedPosition = null }) {
         event.currentTarget.querySelector(".nav-toggle").focus();
       }
     }}>
-      <button className="nav-toggle" aria-expanded={isNavOpen} aria-controls="portfolio-nav-links" onClick={() => setIsNavOpen(open => !open)}>Menu <span aria-hidden="true">{isNavOpen ? "−" : "+"}</span></button>
-      <div id="portfolio-nav-links" className="nav-links">{["Home", "Projects", "Skills", "Experience", "Education", "Certificates", "Contact"].map(label => <a key={label} href={`#${label.toLowerCase()}`} onClick={() => { setIsNavOpen(false); document.getElementById("portfolio-content")?.focus({ preventScroll: true }); }} aria-current={activeSection === label.toLowerCase() ? "location" : undefined}>{label}</a>)}</div>
+      <button className="nav-toggle" aria-expanded={isNavOpen} aria-controls="portfolio-nav-links" onClick={() => setIsNavOpen(open => !open)}>Menu</button>
+      <span className="nav-wordmark"><span className="nav-wordmark-star" aria-hidden="true">✦</span><span>jsphnmgt</span></span>
+      <div id="portfolio-nav-links" className="nav-links"><span className="nav-menu-heading">Explore the portfolio</span>{Object.keys(navigationIcons).map(label => <a key={label} href={`#${label.toLowerCase()}`} onClick={() => { setIsNavOpen(false); document.getElementById("portfolio-content")?.focus({ preventScroll: true }); }} aria-current={activeSection === label.toLowerCase() ? "location" : undefined}><svg className="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={navigationIcons[label]} /></svg><span>{label}</span><span className="nav-menu-arrow" aria-hidden="true">↗</span></a>)}</div>
       <button className="explore-room-btn" onClick={() => { window.location.hash = "room"; }}><span>Explore my room</span><img src={assets["room-arrow.svg"]} alt="" /></button>
     </nav>
     <div id="portfolio-content" tabIndex={-1}>
@@ -145,12 +156,14 @@ export default function ProfessionalSide({ savedPosition = null }) {
               <h2 id="detail-title">{activeItem.title}</h2>
               <p>{activeItem.description}</p>
             </div>
+            <div className="certificate-detail-footer">
             <dl className="certificate-detail-meta">
               <div><dt>Issued by</dt><dd>{activeItem.issuer.split(" / ").map((issuer, index) => <span className="certificate-issuer-line" key={issuer}>{index > 0 && " / "}{issuer}</span>)}</dd></div>
               <div><dt>Date earned</dt><dd>{activeItem.dateEarned}</dd></div>
             </dl>
             <div className="project-detail-actions">
               {activeItem.credentialUrl ? <a className="project-code-button creative-button hero-cv-button" href={activeItem.credentialUrl} target="_blank" rel="noreferrer"><span className="credential-button-label">View Credential</span><span className="sr-only">(opens in a new tab)</span></a> : <button className="project-code-button" disabled title="Credential link coming soon"><span className="credential-button-label">View Credential</span></button>}
+            </div>
             </div>
           </div>
         </div>

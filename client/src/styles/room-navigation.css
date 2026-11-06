@@ -1,4 +1,20 @@
 /* Simple capsules and a compact frosted menu. */
+.room-viewport { position: absolute; inset: 0; overflow: hidden; }
+.room-hint-mobile { display: none; }
+@media (max-width: 1100px) {
+  .room-hint-desktop { display: none; }
+  .room-hint-mobile { display: inline; }
+  #room .room-locate-control { display: none; }
+  #room.personal-room .room-navigation-toggle { display: inline-flex; align-items: center; justify-content: center; padding-inline: .75rem; }
+  #room.personal-room .room-navigation-toggle > span { text-align: center; }
+  #room.personal-room .room-navigation-toggle .room-menu-chevron { position: static; translate: none; margin-left: 0; }
+  .room-viewport { overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #879bc4 #252932; }
+  .room-viewport .room-scene { position: relative; top: 0; left: 0; translate: none; width: max(100%, 177.777778svh); height: max(100%, 56.25vw); }
+  .personal-room { --navigation-button-height: 36px; }
+  .personal-room#room :is(.room-back-button, .room-navigation-toggle) { min-width: 10.5rem; height: 36px; min-height: 36px; padding-inline: .75rem; font-size: .85rem; gap: .5rem; }
+  .personal-room#room .room-back-button > img { width: 1.1rem; }
+  .personal-room .room-locate-button { width: 36px; height: 36px; }
+}
 .personal-room:not(.room-entered) :is(.room-back-button, .room-navigation) { visibility: hidden; opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: no-preference) {
   .personal-room.room-entered:not(.room-leaving) :is(.room-back-button, .room-navigation) { animation: room-controls-enter .35s ease-out backwards; }

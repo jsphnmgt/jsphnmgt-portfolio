@@ -338,16 +338,25 @@
 .ornament {
   flex: 1;
   height: var(--space-4);
-  background: url("../assets/portfolio/projects-line.svg") center / 100% 100% no-repeat;
+  position: relative;
+  color: #faf4e9;
+  background: linear-gradient(currentColor, currentColor) center 4.2px / calc(100% - 8px) 1.6px no-repeat;
+  filter: drop-shadow(-2px 3px 2px rgb(37 41 50 / .4));
 }
 
-#education .ornament {
-  background-image: url("../assets/portfolio/education-line.svg");
+.ornament::before,
+.ornament::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 }
 
-.contact-divider {
-  background-image: url("../assets/portfolio/contact-line.svg");
-}
+.ornament::before { left: 0; }
+.ornament::after { right: 0; }
 
 .projects-grid {
   display: grid;

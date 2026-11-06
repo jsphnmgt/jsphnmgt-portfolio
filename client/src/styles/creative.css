@@ -220,7 +220,8 @@
 #education .chapter-label > span,
 #experience .chapter-label > span { border-color: color-mix(in srgb, var(--color-cream) 65%, transparent); }
 .section-intro { max-width: 40ch; margin-top: 1rem; color: var(--color-cream); font-size: 1.2rem; line-height: 1.5; }
-.ornament { max-width: 20rem; opacity: .8; }
+.ornament { max-width: 20rem; opacity: 1; }
+#skills .ornament,
 #projects .ornament,
 #education .ornament { max-width: 32rem; }
 .projects-grid { width: 100%; max-width: 76rem; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin: 2rem auto 0; }
@@ -277,6 +278,11 @@
 .education-path-label { display: block; margin-top: .4rem; font-size: .95rem; font-style: italic; color: var(--color-moss); }
 .education-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem 1rem; }
 .education-card-heading h3 { flex: 1 1 22rem; min-width: 0; }
+.education-degree-compact { display: none; }
+@media (max-width: 1100px) {
+  .education-degree-full { display: none; }
+  .education-degree-compact { display: inline; }
+}
 .education-current { display: inline-block; flex: 0 0 auto; max-width: 100%; margin-left: auto; padding: .25rem .65rem; border: 1px solid color-mix(in srgb, var(--color-moss) 40%, transparent); border-radius: 999px; background: var(--color-mint); color: var(--color-moss); font-size: .85rem; }
 @media (max-width: 650px) {
   .green-ribbon { left: -50%; width: 200%; top: 29%; }
@@ -457,6 +463,11 @@
 }
 
 /* Add a little height where the viewport has room, retaining compact landscape. */
+@media (min-width: 1101px) {
+  #home { min-height: auto; padding-bottom: 1rem; }
+  #projects { padding-top: 2rem; }
+}
+
 @media (min-width: 651px) and (min-height: 701px) {
   .hero-card-stack { min-height: 30.75rem; padding-block: clamp(2.15rem, 5.5svh, 2.85rem); }
 }
@@ -487,6 +498,91 @@
 
 @media (max-width: 650px) and (max-height: 700px) {
   .hero-card-stack { padding-left: 1rem; }
+}
+
+/* More compact cards on tablet screens. */
+@media (max-width: 1100px) {
+  .room-invitation { display: flex; min-height: 24rem; }
+  .room-invitation-copy { display: flex; flex-direction: column; min-height: 20rem; }
+  .room-invitation .creative-button { align-self: flex-start; margin-top: auto; min-height: 32px; padding: .35rem .75rem; gap: .75rem; font-size: .85rem; }
+}
+
+@media (min-width: 651px) and (max-width: 1100px) {
+  .certificates-grid { max-width: 38rem; margin-inline: auto; gap: .9rem; }
+  .certificate-card { padding: .8rem; gap: .35rem; border-radius: .7rem; box-shadow: .25rem .25rem 0 var(--color-lavender); }
+  .certificate-card-heading { grid-template-columns: minmax(0, 1fr) 1.65rem; gap: .5rem; }
+  .certificate-seal { width: 1.65rem; height: 1.65rem; }
+  .certificate-seal svg { width: 1rem; height: 1rem; }
+  .certificate-card h3, .certificate-card:nth-child(3) h3 { font-size: 1rem; line-height: 1.25; }
+  .certificate-issuer { font-size: .75rem; margin-bottom: .15rem; }
+  .certificate-footer { padding-top: .4rem; gap: .35rem; }
+  .certificate-footer button { font-size: .75rem; }
+  .certificate-footer img { width: .8rem; }
+  .certificate-footer > span { font-size: .8rem; }
+  .education-layout { margin-top: 1.5rem; }
+  .education-list { gap: 1rem; }
+  .education-step { grid-template-columns: 10rem minmax(0, 1fr); gap: 1.25rem; }
+  .education-step:not(:last-child)::after { bottom: calc(-1rem - 1.375rem); }
+  .education-milestone { padding-top: .45rem; padding-left: 1.75rem; }
+  .education-path-date { font-size: 1rem; }
+  .education-path-label { margin-top: .25rem; font-size: .8rem; }
+  .education-card { padding: 1rem 1.2rem; border-radius: .8rem; }
+  .education-card h3, .education-card:nth-child(2) h3 { font-size: .95rem; line-height: 1.25; }
+  .education-card p { margin-top: .4rem; font-size: .9rem; }
+  .education-card-heading { flex-wrap: nowrap; gap: .4rem .6rem; }
+  .education-card-heading h3 { flex: 1 1 0; }
+  .education-current { padding: .1rem .35rem; font-size: .6rem; line-height: 1.2; white-space: nowrap; }
+  .experience-layout { margin-top: 1.5rem; }
+  .experience-list { gap: 1.25rem; }
+  .experience-entry { grid-template-columns: 1fr; gap: .6rem; }
+  .experience-entry:not(:last-child)::before { display: none; }
+  .experience-date { width: fit-content; min-height: 0; padding: .35rem .8rem; font-size: 1rem; }
+  .experience-card { padding: 1.2rem 1.4rem; border-radius: .5rem 1.4rem 1.4rem 1.4rem; }
+  .experience-card h3 { font-size: 1.2rem; }
+  .experience-card .organization { margin-top: .4rem; font-size: .9rem; }
+  .experience-description { margin-top: .75rem; grid-template-columns: .75rem minmax(0, 1fr); gap: .5rem; }
+  .experience-description img { width: .75rem; height: .75rem; margin-top: .25rem; }
+  .experience-description p { font-size: .95rem; line-height: 1.45; }
+  .projects-grid { max-width: 38rem; gap: .85rem; }
+  .project-card { border-radius: .65rem; }
+  .project-windowbar { padding: .3rem .5rem; font-size: .6rem; }
+  .project-image { display: flex; align-items: center; justify-content: center; aspect-ratio: 2.75; background: #e6e8f0; }
+  .project-image img { position: static; inset: auto; width: 100%; height: 100%; max-width: 100%; object-fit: cover; object-position: center top; }
+  .project-image:is(.capsicam, .haulam) { padding: .4rem; }
+  .project-image:is(.capsicam, .haulam) img { width: auto; object-fit: contain; border: 1px solid #a6adbe; border-radius: .25rem; box-shadow: 2px 3px 5px rgb(37 41 50 / .14); }
+  .project-copy { padding: .55rem; gap: .25rem; }
+  .project-copy h3 { font-size: 1rem; }
+  .project-copy p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: .8rem; line-height: 1.3; margin-bottom: .15rem; }
+  .project-copy .tags { gap: .25rem; }
+  .project-copy .tags span { padding: .08rem .3rem; font-size: .65rem; }
+  .project-open-note { margin-top: .25rem; padding-top: .3rem; font-size: .7rem; }
+  .project-open-note > span { width: 1.2rem; height: 1.2rem; font-size: .8rem; }
+}
+
+/* Keep the tablet portrait beside the short intro, with room for the full bio. */
+@media (min-width: 651px) and (max-width: 1100px) and (min-height: 601px) {
+  #home { min-height: auto; padding-top: 3rem; padding-bottom: 1rem; }
+  #projects { padding-top: 1.5rem; }
+  .hero-card-stack { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); grid-template-areas: "eyebrow portrait" "heading portrait" "tagline portrait" "bio bio" "skills skills" "actions actions"; max-width: 48rem; min-height: auto; padding: 1.75rem; gap: .65rem 1.5rem; border-radius: 1.5rem 1.5rem 3.5rem 1.5rem; }
+  .hero-text { display: contents; }
+  .hero-eyebrow { grid-area: eyebrow; align-self: end; margin: 0; font-size: .7rem; line-height: 1.4; }
+  .hero-heading { grid-area: heading; }
+  .hero-text h1 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.08; }
+  .tagline { grid-area: tagline; align-self: start; margin: 0; max-width: 25ch; font-size: 1.05rem; }
+  .hero-media { width: 78%; max-width: 15rem; align-self: center; padding: .5rem; }
+  .hero-media > img { aspect-ratio: 2; }
+  .portrait-caption { font-size: .6rem; }
+  .portrait-sticker { width: 3.25rem; height: 3.25rem; right: -.3rem; padding: .25rem; gap: .1rem; font-size: .55rem; }
+  .portrait-sticker em { font-size: .85rem; }
+  .hero-bio { grid-area: bio; margin-top: .75rem; font-size: 1.05rem; line-height: 1.5; }
+  .hero-skills { max-width: none; margin: .5rem 0 .25rem; }
+  .hero-skills .skills-list { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: .4rem; }
+  .hero-skills .skills-row { display: contents; }
+  .hero-skills .skill-tag { font-size: .75rem; padding: .15rem .45rem; }
+  .hero-skills .portrait-footnote { margin: .5rem 0 0; text-align: left; font-size: .75rem; letter-spacing: 0; }
+  .hero-actions { grid-area: actions; justify-content: flex-start; align-items: center; gap: 1.25rem; margin-top: .5rem; }
+  .hero-actions .hero-cv-button { min-height: 32px; padding: .2rem .55rem; gap: .35rem; font-size: .75rem; }
+  .hero-actions .hero-contact-link { min-height: 32px; gap: .3rem; font-size: .75rem; }
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
@@ -523,6 +619,30 @@
     transform: translateY(0);
     box-shadow: 0 1px 0 color-mix(in srgb, var(--color-steel) 22%, transparent);
   }
+}
+
+@media (max-width: 650px) and (min-height: 601px) {
+  #home { min-height: auto; padding: .75rem 1rem 1.5rem; }
+  .hero-card-stack {
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "heading" "portrait" "bio" "skills" "actions";
+    grid-template-rows: repeat(5, auto);
+    align-content: start;
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+  .hero-text h1 { font-size: clamp(1.9rem, 8vw, 2.25rem); line-height: 1.08; }
+  .hero-text h1 em { display: inline; }
+  .hero-media { width: 100%; max-width: none; margin: 0; padding: .4rem; rotate: 1deg; }
+  .hero-media > img { aspect-ratio: 2; object-fit: cover; object-position: center 45%; }
+  .hero-bio { align-self: start; font-size: 1rem; line-height: 1.5; }
+  .hero-skills .skills-list { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: .35rem; }
+  .hero-skills .skills-row { display: contents; }
+  .hero-skills .skill-tag { font-size: .7rem; padding: .12rem .4rem; }
+  .hero-actions { align-self: end; align-items: center; justify-content: space-between; gap: .75rem; }
+  .hero-actions .hero-cv-button { min-height: 36px; padding: .35rem .65rem; gap: .4rem; font-size: .8rem; }
+  .hero-actions .hero-contact-link { min-height: 36px; font-size: .8rem; gap: .4rem; }
 }
 
 @keyframes cv-arrow-nudge {
