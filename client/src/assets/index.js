@@ -1,4 +1,4 @@
-const rawAssets = import.meta.glob(["./**/*.svg", "./optimized/*.webp", "!./design-system/**", "!./mockup/**", "!./optimized/stars-*.webp", "!./portfolio/constellation.svg"], {
+const rawAssets = import.meta.glob(["./**/*.svg", "./optimized/*.webp"], {
   eager: true,
   import: "default",
 });

@@ -79,8 +79,7 @@
     display: none;
   }
 
-  .tagline,
-  .blurb {
+  .tagline {
     font-size: var(--font-size-base);
   }
 
@@ -224,8 +223,7 @@
     font-size: min(4.2cqi, var(--font-size-xl));
   }
 
-  .education-card p,
-  .education-card .education-date {
+  .education-card p {
     font-size: var(--font-size-base);
   }
 
@@ -272,10 +270,6 @@
 
   #contact {
     padding: var(--space-16) var(--space-6);
-  }
-
-  .contact-divider {
-    margin: 0 0 var(--space-8);
   }
 
   #contact .display-heading {

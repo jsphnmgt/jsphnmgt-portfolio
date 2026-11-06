@@ -1,60 +1,90 @@
-# jsphnmgt Portfolio
+﻿# jsphnmgt Portfolio
 
-**Interactive Portfolio Website Showcasing Professional Work and Personal Interests**
+A personal portfolio by **[Maria Josephine Magat](https://github.com/jsphnmgt)**, a Computer Science student interested in frontend development and interface design.
 
-jsphnmgt Portfolio is an interactive website that brings together professional work and personal interests. It has two sides: a professional portfolio featuring projects, experience, education, and certificates, and an illustrated personal room where visitors can explore collections of shows, stories, games, and music.
+The website brings together my work and the interests behind it. Its professional side presents my projects, skills, and background, while an interactive room offers a more personal introduction through the stories, games, and music I enjoy.
 
-**Live site:** [Visit jsphnmgt Portfolio](https://jsphnmgt.github.io/avys-portfolio/)
+[View the repository](https://github.com/jsphnmgt/jsphnmgt-portfolio)
 
-**Demo video:** [Watch the demo](https://drive.google.com/drive/folders/1B3oj6ORSq4x1khLnwtaZtEFo4iStCV-e)
+![Professional side of jsphnmgt Portfolio](client/src/assets/screenshots/main-screen.png)
 
-![jsphnmgt Portfolio main screen](client/src/assets/screenshots/main-screen.png)
+## Explore my work
 
-## What it does
+The professional side introduces what I do and what I’m learning.
 
-### Explore my work
-
-The professional side introduces my background and the digital experiences I’ve helped build.
-
-- **Projects:** browse my work and click a card to see its preview, description, technologies, and GitHub link when available.
-- **Experience and education:** learn about my academic background and experience.
-- **Certificates:** explore my achievements, view certificate images, and follow available credential links.
-- **Contact:** find my email, GitHub, and LinkedIn if you’d like to connect.
-
-Use the navigation at the top to move between sections. When you’re ready to see the personal side, click **Explore my room**.
-
-### Step into my room
-
-The personal room is an illustrated space filled with objects you can explore. Click the glowing objects or use **Explore Room** to open a collection.
-
-| Inside the room | What you’ll find |
+| Section | What you’ll find |
 | --- | --- |
-| **Personal Computer** | A desktop-inspired file explorer with a welcome message, an introduction to me, and brief Favorites and Currents summaries. Click a summary to visit its full collection. |
-| **Watchlist** | My favorite shows and movies, what I’m currently watching, and titles I’ve watched, with covers and personal ratings. |
-| **Reading List** | Favorite WEBTOON stories, current reads, and finished titles, with authors and ratings. |
-| **Game Shelf** | My favorite games, what I’m currently playing, and an alphabetical collection presented as game cartridges. |
-| **Music Corner** | Favorite songs, playlists, genres, and artists, with Spotify players for songs and playlists. |
+| **Home** | A short introduction, my CV, and a way to connect. |
+| **Projects** | Solo and group work, with previews and project details. |
+| **Skills and tools** | Development, databases, design tools, and soft skills. |
+| **Experience** | My roles and contributions in student organizations. |
+| **Education** | My academic background and current studies. |
+| **Certificates** | Completed courses and certifications, with images and credential links. |
+| **Contact** | My email, GitHub, and LinkedIn. |
 
-Click a Watchlist, Reading List, or Game Shelf card to open its details. In the Game Shelf, use the DS buttons to switch between the games I’m currently playing.
+Open a project card to see its screenshots, description, my contribution, and available code links. Certificate cards open the certificate image and its credential link. The contact section provides my email, GitHub, and LinkedIn.
 
-Collection headings show counts that update automatically when items are added or removed.
+### Featured projects
 
-In the Music Corner, clicking a song or playlist moves its card to the top and reveals a Spotify player underneath. Click the card again or its **X** button to close the player. Artist cards open their Spotify profiles.
+| Project | Type | About |
+| --- | --- | --- |
+| **CapsiCAM** | Group project | An Android application that classifies chili pepper leaf images and provides visual explanations of its predictions. |
+| **Course Companion** | Solo project | A website for organizing lessons, tracking progress, and accessing learning resources. |
+| **HAUlam** | Group project | A mobile application for discovering food stalls and dishes at Holy Angel University. |
+| **MYSTICA** | Solo project | A Studio Ghibli-inspired website featuring films, characters, and their worlds. |
+| **Bookshelf** | Solo project | Project details and screenshots coming soon. |
 
-Use **Back to portfolio** whenever you want to return to my work.
+## Step into my room
 
-The interface includes responsive layouts, keyboard navigation, and reduced-motion alternatives.
+Choose **Explore my room** to enter an illustrated bedroom overlooking a purple city skyline. Each interactive object opens a different part of my personal collection.
+
+| Corner | What you’ll find |
+| --- | --- |
+| **Personal Computer** | A file explorer with an introduction to me and shortcuts to my favorites and current interests. |
+| **Watchlist** | Favorite movies and series, current watches, completed titles, and personal ratings. |
+| **Reading List** | Favorite stories, current reads, and finished titles, with authors and ratings. |
+| **Game Shelf** | Favorite games and current saves, presented through an interactive DS and a cartridge collection. |
+| **Music Corner** | Favorite songs, playlists, genres, and artists, with a record player and links to listen on Spotify. |
+
+Click or tap an object, or choose a collection from **Explore Room**. On tablet and mobile, swipe sideways to see more of the room. Open collection cards for details, then use **Back to portfolio** to return to my work.
+
+## Design and experience
+
+The professional side uses cream paper cards, serif typography, stars, and blue and green backgrounds. The room carries that personal, whimsical feel into objects you can explore.
+
+The layouts adapt to desktop, tablet, and mobile screens, with keyboard navigation and support for reduced motion.
 
 ## Built with
 
-- **Frontend:** React 18, Vite 6, CSS
-- **Design:** Figma, Google Fonts
-- **Integration:** Spotify embeds
-- **Deployment:** GitHub Actions, GitHub Pages
+React, Vite, and CSS, with designs developed in Figma. Music links open Spotify to listen.
 
-## Running it yourself
+## File structure
 
-Install Node.js 20 or later and npm, then run:
+```text
+client/
+  public/                   Downloadable files
+  src/
+    assets/                 Artwork, screenshots, icons, and optimized images
+    components/
+      ProfessionalSide/     Portfolio sections and project/certificate overlays
+      PersonalSide/         Interactive room and collection overlays
+    data/                   Personal collections and project showcase content
+    hooks/                  Shared interaction and animation logic
+    styles/                 Shared and responsive styles
+    App.jsx                 Switches between the portfolio and room
+    main.jsx                Application entry point
+    styles.css              Base stylesheet imports
+  scripts/                  Image optimization and browser checks
+  index.html                Main HTML page
+  package.json              Dependencies and development commands
+  vite.config.js            Build configuration
+scripts/                    Collection artwork and metadata helpers
+.github/workflows/          Deployment workflow
+```
+
+## Run locally
+
+With Node.js 20 or later and npm installed:
 
 ```sh
 cd client
@@ -62,92 +92,8 @@ npm ci
 npm run dev
 ```
 
-Open the URL printed by Vite, usually `http://localhost:5173`.
+Open the local address printed in your terminal.
 
-The site serves optimized WebP copies from `client/src/assets/optimized`; original artwork stays in its existing folders. After replacing or adding source images, run `npm run optimize:assets` from `client` and include the generated files with your changes. Room code, room styles, and collection dialogs load when opened. Scrolling uses the browser's native behavior, and animations respect reduced-motion preferences.
+## License
 
-Run `npm run build` followed by `npm run test:browser` to check desktop, mobile, and reduced-motion navigation and dialogs. Browser checks use installed Chrome by default; set `BROWSER_CHANNEL=msedge` to use Edge. Screenshots are saved to the ignored `client/test-results` folder.
-
-The responsive menu links to every portfolio section. Returning from the room restores your previous reading position. Watchlist, Reading List, and Game Collection include search, result counts, and empty states; certificate details include a full-size image link. Browser checks also cover tablet and landscape layouts, focus restoration, touch targets, and recovery from failed room artwork or view downloads. Set `TEST_VIEWPORTS` to a comma-separated subset (`desktop,mobile,narrow-mobile,tablet,landscape,reduced-motion`) for a focused check.
-
-To build and preview the production version from the same folder:
-
-```sh
-npm run build
-npm run preview
-```
-
-No database, API server, or environment file is required. The build output is written to `client/dist/`.
-
-## Deploying
-
-The workflow in [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml) builds the client and publishes it to GitHub Pages.
-
-The workflow sets `VITE_BASE_PATH` to the repository path, currently `/avys-portfolio/`, so assets load correctly on GitHub Pages. Locally, it defaults to `/`.
-
-1. Set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**.
-2. Push changes under `client/` or changes to the deployment workflow to `main`.
-3. Check the run in **Actions** and open the deployment URL.
-
-The workflow can also be started manually with **Run workflow**. README-only changes do not trigger a deployment, and the current workflow skips publishing for private repositories. The build copies `index.html` to `404.html` as a fallback for unmatched paths.
-
-## Project structure
-
-```text
-client/
-  src/
-    App.jsx                       Switches between portfolio and room
-    main.jsx                      React entry point
-    styles.css                    Stylesheet entry point
-    styles/                       Shared, portfolio, room, and overlay styles
-    assets/                       Images and icons grouped by purpose
-      index.js                    Asset registry for filename-based lookups
-    data/
-      gameData.json               Game collections and detail information
-      musicData.json              Songs, playlists, genres, and artists
-      readingListData.json        Reading collections and details
-      watchlistData.json          Shows, movies, collections, and details
-    hooks/
-      useCollectionPeek.js        Collection selection and peek transitions
-      usePortfolioMotion.js       Portfolio scroll animations
-    utilities/
-      previewColor.js             Project preview background colors
-    components/
-      ProfessionalSide/           Portfolio sections and detail overlays
-      PersonalSide/
-        sections/Room.jsx         Interactive room page
-        overlays/                 PC and personal collection overlays
-  vite.config.js                  Vite configuration
-scripts/                          Cover and collection metadata helpers
-.github/workflows/                GitHub Pages deployment
-docs/                             Planning and project documentation
-AI-USAGE.md                       Detailed AI assistance record
-```
-
-Watchlist, reading, game, and music collections are maintained in the JSON files under `client/src/data/`. The PC summaries draw from those collections. Assets are grouped into folders for backgrounds, portfolio content, certificates, room objects, personal collections, icons, profile images, screenshots, mockups, and design-system images. `styles.css` imports the files in `src/styles/` in a fixed order to preserve responsive rules and animation behavior. See [docs/README.md](docs/README.md) for the project documents.
-
-## Architecture
-
-jsphnmgt Portfolio is a static React application hosted on GitHub Pages. The URL hash switches between the professional portfolio and the personal room, while React state controls folders, overlays, and music tabs. Personal collection content is stored in local JSON files, while professional section content stays with its components. Shared hooks manage collection peeks and portfolio motion; CSS controls presentation and animation. Spotify players load from Spotify when selected. There is no separate application server or database.
-
-## What I would do next
-
-- Fill in the remaining personal review placeholders.
-- Test the full experience on more screen sizes and with keyboard-only navigation.
-- Add new projects and keep the personal collections up to date.
-
-## Author
-
-**[Maria Josephine M. Magat (Josie)](https://github.com/jsphnmgt)**
-
-**Course:** 6APSI · **Section:** CS-404
-
-## AI use
-
-![Built with AI assistance](https://img.shields.io/badge/built%20with-AI%20assistance-0b5fff)
-
-I used Claude for early project structure and OpenAI Codex for substantial help with implementation, styling, animation, and debugging, guided by my designs, content, and feedback. See [AI-USAGE.md](AI-USAGE.md) for the detailed record.
-
-## Licence
-
-The project code is licensed under the [MIT License](LICENSE), with copyright attributed to Maria Josephine M. Magat. Third-party artwork and media belong to their respective owners.
+The code is available under the [MIT License](LICENSE). Third-party artwork and media belong to their respective owners.

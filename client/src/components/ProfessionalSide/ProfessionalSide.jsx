@@ -136,7 +136,7 @@ export default function ProfessionalSide({ savedPosition = null }) {
               </div>
               <section className="project-story-section project-feature-section"><h3>{activeItem.projectType === "Group project" ? "What we built" : "What I built"}</h3><p>{activeItem.showcase.built}</p></section>
             </div>}
-            {!activeItem.showcase && <div className="project-detail-technologies"><h3>Built with</h3><TechnologyStack technologies={activeItem.techStack} /></div>}
+            {!activeItem.showcase && activeItem.techStack.length > 0 && <div className="project-detail-technologies"><h3>Built with</h3><TechnologyStack technologies={activeItem.techStack} /></div>}
             <div className="project-detail-actions">
               {activeItem.githubUrl ? <a className="project-code-button creative-button hero-cv-button" href={activeItem.githubUrl} target="_blank" rel="noreferrer"><img src={assets["github-logo.png"]} alt="" />GitHub Code <span className="sr-only">(opens in a new tab)</span></a> : <span className="project-code-unavailable">{activeItem.codeStatus || "Code link unavailable"}</span>}
             </div>

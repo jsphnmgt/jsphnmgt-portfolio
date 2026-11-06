@@ -501,8 +501,6 @@
     grid-template-rows: auto;
   }
 }
-
-/* Portfolio notes: a paper preview inside a small desktop-style window. */
 .overlay-content.project-overlay {
   width: min(66rem, calc(100vw - 2rem));
   height: min(42rem, calc(100svh - 3rem));
@@ -561,7 +559,6 @@
 .project-preview-frame { position: relative; display: flex; align-items: center; justify-content: center; min-height: 0; max-width: 100%; rotate: -1.5deg; }
 .project-preview-frame::before { content: ""; position: absolute; top: -.65rem; left: 50%; width: 4.5rem; height: 1.25rem; z-index: 1; transform: translateX(-50%) rotate(-7deg); border: 1px solid rgb(255 255 255 / .5); background: color-mix(in srgb, var(--color-cream) 70%, transparent); pointer-events: none; }
 .project-overlay .project-preview-frame img { max-height: calc(100cqh - 8rem); border: .5rem solid var(--color-cream); border-bottom-width: 1.5rem; border-radius: .2rem; box-shadow: .3rem .3rem 0 color-mix(in srgb, var(--color-navy) 24%, transparent); }
-.preview-caption { font-family: var(--font-body); font-size: .95rem; font-style: italic; color: var(--color-navy); }
 
 .project-overlay .project-detail-copy { justify-content: center; padding: 2rem; }
 .project-overlay .project-detail-body { gap: 1.4rem; }
@@ -588,8 +585,6 @@
 .project-overlay .certificate-detail-footer .certificate-detail-meta { margin: 0; padding: 0; border: 0; }
 .certificate-detail-footer .project-detail-actions { justify-content: flex-end; align-self: end; }
 .certificate-detail-footer .project-code-button { padding: .45rem .7rem; font-size: .8rem; white-space: nowrap; }
-
-/* Project and certificate previews share a clean showcase treatment. */
 .overlay-content.project-overlay {
   box-shadow: var(--shadow-overlay);
 }

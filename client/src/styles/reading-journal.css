@@ -1,4 +1,3 @@
-/* A reading journal, scoped to the bookshelf so other collection peeks stay independent. */
 .personal-room .reading-list-overlay { --journal-accent: color-mix(in srgb, var(--color-navy) 65%, var(--color-cobalt)); --collection-accent: var(--journal-accent); --journal-icon: var(--journal-accent); --journal-ink: var(--color-navy); --journal-line: color-mix(in srgb, var(--color-steel) 22%, transparent); box-shadow: 0 12px 40px rgb(25 29 47 / .2); }
 .personal-room .reading-list-overlay .collection-header { background: color-mix(in srgb, var(--color-lavender) 40%, var(--color-cream)); color: var(--journal-ink); border-bottom: 1px solid var(--journal-line); }
 .personal-room .reading-list-overlay .collection-header h2 > .watchlist-icon { width: 1.4rem; height: 1.4rem; padding: 0; background: transparent; color: var(--journal-icon); }
@@ -14,10 +13,6 @@
 @supports selector(::-webkit-scrollbar) {
   .personal-room .reading-list-overlay .watchlist-scroll { scrollbar-width: auto; scrollbar-color: auto; }
 }
-.reading-journal-intro { position: relative; margin-bottom: 2rem; padding: 0 3rem 1.25rem 0; border-bottom: 1px solid var(--journal-line); }
-.reading-journal-intro > span { color: var(--color-steel); font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; }
-.overlay-content .reading-journal-intro p { margin: .4rem 0 0; font-family: var(--font-display); font-size: clamp(1.35rem, 2.5vw, 1.9rem); line-height: 1.3; }
-.reading-journal-intro > .watchlist-icon { position: absolute; top: .7rem; right: .25rem; width: 2rem; height: 2rem; color: var(--journal-icon); transform: rotate(-12deg); }
 .personal-room .reading-list-overlay .watchlist-section h3 { margin-bottom: .25rem; }
 .overlay-content .reading-shelf-caption { margin: 0 0 1.4rem; color: var(--color-steel); font-size: .9rem; font-style: italic; }
 .reading-favorite-marker { position: absolute; z-index: 2; top: 0; right: .45rem; display: grid; place-items: start center; width: 2rem; height: 3rem; padding-top: .55rem; border-inline: 1px solid color-mix(in srgb, var(--color-cream) 65%, transparent); background: var(--journal-accent); color: color-mix(in srgb, var(--color-lavender) 25%, var(--color-cream)); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%); pointer-events: none; }

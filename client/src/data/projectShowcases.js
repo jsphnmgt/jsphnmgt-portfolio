@@ -14,7 +14,6 @@ import mysticaHome from "../assets/optimized/mystica_home.png.webp";
 import mysticaAbout from "../assets/optimized/mystica_about.png.webp";
 import mysticaQuestions from "../assets/optimized/mystica_question.png.webp";
 
-// Each gallery view can use a dedicated screenshot or a detail of the cover image.
 export const projectShowcases = {
   CapsiCAM: {
     problem: "Make image-based chili pepper leaf disease classification accessible through a mobile application.",

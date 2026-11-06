@@ -1,4 +1,3 @@
-/* Inline loading feedback keeps the room in view. */
 .room-inline-spinner { display: inline-block; box-sizing: border-box; width: 14px; height: 14px; flex-shrink: 0; border: 2px solid #d4baee40; border-top-color: #e4cdff; border-right-color: #c5a4ed; border-radius: 50%; }
 .personal-room .room-object.is-loading { z-index: 2; animation: none; }
 .personal-room .room-object.is-loading img { filter: var(--shadow-room-object-glow); }

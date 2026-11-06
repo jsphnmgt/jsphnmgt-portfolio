@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <path fill="#E6E8F0" d="M0 0h640v360H0z"/>
+  <g stroke="#667187" stroke-width="2">
+    <rect x="251" y="76" width="36" height="118" rx="4" fill="#BCC3E3"/>
+    <path d="M259 94h20m-20 78h20"/>
+    <rect x="290" y="92" width="32" height="102" rx="4" fill="#FAF4E9"/>
+    <path d="M298 106h16m-16 10h16"/>
+    <rect x="326" y="82" width="38" height="112" rx="4" fill="#C9D9D0" transform="rotate(-9 326 194)"/>
+    <path d="M230 195h180v9H230z" fill="#879BC4"/>
+    <path d="m402 91 3 10 10 3-10 3-3 10-3-10-10-3 10-3Z"/>
+  </g>
+  <text x="320" y="254" text-anchor="middle" fill="#252932" font-family="Georgia,serif" font-size="32">Bookshelf</text>
+  <text x="320" y="284" text-anchor="middle" fill="#667187" font-family="Georgia,serif" font-size="16">Preview coming soon</text>
+</svg>

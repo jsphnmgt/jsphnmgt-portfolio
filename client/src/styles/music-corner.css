@@ -1,11 +1,10 @@
-/* A paper-and-vinyl listening room, with little notes in the margins. */
 .personal-room .music-overlay .music-scroll { --music-scroll-thumb: color-mix(in srgb, var(--color-steel) 30%, var(--color-cream)); scrollbar-width: auto; scrollbar-color: var(--music-scroll-thumb) transparent; }
 .personal-room .music-overlay .music-scroll::-webkit-scrollbar { width: 12px; background: transparent; }
 .personal-room .music-overlay .music-scroll::-webkit-scrollbar-track { margin-block: .5rem .75rem; background: transparent; }
 .personal-room .music-overlay .music-scroll::-webkit-scrollbar-thumb { min-height: 3.25rem; background: var(--music-scroll-thumb); border: 3px solid transparent; border-radius: 999px; background-clip: padding-box; }
 .personal-room .music-overlay .music-scroll::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
 @supports selector(::-webkit-scrollbar) { .personal-room .music-overlay .music-scroll { scrollbar-color: auto; } }
-.personal-room .music-overlay { --music-ink: #565d84; --color-music-card: #fffaf1; background: #f9f5ec; border: 1px solid #d5cedd; }
+.personal-room .music-overlay { --color-music-card: #fffaf1; background: #f9f5ec; border: 1px solid #d5cedd; }
 .personal-room .music-header { background: color-mix(in srgb, var(--color-lavender) 42%, var(--color-cream)); border-bottom: 1px solid color-mix(in srgb, var(--color-steel) 22%, transparent); }
 .personal-room .music-header h2 { display: flex; align-items: center; }
 .music-header-title { display: block; line-height: 1; text-box-trim: trim-both; text-box-edge: cap alphabetic; }
@@ -25,7 +24,6 @@
 .music-paper-note { position: absolute; z-index: 2; left: 6%; top: 3%; padding: .85rem 1.1rem; background: #faf8fd; color: #696184; box-shadow: 2px 4px 6px #4b4a7012; font-family: var(--font-body); font-size: clamp(.85rem, 3.6cqw, 1.25rem); line-height: 1.25; rotate: -9deg; pointer-events: none; }
 .music-paper-note::before { content: ''; position: absolute; top: -.35rem; left: 30%; width: 44%; height: .7rem; background: #d2c7e6b3; rotate: 5deg; }
 .music-paper-note > span { position: absolute; right: -.9rem; bottom: -.8rem; font-size: 2rem; rotate: 50deg; }
-.music-scene-caption { position: absolute; bottom: 3%; width: 100%; color: #7c7591; font-family: var(--font-body); font-style: italic; font-size: .9rem; text-align: center; rotate: -3deg; }
 .music-panel-heading { flex-shrink: 0; margin-bottom: 1.2rem; }
 .music-panel-eyebrow { display: flex; align-items: center; gap: .75rem; color: #7c7591; font-family: var(--font-game-controls); font-size: .55rem; letter-spacing: .18em; }
 .music-panel-eyebrow > span { font-size: 1rem; color: #aaa1c8; }
@@ -79,7 +77,6 @@
   .personal-room .music-layout { grid-template-columns: 1fr; gap: .7rem; }
   .personal-room .music-turntable { width: min(13rem, 55cqw, 84cqh); }
   .music-paper-note { top: 5%; left: 2%; padding: .5rem .7rem; font-size: .75rem; }
-  .music-scene-caption { display: none; }
   .music-panel-heading { margin-bottom: .75rem; }
   .personal-room .music-panel h3 { font-size: 1.5rem; }
   .personal-room .music-panel-heading p { font-size: .8rem; }
@@ -130,8 +127,6 @@
 .music-on-repeat svg { width: 5.25rem; height: 1rem; }
 @media (prefers-reduced-motion: no-preference) {
   .music-turntable-arm.is-cueing { animation: music-needle-cue 1.4s ease-in-out; }
-}
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
 }
 @keyframes music-needle-cue {
   0%, 100% { transform: rotate(0); }

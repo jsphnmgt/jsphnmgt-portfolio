@@ -1,4 +1,3 @@
-/* Personal side: full-screen room artwork. */
 .personal-room {
   --motion-room-duration: 1.65s;
   --motion-room-fade-duration: 1.8s;
@@ -77,8 +76,6 @@
   pointer-events: none;
   overflow: hidden;
 }
-
-
 
 .room-entrance-door {
   position: absolute;
@@ -444,22 +441,8 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .room-entered.room-ready.is-locating .room-object {
-    animation: room-discovery-glow 1.1s ease-in-out calc(.25s + var(--room-discovery-index, 0) * .18s) 1 backwards;
-  }
-}
-
-@keyframes room-discovery-glow {
-
-  0%,
-  100% {
-    filter: var(--shadow-room-object-rest);
-  }
-
-  50% {
-    filter: var(--shadow-room-object-glow);
-  }
+.room-entered.room-ready.is-locating .room-object.is-discovered img {
+  filter: var(--shadow-room-object-glow);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -467,12 +450,6 @@
   .room-leaving :is(.room-back-button, .room-navigation, .room-explore-hint) { pointer-events: none; }
 }
 @keyframes room-return-cover { from { opacity: 0; } to { opacity: 1; } }
-
-@media (max-width: 600px) {}
-
-@media (max-width: 600px) {}
-
-@media (prefers-reduced-motion: reduce) {}
 
 .room-navigation {
   position: absolute;
@@ -503,8 +480,6 @@
   line-height: 1;
   white-space: nowrap;
 }
-
-
 
 .room-back-button>span,
 .room-navigation-toggle>span {
@@ -587,11 +562,6 @@
   transition: background var(--motion-room-hover-duration), color var(--motion-room-hover-duration);
 }
 
-.room-navigation-number {
-  color: var(--color-periwinkle);
-  font-size: var(--font-size-sm);
-}
-
 .room-navigation-panel button:hover,
 .room-navigation-panel button:focus-visible {
   background: var(--color-room-button);
@@ -661,7 +631,4 @@
 .room-navigation-panel button:nth-of-type(5) {
   --room-menu-item-index: 5;
 }
-
-
-
 

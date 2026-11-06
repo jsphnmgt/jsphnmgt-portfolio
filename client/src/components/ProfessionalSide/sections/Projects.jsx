@@ -1,5 +1,6 @@
 import { assets } from "../../../assets";
 import { projectShowcases } from "../../../data/projectShowcases";
+import bookshelfPlaceholder from "../../../assets/portfolio/bookshelf-placeholder.svg";
 const projects = [
   {
     title: "CapsiCAM",
@@ -26,6 +27,15 @@ const projects = [
     projectType: "Solo project",
     description: "Mystica is a Studio Ghibli-inspired website featuring movies, characters, and its magical world", techStack: ["HTML", "CSS", "JavaScript"], asset: "mystica-cover.png", crop: "mystica"
   },
+  {
+    title: "Bookshelf",
+    projectType: "Solo project",
+    description: "Details coming soon.",
+    techStack: [],
+    image: bookshelfPlaceholder,
+    crop: "bookshelf",
+    codeStatus: "Project details coming soon",
+  },
 ];
 export default function Projects({ onCardClick }) {
   return <section id="projects" aria-labelledby="projects-title">
@@ -40,7 +50,7 @@ export default function Projects({ onCardClick }) {
       <div className="project-copy">
         <h3>{project.title}</h3>
         <p>{project.description}</p>
-        <div className="tags">{project.techStack.map(tag => <span key={tag}>{tag}</span>)}</div>
+        {project.techStack.length > 0 && <div className="tags">{project.techStack.map(tag => <span key={tag}>{tag}</span>)}</div>}
         <span className="project-open-note" aria-hidden="true">Explore project <span>↗</span></span>
       </div>
     </button>)}</div>

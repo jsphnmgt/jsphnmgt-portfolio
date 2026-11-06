@@ -1,4 +1,3 @@
-/* Project galleries stay separate from the shared certificate preview. */
 .project-overlay .project-detail-scroll { --detail-scroll-thumb: color-mix(in srgb, var(--color-steel) 65%, var(--color-lavender)); scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: var(--detail-scroll-thumb) transparent; }
 .project-overlay .project-detail-scroll::-webkit-scrollbar { width: 12px; height: 12px; background: transparent; }
 .project-overlay .project-detail-scroll::-webkit-scrollbar-track { margin-block: .85rem; border: 0; background: transparent; }

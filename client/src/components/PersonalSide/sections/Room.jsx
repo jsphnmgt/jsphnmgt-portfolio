@@ -78,6 +78,7 @@ export default function Room({ returnHref = "#home" }) {
   const [activeObject, setActiveObject] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
+  const [locatedObjectCount, setLocatedObjectCount] = useState(0);
   const [loadingId, setLoadingId] = useState(null);
   const [loadingSource, setLoadingSource] = useState(null);
   const menuRef = useRef(null);
@@ -127,8 +128,17 @@ export default function Room({ returnHref = "#home" }) {
 
   useEffect(() => {
     if (!isLocating) return;
-    const timer = window.setTimeout(() => setIsLocating(false), 2200);
-    return () => window.clearTimeout(timer);
+    const stepMs = 450;
+    const holdMs = 1100;
+    setLocatedObjectCount(1);
+    const timers = roomObjects.slice(1).map((_, index) => window.setTimeout(() => {
+      setLocatedObjectCount(index + 2);
+    }, (index + 1) * stepMs));
+    timers.push(window.setTimeout(() => {
+      setIsLocating(false);
+      setLocatedObjectCount(0);
+    }, (roomObjects.length - 1) * stepMs + holdMs));
+    return () => timers.forEach(timer => window.clearTimeout(timer));
   }, [isLocating]);
 
   useEffect(() => {
@@ -208,7 +218,7 @@ export default function Room({ returnHref = "#home" }) {
     <div className="room-scene">
       <img className="personal-room-image" src={assets["room.jpg"]} alt="An illustrated bedroom overlooking a purple city skyline at night" fetchPriority="high" onLoad={() => setImageReady(true)} onError={() => { setImageFailed(true); setImageReady(true); setHasEntered(true); }} />
       <div className="room-objects" inert={!hasEntered || isLeaving ? "" : undefined}>
-        {roomObjects.map((object, index) => <button key={object.id} className={`room-object room-object-${object.id}${loadingId === object.id && loadingSource === "object" ? " is-loading" : ""}`} style={{ "--room-discovery-index": index }} aria-label={`Open ${object.label}`} aria-busy={loadingId === object.id} aria-haspopup="dialog" onClick={event => openObject(object, event.currentTarget)}>
+        {roomObjects.map((object, index) => <button key={object.id} className={`room-object room-object-${object.id}${isLocating && index < locatedObjectCount ? " is-discovered" : ""}${loadingId === object.id && loadingSource === "object" ? " is-loading" : ""}`} aria-label={`Open ${object.label}`} aria-busy={loadingId === object.id} aria-haspopup="dialog" onClick={event => openObject(object, event.currentTarget)}>
           <img src={assets[object.image]} alt="" draggable={false} />
           <span className="room-object-label" aria-hidden="true"><span className="room-object-number">{String(index + 1).padStart(2, "0")}</span><span className="room-object-name">{object.label}</span>{loadingId === object.id && loadingSource === "object" && <span className="room-inline-spinner" />}</span>
         </button>)}

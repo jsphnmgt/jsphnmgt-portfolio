@@ -1,5 +1,4 @@
-/* Small, distinct worlds for the four personal collections. */
-.personal-room .cinema-overlay { --cinema-header: var(--color-lavender); --cinema-header-ink: var(--color-navy); --cinema-ticket: color-mix(in srgb, var(--color-lavender) 65%, var(--color-cream)); --cinema-ink: var(--color-navy); --cinema-accent: var(--color-navy); --cinema-scroll: color-mix(in srgb, var(--color-steel) 55%, transparent); width: min(92vw, 76rem); background: var(--color-cream); box-shadow: var(--shadow-overlay); }
+.personal-room .cinema-overlay { --cinema-header: var(--color-lavender); --cinema-header-ink: var(--color-navy); --cinema-ticket: color-mix(in srgb, var(--color-lavender) 65%, var(--color-cream)); --cinema-ink: var(--color-navy); --cinema-accent: var(--color-navy); width: min(92vw, 76rem); background: var(--color-cream); box-shadow: var(--shadow-overlay); }
 .personal-room .cinema-overlay .collection-header { margin-bottom: 0; padding-inline: 1.5rem 3.5rem; background: var(--cinema-header); color: var(--cinema-header-ink); }
 .personal-room .cinema-overlay .collection-header h2 { justify-content: flex-start; text-align: left; }
 .cinema-overlay .collection-header .watchlist-icon { color: var(--cinema-header-ink); }

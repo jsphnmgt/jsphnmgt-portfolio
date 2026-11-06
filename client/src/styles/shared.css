@@ -79,8 +79,6 @@
 
   /* Room object interaction */
   --motion-room-hover-duration: .16s;
-  --motion-room-discovery-duration: 1.2s;
-  --motion-room-discovery-delay: .6s;
   --border-room-menu: 1px solid var(--color-room-outline);
   --motion-room-menu-duration: .45s;
   --motion-room-menu-item-duration: .3s;
@@ -103,17 +101,9 @@
   --rotation-personal-overlay-start: 0deg;
   --motion-room-ease: cubic-bezier(.45, 0, .2, 1);
   --motion-room-fade-ease: cubic-bezier(.22, .61, .36, 1);
-  --motion-room-enter-scale: .985;
   --room-door-perspective: 140vw;
   --color-room-door-indigo: #202855;
-  --color-room-door-purple: #39295B;
-  --color-room-door-edge: #515A87;
-  --color-room-door: linear-gradient(115deg, var(--color-room-door-indigo) 35%, var(--color-room-door-purple));
-  --border-room-door: 2px solid color-mix(in srgb, var(--color-room-door-edge) 65%, transparent);
-  --room-door-thickness: var(--space-8);
-  --color-room-door-side: linear-gradient(to right, var(--color-room-door-edge), var(--color-room-door-indigo));
   --shadow-room-door: 0 var(--space-3) var(--space-8) color-mix(in srgb, var(--color-black) 45%, transparent);
-  --shadow-room-panel: inset var(--space-1) var(--space-1) var(--space-3) color-mix(in srgb, var(--color-black) 45%, transparent), inset calc(-1 * var(--space-1)) calc(-1 * var(--space-1)) var(--space-2) color-mix(in srgb, var(--color-room-door-edge) 35%, transparent);
   --room-entrance-vignette: radial-gradient(ellipse at center, transparent 30%, var(--color-black) 85%);
 
   /* Personal room navigation */
@@ -214,9 +204,6 @@
   --color-game-hint: color-mix(in srgb, var(--color-game-ink) 65%, transparent);
   --color-game-tag: #B7BAEF;
   --color-game-rail: #F9F7FA;
-  --color-game-meter: #C4C4C4;
-  --color-game-meter-active: #69C1F2;
-  --color-game-status: #8C908F;
   --color-game-carousel: #EDEDED;
   --size-game-console-native-width: 1032px;
   --size-game-console-native-height: 1074.009px;
@@ -246,11 +233,7 @@
   --space-music-card-gap: clamp(var(--space-1), 3cqh, var(--space-4));
   --space-music-card-padding: clamp(var(--space-1), 2.5cqh, var(--space-3));
   --size-music-record: 42.11rem;
-  --size-music-embed-height: 22rem;
-  --size-music-song-embed-height: var(--size-music-embed-height);
   --motion-music-player-duration: .4s;
-  --motion-music-player-unfold-duration: .4s;
-  --motion-music-player-unfold-delay: var(--motion-music-player-duration);
   --motion-music-player-ease: var(--motion-room-ease);
   --motion-music-switch-duration: .5s;
   --motion-music-card-stagger: .06s;
@@ -264,7 +247,6 @@
   --border-music-tab: 2px solid var(--color-navy);
 
   /* Generic role variables */
-  --color-pure-white: var(--color-white);
   --color-LightText-Overlay-Cards: var(--color-cream);
   --color-GreenGradientLight: var(--color-mint);
   --color-GreenGradientMiddle: var(--color-sage);
@@ -274,8 +256,6 @@
   --color-BlueGradientDark-LastCard: var(--color-cobalt);
   --color-Outline-PersonalSideCard: var(--color-steel);
   --color-DarkText-Shadow: var(--color-navy);
-  --color-neutral-near-black: var(--color-charcoal);
-  --color-pure-black: var(--color-black);
 }
 
 * {
@@ -348,7 +328,6 @@ html:has(dialog[open]) {
 }
 
 .page-loading,
-.collection-loading,
 .load-error {
   min-height: auto;
   display: grid;
@@ -382,14 +361,6 @@ html:has(dialog[open]) {
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
-}
-
-.collection-loading {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  color: var(--color-cream);
-  background: var(--overlay-backdrop);
 }
 
 @media (prefers-reduced-motion: reduce) {
