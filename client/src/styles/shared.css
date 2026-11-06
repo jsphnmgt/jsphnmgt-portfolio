@@ -337,6 +337,28 @@ html:has(dialog[open]) {
   text-align: center;
 }
 
+.room-page-loading {
+  min-height: 100svh;
+  padding: 2rem;
+  justify-items: center;
+  gap: 24px;
+  color: #fbf5e9;
+  background: radial-gradient(ellipse at 50% 42%, #39304f 0, #1b1829 45%, #10101c 100%);
+}
+.room-loading-symbol { display: grid; place-items: center; width: 96px; height: 112px; border-bottom: 1px solid #bcb0d34d; }
+.room-loading-symbol svg { width: 64px; height: 80px; stroke: #c8b6e6; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.room-loading-title { margin: 0; font-family: var(--font-display); font-size: clamp(1.65rem, 4vw, 2.25rem); line-height: 1.2; }
+.room-loading-caption { margin: 10px 0 0; font-size: 16px; color: #c8bed8; }
+.room-loading-dots { display: inline-flex; gap: 4px; margin-left: 6px; vertical-align: middle; }
+.room-loading-dots i { width: 3px; height: 3px; border-radius: 50%; background: currentColor; animation: room-wait-dot 1.4s ease-in-out infinite; }
+.room-loading-dots i:nth-child(2) { animation-delay: .15s; }
+.room-loading-dots i:nth-child(3) { animation-delay: .3s; }
+.room-loading-back { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 6px 18px; border: 1px solid #bcb0d380; border-radius: 999px; color: #fbf5e9; font-size: 14px; text-decoration: none; }
+.room-loading-back:hover { background: #39304f; }
+.room-loading-back:focus-visible { outline: 2px solid #c8b6e6; outline-offset: 4px; }
+@keyframes room-wait-dot { 0%, 80%, 100% { opacity: .3; } 40% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .room-loading-dots i { animation: none; } }
+
 .app > .load-error {
   min-height: 100svh;
 }

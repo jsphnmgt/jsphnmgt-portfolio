@@ -42,12 +42,20 @@ function App() {
     else restorePosition.current = false;
   }, [isRoomOpen]);
 
+  const roomLoading = <div className="page-loading room-page-loading">
+          <div className="room-loading-symbol" aria-hidden="true">
+            <svg viewBox="0 0 64 80" fill="none"><path d="M12 72V30a20 20 0 0 1 40 0v42M7 72h50M21 64V31a11 11 0 0 1 22 0v33" /><circle cx="36" cy="48" r="2" /></svg>
+          </div>
+          <div role="status"><p className="room-loading-title">A moment at the doorstep.</p><p className="room-loading-caption">Opening the room<span className="room-loading-dots" aria-hidden="true"><i /><i /><i /></span></p></div>
+          <a className="room-loading-back" href={returnHref}><span aria-hidden="true">←</span> Back to portfolio</a>
+        </div>;
+
   return (
     <main className={`app${isReturning ? ' is-returning' : ''}`} onAnimationEnd={event => {
       if (event.target === event.currentTarget && event.animationName === 'portfolio-return-reveal') setIsReturning(false);
     }}>
       <LoadBoundary key={isRoomOpen ? 'room' : 'portfolio'}>
-        <Suspense fallback={<div className="page-loading" role="status">Opening the room… <a href={returnHref}>Back to portfolio</a></div>}>
+        <Suspense fallback={roomLoading}>
           {isRoomOpen ? <PersonalSide returnHref={returnHref} /> : <ProfessionalSide savedPosition={restorePosition.current ? portfolioPosition.current : null} />}
         </Suspense>
       </LoadBoundary>
