@@ -1,21 +1,30 @@
-MIT License
-
 Copyright (c) 2026 Maria Josephine M. Magat
+All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+No permission is granted to use, copy, modify, distribute, sublicense, or sell
+the original code or content of this project without prior written permission
+from the copyright holder, except as permitted by applicable law or the terms
+of the platform hosting this repository.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Third-Party Notice
+------------------
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The notice above applies to the original code and content authored by
+Maria Josephine M. Magat. It does not claim ownership of third-party materials
+included in or referenced by this project.
+
+Third-party software dependencies retain their own licenses and copyright
+notices. Refer to the license files distributed with each dependency.
+
+Fonts served through Google Fonts, including Crimson Text, Playfair Display,
+Pixelify Sans, and Roboto, remain subject to their respective font licenses.
+
+Third-party artwork, photographs, wallpapers, icons, book covers, movie and
+series posters, game artwork, album covers, logos, and certificate imagery
+remain the property of their respective creators or rights holders. Their
+inclusion in this portfolio does not transfer ownership or grant permission
+to reuse them.
+
+Product names, trademarks, and external services referenced in this project
+belong to their respective owners. Their inclusion does not imply endorsement
+or affiliation.

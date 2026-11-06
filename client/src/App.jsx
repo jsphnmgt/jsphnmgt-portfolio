@@ -13,6 +13,11 @@ function App() {
   const restorePosition = useRef(false);
 
   useEffect(() => {
+    const favicon = document.querySelector('link[rel="icon"]');
+    if (favicon) favicon.href = `${import.meta.env.BASE_URL}${isRoomOpen ? 'cat-favicon-room.svg' : 'cat-favicon.svg'}`;
+  }, [isRoomOpen]);
+
+  useEffect(() => {
     const updatePage = () => {
       const nextHash = window.location.hash;
       setIsReturning(previousHash.current === '#room' && nextHash !== '#room' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches);

@@ -229,6 +229,7 @@
 .window-dots { display: flex; gap: .3rem; }
 .window-dots i { width: .4rem; height: .4rem; border: 1px solid var(--color-navy); border-radius: 50%; }
 .project-image { aspect-ratio: 16 / 9; border-bottom: 1px solid var(--color-navy); }
+#projects .project-image.bookshelf img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center top; }
 .project-copy { padding: 1rem; gap: .5rem; }
 .project-copy h3 { font-family: var(--font-display); font-size: clamp(1.35rem, 1.6vw, 1.65rem); font-weight: 400; letter-spacing: -.025em; }
 .project-copy p { font-size: 1rem; line-height: 1.45; margin-bottom: .35rem; max-width: 44ch; }

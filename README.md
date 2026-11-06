@@ -32,7 +32,7 @@ Open a project card to see its screenshots, description, my contribution, and av
 | **Course Companion** | Solo project | A website for organizing lessons, tracking progress, and accessing learning resources. |
 | **HAUlam** | Group project | A mobile application for discovering food stalls and dishes at Holy Angel University. |
 | **MYSTICA** | Solo project | A Studio Ghibli-inspired website featuring films, characters, and their worlds. |
-| **Bookshelf** | Solo project | Project details and screenshots coming soon. |
+| **My Bookshelf** | Solo project | A React app for adding books by title and author and displaying them on a responsive virtual shelf. |
 
 ## Step into my room
 
@@ -96,4 +96,6 @@ Open the local address printed in your terminal.
 
 ## License
 
-The code is available under the [MIT License](LICENSE). Third-party artwork and media belong to their respective owners.
+Copyright (c) 2026 Maria Josephine M. Magat. All rights reserved. See [LICENSE](LICENSE) for the copyright and third-party notices. Third-party materials remain subject to their respective licenses and ownership.
+
+See [Asset credits](ASSET-CREDITS.md) for recorded sources and assets whose original creators or usage terms still need confirmation.

@@ -18,12 +18,12 @@ export default function ProjectPreview({ image, title, certificate = false, gall
     setSelectedIndex(next);
     event.currentTarget.parentElement.children[next]?.focus();
   };
-  return <div className={certificate ? "certificate-detail-preview" : `project-detail-preview${views ? " project-gallery" : ""}${selectedView?.device === "phone" ? " is-phone-gallery" : ""}`} style={{ "--preview-background": "var(--color-cream)", "--gallery-columns": Math.min(views?.length || 1, 4) }}>
+  return <div className={certificate ? "certificate-detail-preview" : `project-detail-preview${views ? " project-gallery" : ""}${selectedView?.device === "phone" ? " is-phone-gallery" : ""}${selectedView?.presentation === "detail" ? " is-detail-gallery" : ""}`} style={{ "--preview-background": "var(--color-cream)", "--gallery-columns": Math.min(views?.length || 1, 4) }}>
     {views ? <>
-      <div className="project-gallery-heading"><span>Project preview</span><a href={selectedView.image || image} target="_blank" rel="noreferrer">Full-size image <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a></div>
+      <div className="project-gallery-heading"><span>Project preview</span><a href={selectedView.image || image} target="_blank" rel="noreferrer">Full-size image <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>{isPageView && <small className="project-gallery-scroll-hint">Scroll within the image to explore.</small>}</div>
       <figure className="project-gallery-figure">
         <div className="project-gallery-media">
-        <div ref={stageRef} className={`project-preview-frame project-gallery-stage${selectedView.device === "phone" ? " is-mobile-screen" : ""}${isPageView ? " is-page-screen" : ""}`} id={galleryId} style={{ aspectRatio: selectedView.aspectRatio }} role={isPageView ? "region" : undefined} aria-label={isPageView ? `${selectedView.label} screenshot` : undefined} tabIndex={isPageView ? 0 : undefined}>
+        <div ref={stageRef} className={`project-preview-frame project-gallery-stage${selectedView.device === "phone" ? " is-mobile-screen" : ""}${isPageView ? " is-page-screen" : ""}${selectedView.presentation === "detail" ? " is-detail-screen" : ""}`} id={galleryId} style={{ aspectRatio: selectedView.aspectRatio }} role={isPageView ? "region" : undefined} aria-label={isPageView ? `${selectedView.label} screenshot` : undefined} tabIndex={isPageView ? 0 : undefined}>
           <img key={selectedIndex} src={selectedView.image || image} alt={`${title} — ${selectedView.label}`} style={{ objectFit: selectedView.fit || "contain", objectPosition: selectedView.position || "50% 50%" }} />
         </div>
       <div className="project-gallery-thumbnails" role="group" aria-label="Project screenshots">
@@ -34,7 +34,7 @@ export default function ProjectPreview({ image, title, certificate = false, gall
         </div>
         <figcaption className="project-gallery-caption">
           <div className="project-gallery-caption-heading"><span>{selectedView.label}</span></div>
-          <span className="project-gallery-caption-description" aria-live="polite">{selectedView.caption}{isPageView && <small>Scroll within the image to explore.</small>}</span>
+          <span className="project-gallery-caption-description" aria-live="polite">{selectedView.caption}</span>
         </figcaption>
       </figure>
     </> : <div className="project-preview-frame"><img className={certificate ? "certificate-detail-image" : undefined} src={image} alt={title + (certificate ? " certificate" : " preview")} /></div>}

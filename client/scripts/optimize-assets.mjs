@@ -33,6 +33,3 @@ for (const directory of await readdir(root, { withFileTypes: true })) {
   }
 }
 console.log(`${count} images: ${(before / 1e6).toFixed(2)} MB → ${(after / 1e6).toFixed(2)} MB (${Math.round((1 - after / before) * 100)}% smaller)`);
-if (!selectedFolders.size || selectedFolders.has('profile')) {
-  await sharp(path.join(root, 'profile/profile-photo.jpg')).resize(32, 32).webp({ quality: 80 }).toFile(path.join(output, 'favicon.webp'));
-}

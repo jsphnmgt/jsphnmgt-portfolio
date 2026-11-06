@@ -2,9 +2,8 @@ import capsicamHome from "../assets/optimized/capsicam_homescreen.jpg.webp";
 import capsicamResults from "../assets/optimized/capsicam_capture.jpg.webp";
 import capsicamHistory from "../assets/optimized/capsicam_recent-scans.jpg.webp";
 import capsicamAccount from "../assets/optimized/capsicam_account.jpg.webp";
-import courseDesktop from "../assets/optimized/course-companion_desktop-view.png.webp";
-import courseMobile from "../assets/optimized/course-companion_mobile-view.png.webp";
-import courseTablet from "../assets/optimized/course-companion_tablet-view.png.webp";
+import courseWithoutCards from "../assets/optimized/course-companion_without-cards.png.webp";
+import courseWithCards from "../assets/optimized/course-companion_with-cards.png.webp";
 import haulamHome from "../assets/optimized/HAUlam_customerview-home.png.webp";
 import haulamDishes from "../assets/optimized/HAUlam_customerview-stall-dishes.png.webp";
 import haulamDishDetails from "../assets/optimized/HAUlam_customerview-stall-dish-view.png.webp";
@@ -13,8 +12,20 @@ import mysticaMovie from "../assets/optimized/mystica_movie-page.png.webp";
 import mysticaHome from "../assets/optimized/mystica_home.png.webp";
 import mysticaAbout from "../assets/optimized/mystica_about.png.webp";
 import mysticaQuestions from "../assets/optimized/mystica_question.png.webp";
+import bookshelfWithBooks from "../assets/optimized/my-bookshelf_home-with-books.png.webp";
+import bookshelfEmpty from "../assets/optimized/my-bookshelf_home.png.webp";
 
 export const projectShowcases = {
+  "My Bookshelf": {
+    problem: "Give a personal book collection a visual home that grows as books are added.",
+    role: "Developer",
+    roleDescription: "Developed and styled this solo course project from a provided starter template, practicing React, JavaScript, and CSS.",
+    built: "A React app for adding books by title and author, with required-field validation, a live book count, and a responsive shelf of colored book spines. A text list shows each book and its author, while React Router handles Home and About navigation. The wood-and-parchment interface includes an empty-shelf state; books are stored in memory and reset on reload.",
+    views: [
+      { label: "Empty shelf", image: bookshelfEmpty, caption: "The initial Home view includes title and author fields, a book count, and a prompt to add the first book.", fit: "contain", presentation: "detail", aspectRatio: "1600 / 705" },
+      { label: "Shelf with books", image: bookshelfWithBooks, caption: "Added books appear as colored spines arranged into shelf rows, with their titles and authors listed underneath.", fit: "cover", position: "50% 0%" },
+    ],
+  },
   CapsiCAM: {
     problem: "Make image-based chili pepper leaf disease classification accessible through a mobile application.",
     role: "Frontend Developer & UI/UX Designer",
@@ -33,9 +44,8 @@ export const projectShowcases = {
     roleDescription: "Built this solo project with React, HTML, and CSS.",
     built: "A subject-based lesson interface with topic navigation and a flashcard form for adding questions and answers.",
     views: [
-      { label: "Desktop view", image: courseDesktop, caption: "Subject navigation, lesson content, and flashcards share one study page.", fit: "contain" },
-      { label: "Tablet view", image: courseTablet, caption: "The tablet layout gives the illustrated lesson and flashcard form more room while retaining the subject navigation.", fit: "contain" },
-      { label: "Mobile view", image: courseMobile, caption: "The mobile layout wraps subject navigation and stacks the lesson and flashcard fields for a smaller screen.", fit: "contain", device: "phone", aspectRatio: "375 / 800" },
+      { label: "Without cards", image: courseWithoutCards, caption: "The Biology lesson and empty question-and-answer form before any flashcards are added.", fit: "cover", position: "50% 0%" },
+      { label: "With cards", image: courseWithCards, caption: "Added flashcards appear below the form, with controls to flip each answer or delete a card.", fit: "cover", position: "50% 0%" },
     ],
   },
   HAUlam: {

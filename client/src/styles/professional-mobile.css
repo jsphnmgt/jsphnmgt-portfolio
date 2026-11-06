@@ -1,4 +1,10 @@
+#portfolio-content { --section-description-gap: 16px; }
+#portfolio-content section > :is(.section-heading, .display-heading) { margin-bottom: 0; }
+#portfolio-content section > .section-heading h2 { margin-bottom: 0; }
+#portfolio-content section > :is(.section-intro, .section-subtitle, .experience-subtitle, .contact-intro) { margin-top: var(--section-description-gap); }
+
 @media (max-width: 650px) {
+  #portfolio-content { --section-description-gap: 12px; }
   .navbar { padding: .6rem 1rem; min-height: 56px; background: rgb(86 114 178 / .82); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
   .navbar .nav-toggle, .navbar .explore-room-btn { height: 36px; min-height: 36px; padding: 0 .7rem; font-size: .8rem; }
   .navbar .nav-toggle { min-width: 4.5rem; }
@@ -40,7 +46,7 @@
   #skills { padding-top: 1rem; }
   #portfolio-content .chapter-label { margin-bottom: .65rem; font-size: .7rem; }
   #portfolio-content :is(.section-heading h2, .display-heading) { font-size: clamp(2rem, 8.5vw, 2.5rem); line-height: 1.1; }
-  #portfolio-content :is(.section-intro, .section-subtitle, .experience-subtitle, .contact-intro) { margin-top: .75rem; font-size: 1rem; font-weight: 400; line-height: 1.5; text-align: left; }
+  #portfolio-content :is(.section-intro, .section-subtitle, .experience-subtitle, .contact-intro) { font-size: 1rem; font-weight: 400; line-height: 1.5; text-align: left; }
 
   .projects-grid { width: 100%; margin-top: 1.25rem; gap: 1.25rem; }
   .project-card { border-radius: .8rem; }
@@ -118,5 +124,8 @@
   .overlay-content.project-overlay h2 { font-size: 1.75rem; }
   .overlay-content.project-overlay p { font-size: 1rem; line-height: 1.5; }
   .project-overlay .certificate-detail-meta { font-size: .9rem; }
+  .certificate-detail-footer { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+  .certificate-detail-footer .project-detail-actions { justify-content: flex-end; align-self: end; }
+  .certificate-detail-footer .project-code-button { padding: .45rem .7rem; font-size: .8rem; white-space: nowrap; }
   .project-overlay .project-code-button { font-size: .9rem; }
 }

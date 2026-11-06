@@ -17,7 +17,7 @@ export default function Contact() {
         <span className="contact-action">View repositories <span aria-hidden="true">&#8599;</span></span>
         <span className="sr-only">Opens in a new tab</span>
       </a>
-      <a href="https://www.linkedin.com/in/josephine-magat-615076325/" target="_blank" rel="noopener noreferrer"><span className="contact-stamp"><img src={assets["linkedin-logo.png"]} alt="" /></span><span className="contact-watermark" aria-hidden="true">in</span>
+      <a href="https://www.linkedin.com/in/josephine-magat/" target="_blank" rel="noopener noreferrer"><span className="contact-stamp"><img src={assets["linkedin-logo.png"]} alt="" /></span><span className="contact-watermark" aria-hidden="true">in</span>
         <h3>LinkedIn</h3>
         <p>Maria Josephine Magat</p>
         <span className="contact-action">View profile <span aria-hidden="true">&#8599;</span></span>

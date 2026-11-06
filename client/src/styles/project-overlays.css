@@ -581,10 +581,9 @@
 .certificate-detail-meta dt { font-size: .8rem; font-weight: 400; text-transform: uppercase; letter-spacing: .06em; }
 .certificate-detail-meta dd { overflow-wrap: anywhere; }
 .certificate-issuer-line { display: block; }
-.certificate-detail-footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-sage); }
+.certificate-detail-footer { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-sage); }
 .project-overlay .certificate-detail-footer .certificate-detail-meta { margin: 0; padding: 0; border: 0; }
-.certificate-detail-footer .project-detail-actions { justify-content: flex-end; align-self: end; }
-.certificate-detail-footer .project-code-button { padding: .45rem .7rem; font-size: .8rem; white-space: nowrap; }
+.certificate-detail-footer .project-detail-actions { justify-content: flex-start; }
 .overlay-content.project-overlay {
   box-shadow: var(--shadow-overlay);
 }

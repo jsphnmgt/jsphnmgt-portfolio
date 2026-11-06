@@ -1,6 +1,5 @@
 import { assets } from "../../../assets";
 import { projectShowcases } from "../../../data/projectShowcases";
-import bookshelfPlaceholder from "../../../assets/portfolio/bookshelf-placeholder.svg";
 const projects = [
   {
     title: "CapsiCAM",
@@ -11,9 +10,10 @@ const projects = [
   },
   {
     title: "Course Companion",
+    image: projectShowcases["Course Companion"].views[0].image,
     projectType: "Solo project",
-    codeStatus: "Private repository",
-    description: "A course companion website helping students organize lessons, track progress, and access learning resources", techStack: ["React", "HTML", "CSS"], asset: "course-companion-cover.png", crop: "course"
+    githubUrl: "https://github.com/jsphnmgt/Course-Companion",
+    description: "A course companion website with subject lessons and flashcards for reviewing questions and answers.", techStack: ["React", "HTML", "CSS"], crop: "course"
   },
   {
     title: "HAUlam",
@@ -28,13 +28,13 @@ const projects = [
     description: "Mystica is a Studio Ghibli-inspired website featuring movies, characters, and its magical world", techStack: ["HTML", "CSS", "JavaScript"], asset: "mystica-cover.png", crop: "mystica"
   },
   {
-    title: "Bookshelf",
+    title: "My Bookshelf",
     projectType: "Solo project",
-    description: "Details coming soon.",
-    techStack: [],
-    image: bookshelfPlaceholder,
+    description: "A React app for adding books to a personal collection and displaying them on a responsive virtual shelf.",
+    techStack: ["React", "JavaScript", "CSS"],
+    image: projectShowcases["My Bookshelf"].views[0].image,
     crop: "bookshelf",
-    codeStatus: "Project details coming soon",
+    githubUrl: "https://github.com/jsphnmgt/my-bookshelf",
   },
 ];
 export default function Projects({ onCardClick }) {
