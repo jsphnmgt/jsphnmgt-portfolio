@@ -270,7 +270,7 @@
   padding: 1.5vw;
 }
 
-.hero-media>img {
+.hero-media > .hero-photo > img {
   width: 100%;
   aspect-ratio: 410 / 270;
   object-fit: cover;

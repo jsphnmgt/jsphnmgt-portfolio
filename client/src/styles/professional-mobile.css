@@ -28,7 +28,7 @@
   #home .hero-greeting::after { content: "✧"; font-size: 1.75rem; line-height: .6; color: var(--color-cobalt); rotate: 12deg; }
   #home .hero-media { width: 100%; max-width: none; padding: .5rem; margin: .2rem 0 .45rem; rotate: -1.5deg; border-color: var(--color-steel); border-radius: .45rem; background: color-mix(in srgb, var(--color-lavender) 55%, var(--color-cream)); box-shadow: 4px 5px 0 color-mix(in srgb, var(--color-steel) 45%, transparent); }
   #home .portrait-caption { display: flex; margin-bottom: .4rem; font-size: .58rem; color: var(--color-navy); }
-  #home .hero-media > img { aspect-ratio: 1.9; object-fit: cover; object-position: center 45%; }
+  #home .hero-media > .hero-photo > img { aspect-ratio: 1.9; object-fit: cover; object-position: center 45%; }
   #home .portrait-sticker { display: flex; top: auto; bottom: -.6rem; right: -.5rem; width: 3.3rem; height: 3.3rem; gap: .15rem; padding: .25rem; font-size: .55rem; rotate: 9deg; box-shadow: 1px 2px 0 rgb(37 41 50 / .15); }
   #home .portrait-sticker em { font-size: .9rem; }
   #home .hero-bio { font-size: 1rem; line-height: 1.5; }

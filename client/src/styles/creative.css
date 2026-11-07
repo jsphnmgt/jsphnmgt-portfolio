@@ -128,8 +128,11 @@
   rotate: 3deg;
 }
 
+.hero-photo { position: relative; border-radius: .25rem; overflow: hidden; }
+.hero-photo > img { display: block; }
+.hero-photo::after { content: ""; position: absolute; inset: 1px; border-radius: inherit; background: rgb(86 114 178 / .13); pointer-events: none; }
 .portrait-caption { display: flex; justify-content: space-between; gap: .5rem; margin-bottom: .5rem; font-size: .7rem; letter-spacing: 0; }
-.hero-media > img { border: 1px solid var(--color-navy); border-radius: .25rem; aspect-ratio: 1.5; object-position: 50% 50%; }
+.hero-media > .hero-photo > img { border: 1px solid var(--color-navy); border-radius: .25rem; aspect-ratio: 1.5; object-position: 50% 50%; }
 .portrait-sticker {
   position: absolute;
   top: 52%;
@@ -395,7 +398,7 @@
   .hero-text h1 em { display: block; }
   .hero-text h1 .hero-greeting { font-size: 1rem; margin-bottom: .35rem; }
   .hero-media { align-self: center; max-width: 11rem; padding: .4rem; }
-  .hero-media > img { aspect-ratio: 1.25; }
+  .hero-media > .hero-photo > img { aspect-ratio: 1.25; }
   .portrait-caption, .portrait-sticker, .portrait-footnote { display: none; }
   .hero-bio { grid-area: bio; font-size: .95rem; line-height: 1.4; }
   .hero-bio p + p { margin-top: .5rem; }
@@ -561,7 +564,7 @@
   .hero-text h1 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.08; }
   .tagline { grid-area: tagline; align-self: start; margin: 0; max-width: 25ch; font-size: 1.05rem; }
   .hero-media { width: 78%; max-width: 15rem; align-self: center; padding: .5rem; }
-  .hero-media > img { aspect-ratio: 2; }
+  .hero-media > .hero-photo > img { aspect-ratio: 2; }
   .portrait-caption { font-size: .6rem; }
   .portrait-sticker { width: 3.25rem; height: 3.25rem; right: -.3rem; padding: .25rem; gap: .1rem; font-size: .55rem; }
   .portrait-sticker em { font-size: .85rem; }
@@ -626,7 +629,7 @@
   .hero-text h1 { font-size: clamp(1.9rem, 8vw, 2.25rem); line-height: 1.08; }
   .hero-text h1 em { display: inline; }
   .hero-media { width: 100%; max-width: none; margin: 0; padding: .4rem; rotate: 1deg; }
-  .hero-media > img { aspect-ratio: 2; object-fit: cover; object-position: center 45%; }
+  .hero-media > .hero-photo > img { aspect-ratio: 2; object-fit: cover; object-position: center 45%; }
   .hero-bio { align-self: start; font-size: 1rem; line-height: 1.5; }
   .hero-skills .skills-list { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: .35rem; }
   .hero-skills .skills-row { display: contents; }

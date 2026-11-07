@@ -163,10 +163,6 @@ Original creator credits and usage terms for the following assets remain unverif
 - `backgrounds/green-overlay.png`
 - `backgrounds/paper-texture.png`
 
-### profile
-
-- `profile/profile-photo.jpg`
-
 ### reading-corner
 
 - `reading-corner/board-botanical.jpg`
@@ -218,6 +214,10 @@ Original creator credits and usage terms for the following assets remain unverif
 - `room/room-arrow.svg` - original source/authorship not recorded.
 
 Authorship of the personal-computer SVG interface assets is unconfirmed.
+
+## Author-Provided Photography
+
+The hero photograph (`profile/hero-portrait-lakeside.jpg`) was provided by the author. Its optimized WebP version includes light noise reduction, with a subtle blue overlay applied on the website.
 
 ## Project screenshots and certificates
 

@@ -89,7 +89,7 @@
     margin: auto;
   }
 
-  .hero-media>img {
+  .hero-media > .hero-photo > img {
     border-radius: var(--radius-lg);
   }
 

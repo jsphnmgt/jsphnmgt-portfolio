@@ -1,4 +1,4 @@
-import { assets } from "../../../assets";
+import heroPortrait from "../../../assets/optimized/hero-portrait-lakeside.jpg.webp";
 const skillRows = [["JavaScript", "HTML", "CSS", "React"], ["Flutter", "Figma", "UI/UX Design"]];
 export default function Hero() {
   return <section id="home" aria-labelledby="hero-title">
@@ -20,7 +20,7 @@ export default function Hero() {
       </div>
       <div className="hero-media">
         <div className="portrait-caption"><span>Somewhere between code & daydreams</span><span aria-hidden="true">✦</span></div>
-        <img src={assets["profile-photo.jpg"]} alt="An illustrated character enjoying a drink among plants" fetchPriority="high" />
+        <div className="hero-photo"><img src={heroPortrait} alt="Maria Josephine Magat on a lakeside wooden walkway among trees" style={{ objectPosition: "50% 85%" }} fetchPriority="high" /></div>
         <span className="portrait-sticker" aria-hidden="true"><span>build. learn.</span><em>repeat.</em></span>
       </div>
       <div className="hero-skills">
