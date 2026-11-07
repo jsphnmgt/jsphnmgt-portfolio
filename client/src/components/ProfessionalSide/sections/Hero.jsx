@@ -19,7 +19,7 @@ export default function Hero() {
         <div className="hero-actions"><a className="creative-button hero-cv-button" href={`${import.meta.env.BASE_URL}Maria-Josephine-Magat_CV.pdf`} target="_blank" rel="noopener noreferrer">Download CV <span aria-hidden="true">↓</span><span className="sr-only"> (opens in a new tab)</span></a><a className="hero-contact-link" href="#contact">Let's connect <span aria-hidden="true">↗</span></a></div>
       </div>
       <div className="hero-media">
-        <div className="portrait-caption"><span>Somewhere between code & daydreams</span><span aria-hidden="true">✦</span></div>
+        <div className="portrait-caption"><span>A face behind the work.</span><span aria-hidden="true">✦</span></div>
         <div className="hero-photo"><img src={heroPortrait} alt="Maria Josephine Magat on a lakeside wooden walkway among trees" style={{ objectPosition: "50% 85%" }} fetchPriority="high" /></div>
         <span className="portrait-sticker" aria-hidden="true"><span>build. learn.</span><em>repeat.</em></span>
       </div>

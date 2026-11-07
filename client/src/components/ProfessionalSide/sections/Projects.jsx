@@ -3,6 +3,7 @@ import { projectShowcases } from "../../../data/projectShowcases";
 const projects = [
   {
     title: "CapsiCAM",
+    featured: true,
     image: projectShowcases.CapsiCAM.views[0].image,
     githubUrl: "https://github.com/hrspnd/CapsiCAM",
     projectType: "Group project",
@@ -44,11 +45,11 @@ export default function Projects({ onCardClick }) {
       <h2 id="projects-title">Featured <em>projects.</em></h2><span className="ornament" aria-hidden="true" />
     </div>
     <p className="section-intro">A collection of things I've built, explored, and learned along the way.</p>
-    <div className="projects-grid">{projects.map((project, index) => <button key={project.title} className="project-card" onClick={() => onCardClick({ ...project, showcase: projectShowcases[project.title], image: project.image || assets[project.asset] })} aria-label={`View ${project.title} project`}>
+    <div className="projects-grid">{projects.map((project, index) => <button key={project.title} className={`project-card${project.featured ? " project-card-featured" : ""}`} onClick={() => onCardClick({ ...project, showcase: projectShowcases[project.title], image: project.image || assets[project.asset] })} aria-label={`View ${project.title} project`}>
       <div className="project-windowbar" aria-hidden="true"><span className="window-dots"><i /><i /><i /></span><span>{project.projectType}</span><span>{String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span></div>
       <div className={`project-image ${project.crop}`}><img src={project.image || assets[project.asset]} alt={project.title + " screenshot"} loading="lazy" decoding="async" /></div>
-      <div className="project-copy">
-        <h3>{project.title}</h3>
+      <div className="project-copy">        {project.featured && <span className="project-feature-label">Undergraduate thesis</span>}
+        <h3>{project.title}</h3>        {project.featured && <span className="project-feature-role">UI/UX Design · Frontend Development</span>}
         <p>{project.description}</p>
         {project.techStack.length > 0 && <div className="tags">{project.techStack.map(tag => <span key={tag}>{tag}</span>)}</div>}
         <span className="project-open-note" aria-hidden="true">Explore project <span>↗</span></span>
