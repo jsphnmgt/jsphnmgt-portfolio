@@ -16,7 +16,7 @@ export default function Hero() {
         </div>
         <p className="tagline">A little code. A little curiosity. A lot of care.</p>
         <div className="hero-bio"><p>I'm a Computer Science student focused on frontend development, interface design, and the details that make products intuitive. I enjoy turning messy ideas into clean, usable experiences where design and code meet.</p><p>I'm seeking an internship where I can learn from experienced people, contribute to a team, and help ship thoughtful work.</p></div>
-        <div className="hero-actions"><a className="creative-button hero-cv-button" href={`${import.meta.env.BASE_URL}Josephine-Magat-CV-placeholder.txt`} download="Josephine-Magat-CV-placeholder.txt">Download CV <span aria-hidden="true">↓</span></a><a className="hero-contact-link" href="#contact">Let's connect <span aria-hidden="true">↗</span></a></div>
+        <div className="hero-actions"><a className="creative-button hero-cv-button" href={`${import.meta.env.BASE_URL}Maria-Josephine-Magat_CV.pdf`} target="_blank" rel="noopener noreferrer">Download CV <span aria-hidden="true">↓</span><span className="sr-only"> (opens in a new tab)</span></a><a className="hero-contact-link" href="#contact">Let's connect <span aria-hidden="true">↗</span></a></div>
       </div>
       <div className="hero-media">
         <div className="portrait-caption"><span>Somewhere between code & daydreams</span><span aria-hidden="true">✦</span></div>
