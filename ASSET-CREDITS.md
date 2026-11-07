@@ -6,7 +6,7 @@ This portfolio includes third-party artwork, media, fonts, and branding. The fol
 
 | Asset | Creator / source | Status |
 | --- | --- | --- |
-| Personal room: `room/room.jpg` and related object cutouts | [Purple Bedroom - Anastasia Ermakova](https://shinasty.artstation.com/projects/kDyRy2); [Steam Workshop attribution](https://steamcommunity.com/sharedfiles/filedetails/?id=2916324703) | Apparent source of the room artwork; attribution of individual cutouts remains unconfirmed. Created as a commission for Frequenzy. The artist reserves all rights; web reuse permission is unverified. |
+| Personal room: `room/room.jpg` and related object cutouts | [Purple Bedroom - Anastasia Ermakova](https://www.artstation.com/artwork/kDyRy2); [Artist portfolio](https://shinasty.artstation.com/projects/kDyRy2) | Room artwork by Anastasia Ermakova, created as a commission for Frequenzy. Attribution of individual cutouts remains unconfirmed. The artist reserves all rights; web reuse permission is unverified. |
 | `personal-computer/pc-recycle-bin.png` | Microsoft Windows 11 artwork; [Winaero download](https://winaero.com/blog/wp-content/uploads/2021/07/Recycle-bin-windows-11-icon.png) | Windows artwork downloaded through Winaero. Reuse terms are unverified. |
 
 ## Fonts
