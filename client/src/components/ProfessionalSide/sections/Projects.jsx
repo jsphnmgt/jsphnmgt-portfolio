@@ -22,12 +22,6 @@ const projects = [
     description: "A mobile application for discovering food stalls at Holy Angel University, finding dishes, and saving favorite stalls for easy access.", techStack: ["Flutter", "Dart", "Supabase"], asset: "haulam-cover.png", crop: "haulam"
   },
   {
-    title: "MYSTICA",
-    githubUrl: "https://github.com/jsphnmgt/Mystica",
-    projectType: "Solo project",
-    description: "Mystica is a Studio Ghibli-inspired website featuring movies, characters, and its magical world", techStack: ["HTML", "CSS", "JavaScript"], asset: "mystica-cover.png", crop: "mystica"
-  },
-  {
     title: "My Bookshelf",
     projectType: "Solo project",
     description: "A React app for adding books to a personal collection and displaying them on a responsive virtual shelf.",
@@ -35,6 +29,12 @@ const projects = [
     image: projectShowcases["My Bookshelf"].views[0].image,
     crop: "bookshelf",
     githubUrl: "https://github.com/jsphnmgt/my-bookshelf",
+  },
+  {
+    title: "MYSTICA",
+    githubUrl: "https://github.com/jsphnmgt/Mystica",
+    projectType: "Solo project",
+    description: "Mystica is a Studio Ghibli-inspired website featuring movies, characters, and its magical world", techStack: ["HTML", "CSS", "JavaScript"], asset: "mystica-cover.png", crop: "mystica"
   },
 ];
 export default function Projects({ onCardClick }) {

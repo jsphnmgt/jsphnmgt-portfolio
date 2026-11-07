@@ -16,6 +16,19 @@
 .professional-skill-card .project-technology-mark svg { width: 100%; height: 100%; }
 .professional-skill-card .project-technology-name { font-family: var(--font-body); font-size: .85rem; line-height: 1.2; }
 .professional-skills-note { display: flex; justify-content: center; align-items: center; gap: .75rem; margin: 1.75rem 0 0; color: var(--color-cream); font-family: var(--font-body); font-size: .95rem; font-style: italic; text-align: center; }
+@media (hover: hover) and (pointer: fine) {
+  .professional-skill-card:hover { border-color: var(--color-cobalt); box-shadow: 6px 9px 0 rgb(37 41 50 / .2); }
+  .professional-skill-card:hover .professional-skill-symbol { background: var(--color-lavender); border-color: var(--color-steel); }
+  .professional-skill-card .project-technology-list > li:hover { background: var(--color-lavender); border-color: var(--color-steel); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .professional-skill-card { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .professional-skill-symbol { transition: background .3s ease, border-color .3s ease; }
+  .professional-skill-card .project-technology-list > li { transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+  .professional-skill-card:hover { transform: translateY(-5px) rotate(-.4deg); }
+  .professional-skill-card:nth-child(even):hover { transform: translateY(-5px) rotate(.4deg); }
+  .professional-skill-card .project-technology-list > li:hover { transform: translateY(-2px); }
+}
 @media (max-width: 1100px) {
   .professional-skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
