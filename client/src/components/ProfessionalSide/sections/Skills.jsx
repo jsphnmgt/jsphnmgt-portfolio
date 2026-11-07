@@ -3,7 +3,7 @@ import "../../../styles/skills.css";
 const groups = [
   { title: "Development", mark: "</>", description: "Building for the web and mobile, and solving problems through code.", tools: ["HTML", "CSS", "JavaScript", "React", "Flutter", "Dart", "Java", "Python"] },
   { title: "Databases", mark: "DB", description: "Organizing data and working with relational databases.", tools: ["SQL", "PostgreSQL"] },
-  { title: "Design & tools", mark: "+", description: "Shaping interfaces, creating visuals, and collaborating on code.", tools: ["Figma", "Canva", "UI/UX Design", "GitHub", "Notion"] },
+  { title: "Design & tools", mark: "+", description: "Shaping interfaces, creating visuals, and collaborating on code.", tools: ["Figma", "Canva", "UI/UX Design", "GitHub", "Notion", "Microsoft Excel", "Microsoft Publisher", "Microsoft PowerPoint"] },
   { title: "Soft skills", mark: "+", description: "Bringing care, clear communication, and collaboration to the work.", tools: ["Communication", "Teamwork", "Problem-solving", "Organization", "Attention to detail"] },
 ];
 
