@@ -8,6 +8,7 @@ import "../../../styles/personal-creative.css";
 import "../../../styles/collection-scenes.css";
 import "../../../styles/room-navigation.css";
 import "../../../styles/room-loading.css";
+import "../../../styles/room-highlights.css";
 import "../../../styles/room-tablet.css";
 import "../../../styles/room-mobile.css";
 
@@ -38,6 +39,14 @@ const roomObjects = [
   { id: "game-shelf", label: "Game Shelf", image: "room-game-shelf.png", component: GameShelf },
   { id: "music", label: "Music Corner", image: "room-music.png", component: Music },
 ];
+
+const roomTwinkles = {
+  computer: [[-8, 35, 12], [90, -8, 16], [110, 82, 10]],
+  watchlist: [[-10, 18, 15], [110, 35, 10], [8, 100, 12], [94, -8, 9]],
+  "reading-list": [[-6, -14, 11], [108, 75, 9]],
+  "game-shelf": [[-10, 40, 10], [105, 10, 16], [65, 105, 12]],
+  music: [[-6, 40, 11], [10, -5, 9], [98, 12, 16], [108, 70, 10], [70, 105, 13]],
+};
 
 const roomMenuDetails = {
   computer: { note: "A peek at my desktop", icon: "computer" },
@@ -79,6 +88,7 @@ export default function Room({ returnHref = "#home" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
   const [locatedObjectCount, setLocatedObjectCount] = useState(0);
+  const [isLocateFinale, setIsLocateFinale] = useState(false);
   const [loadingId, setLoadingId] = useState(null);
   const [loadingSource, setLoadingSource] = useState(null);
   const menuRef = useRef(null);
@@ -129,15 +139,23 @@ export default function Room({ returnHref = "#home" }) {
   useEffect(() => {
     if (!isLocating) return;
     const stepMs = 450;
-    const holdMs = 1100;
+    const sequenceEnd = (roomObjects.length - 1) * stepMs + 550;
+    const finaleStart = sequenceEnd + 650;
+    setIsLocateFinale(false);
     setLocatedObjectCount(1);
     const timers = roomObjects.slice(1).map((_, index) => window.setTimeout(() => {
       setLocatedObjectCount(index + 2);
     }, (index + 1) * stepMs));
+    timers.push(window.setTimeout(() => setLocatedObjectCount(0), sequenceEnd));
+    timers.push(window.setTimeout(() => {
+      setIsLocateFinale(true);
+      setLocatedObjectCount(roomObjects.length);
+    }, finaleStart));
     timers.push(window.setTimeout(() => {
       setIsLocating(false);
+      setIsLocateFinale(false);
       setLocatedObjectCount(0);
-    }, (roomObjects.length - 1) * stepMs + holdMs));
+    }, finaleStart + 1200));
     return () => timers.forEach(timer => window.clearTimeout(timer));
   }, [isLocating]);
 
@@ -204,7 +222,7 @@ export default function Room({ returnHref = "#home" }) {
     setActiveObject(object);
   };
 
-  return <section className={`personal-room${imageReady ? " room-ready" : ""}${hasEntered ? " room-entered" : ""}${isLeaving ? " room-leaving" : ""}${isLocating ? " is-locating" : ""}`} id="room" aria-label="Personal room" onKeyDown={event => {
+  return <section className={`personal-room${imageReady ? " room-ready" : ""}${hasEntered ? " room-entered" : ""}${isLeaving ? " room-leaving" : ""}${isLocating ? " is-locating" : ""}${isLocating && isLocateFinale ? " is-locate-finale" : ""}`} id="room" aria-label="Personal room" onKeyDown={event => {
     if (event.key === "Escape" && loadingId) {
       event.preventDefault();
       setActiveObject(null);
@@ -220,6 +238,7 @@ export default function Room({ returnHref = "#home" }) {
       <div className="room-objects" inert={!hasEntered || isLeaving ? "" : undefined}>
         {roomObjects.map((object, index) => <button key={object.id} className={`room-object room-object-${object.id}${isLocating && index < locatedObjectCount ? " is-discovered" : ""}${loadingId === object.id && loadingSource === "object" ? " is-loading" : ""}`} aria-label={`Open ${object.label}`} aria-busy={loadingId === object.id} aria-haspopup="dialog" onClick={event => openObject(object, event.currentTarget)}>
           <img src={assets[object.image]} alt="" draggable={false} />
+          <span className="room-object-twinkles" aria-hidden="true">{roomTwinkles[object.id].map(([x, y, size], twinkleIndex) => <i key={twinkleIndex} style={{ "--twinkle-x": `${x}%`, "--twinkle-y": `${y}%`, "--twinkle-size": `${size}px`, "--twinkle-delay": `${twinkleIndex * .19}s` }} />)}</span>
           <span className="room-object-label" aria-hidden="true"><span className="room-object-number">{String(index + 1).padStart(2, "0")}</span><span className="room-object-name">{object.label}</span>{loadingId === object.id && loadingSource === "object" && <span className="room-inline-spinner" />}</span>
         </button>)}
       </div>

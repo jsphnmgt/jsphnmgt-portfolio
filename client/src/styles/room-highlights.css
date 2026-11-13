@@ -1,0 +1,44 @@
+.room-object-twinkles { position: absolute; inset: 0; z-index: 1; opacity: 0; pointer-events: none; }
+.room-object-twinkles i {
+  position: absolute;
+  left: var(--twinkle-x);
+  top: var(--twinkle-y);
+  width: var(--twinkle-size);
+  height: var(--twinkle-size);
+  translate: -50% -50%;
+  background: #edddff;
+  clip-path: polygon(50% 0, 62% 36%, 100% 50%, 62% 64%, 50% 100%, 38% 64%, 0 50%, 38% 36%);
+}
+.room-object-twinkles i:nth-child(even) { background: #cba6ff; }
+.room-object:focus-visible .room-object-twinkles,
+.room-entered.room-ready.is-locating .room-object.is-discovered .room-object-twinkles { opacity: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .room-object:hover .room-object-twinkles { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .room-object-twinkles { transition: opacity .2s ease; }
+  .room-object:focus-visible img,
+  .room-entered.room-ready.is-locating .room-object.is-discovered img { animation: room-highlight-breathe 1.8s ease-in-out infinite; }
+  .room-object:focus-visible .room-object-twinkles i,
+  .room-entered.room-ready.is-locating .room-object.is-discovered .room-object-twinkles i { animation: room-highlight-twinkle 1.4s var(--twinkle-delay) ease-in-out infinite; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .room-object:hover img { animation: room-highlight-breathe 1.8s ease-in-out infinite; }
+  .room-object:hover .room-object-twinkles i { animation: room-highlight-twinkle 1.4s var(--twinkle-delay) ease-in-out infinite; }
+}
+@keyframes room-highlight-breathe {
+  0%, 100% { filter: brightness(1.12) drop-shadow(0 0 4px #e2c5ff) drop-shadow(0 0 14px #bf91ff) drop-shadow(0 0 26px #af77ffb3); }
+  50% { filter: brightness(1.25) drop-shadow(0 0 5px #efdcff) drop-shadow(0 0 20px #cba4ff) drop-shadow(0 0 38px #af77ffe6); }
+}
+@keyframes room-highlight-twinkle {
+  0%, 100% { opacity: .45; transform: scale(.7) rotate(-12deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(12deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .room-entered.room-ready.is-locating.is-locate-finale .room-object.is-discovered img { animation: room-highlight-finale 1.2s ease-in-out both; }
+  .room-entered.room-ready.is-locating.is-locate-finale .room-object.is-discovered .room-object-twinkles i { animation-delay: 0s; }
+}
+@keyframes room-highlight-finale {
+  0%, 100% { filter: brightness(1.1) drop-shadow(0 0 4px #e2c5ff) drop-shadow(0 0 14px #bf91ff) drop-shadow(0 0 26px #af77ffb3); }
+  45% { filter: brightness(1.3) drop-shadow(0 0 6px #f2e5ff) drop-shadow(0 0 23px #d3b2ff) drop-shadow(0 0 42px #af77ffe6); }
+}
